@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="welcome">
         <img src="/images/logo-web-header.png">
         <h1 class="title">Welcome to Beautybee Storybook.</h1>
         <div class="meta">It 's a Component-Driven Development project.</div>
@@ -71,6 +71,10 @@ export default {
 }
 </script>
 <style scoped>
+.welcome {
+    width: 1000px;
+    margin: auto;
+}
 .rule_all {
     width: 250px;
     margin: auto;

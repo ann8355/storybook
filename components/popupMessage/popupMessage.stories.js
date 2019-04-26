@@ -1,9 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import myComponent from './popupMessage.vue';
 import { action } from '@storybook/addon-actions';
-import centered from '@storybook/addon-centered/vue';
 const stories = storiesOf('Components|popupMessage', module);
-stories.addDecorator(centered);
 stories.add(
     'popupMessage',
     () => ({
