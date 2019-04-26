@@ -5,12 +5,8 @@
     "author": "WEB TEAM",
     "private": true,
     "scripts": {
-        "dev": "nuxt",
-        "build": "nuxt build",
-        "start": "nuxt start",
-        "generate": "nuxt generate",
-        "test": "jest",
-        "storybook": "start-storybook -s ./public,./static -p 53257 --ci"
+        "start": "start-storybook -s ./public,./static -p 53257 --ci",
+        "build": "build-storybook -s ./public,./static -o ./build"
     },
     "dependencies": {
         "@nuxtjs/axios": "5.3.6",
@@ -23,7 +19,7 @@
         "nuxt": "2.3.4"
     },
     "devDependencies": {
-        "@storybook/addon-actions": "5.0.10",
+        "@storybook/addon-actions": "^5.0.10",
         "@storybook/addon-viewport": "5.0.10",
         "@storybook/vue": "5.0.10",
         "@vue/test-utils": "1.0.0-beta.27",
