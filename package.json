@@ -10,7 +10,7 @@
         "start": "nuxt start",
         "generate": "nuxt generate",
         "test": "jest",
-        "storybook": "start-storybook -s ./public,./static -p 9001"
+        "storybook": "start-storybook -s ./static -p 9001"
     },
     "dependencies": {
         "@nuxtjs/axios": "5.3.6",

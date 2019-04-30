@@ -3,7 +3,7 @@ import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import myButton from './myButton.vue';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
-const stories = storiesOf('Example|Button', module);
+const stories = storiesOf('Components|Button', module);
 stories.addDecorator(withKnobs);
 stories.add(
     'Main btn',

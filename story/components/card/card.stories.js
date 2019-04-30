@@ -4,7 +4,7 @@ import card from './card.vue';
 import user from './user.vue';
 import mainContent from './mainContent.vue';
 const color_0 = '#000';
-const stories = storiesOf('Card|Post', module);
+const stories = storiesOf('Components|Post Card', module);
 stories.addDecorator(withKnobs);
 stories.add(
     'article post',
@@ -18,7 +18,7 @@ stories.add(
                 default: text('Text', '今夜一起微醺吧！7-ELEVEN「春酒賞」～狐狸蘋果酒、哈密瓜風味絕對是少女系最愛酒單♡')
             }
         },
-        template: `<card :color0="color0"></card>`
+        template: `<card :color0="color0" :text="text"></card>`
     }),
     {
         notes: 'beautybee post card',
