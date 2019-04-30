@@ -1,25 +1,31 @@
 <template>
     <div>
-        <div class="card" @click="click">
-            <div class="top">
-                <div class="avatar">
-                    <img :src="avatar" alt="">
+        <ParticleEffectButton :visible.sync="btnOps.visible" :animating.sync="btnOps.animating" :options="btnOps" cls="btn-cls">
+
+            <div class="card" @click="click">
+                <div class="top">
+                    <div class="avatar">
+                        <img :src="avatar" alt="">
+                    </div>
+                    <div class="all">
+                        <div class="name">{{ authorName }}</div>
+                        <div class="date">{{ date }}</div>
+                    </div>
                 </div>
-                <div class="all">
-                    <div class="name">{{ authorName }}</div>
-                    <div class="date">{{ date }}</div>
+                <div class="cover">
+                    <img :src="cover" alt="">
+                </div>
+                <div class="title" :style="{ color: titleColor }">
+                    {{ title }}
                 </div>
             </div>
-            <div class="cover">
-                <img :src="cover" alt="">
-            </div>
-            <div class="title" :style="{ color: titleColor }">
-                {{ title }}
-            </div>
-        </div>
+        </ParticleEffectButton>
+        <button @click="btnOps.visible=!btnOps.visible">reload</button>
     </div>
 </template>
 <script>
+import ParticleEffectButton from "vue-particle-effect-buttons"
+
 export default {
     props: {
         avatar: {
@@ -45,10 +51,35 @@ export default {
         click () {
             console.log('clicked');
         }
+    },
+    data () {
+        return {
+            btnOps: {
+                type: "circle",
+                easing: "easeOutQuart",
+                size: 2,
+                particlesAmountCoefficient: 17,
+                oscillationCoefficient: 2,
+                color: function () {
+                    return Math.random() < 0.5 ? "#000000" : "#ffffff";
+                },
+                onComplete: () => {
+                    console.log("complete");
+                },
+                onBegin: () => {
+                    console.log("begin");
+                },
+                visible: true,
+                animating: false
+            },
+        }
+    },
+    components: {
+        ParticleEffectButton
     }
 }
 </script>
-<style scoped>
+<style>
 .title {
     color: #000;
     line-height: 24px;
@@ -64,6 +95,8 @@ export default {
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
     padding: 10px;
     margin: 50px auto;
+    background: #fff;
+    border-radius: 4px;
 }
 .top {
     display: flex;
@@ -111,5 +144,8 @@ export default {
 }
 .cover img {
     width: 100%;
+}
+.vue-particle-effect-button .particles-button {
+    padding: 0 !important;
 }
 </style>

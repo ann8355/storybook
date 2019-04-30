@@ -18,9 +18,11 @@
         "@storybook/addon-links": "5.0.10",
         "@storybook/addon-notes": "^5.0.10",
         "@storybook/addon-storysource": "^5.0.10",
+        "animejs": "^3.0.1",
         "cross-env": "5.2.0",
         "nuxt": "2.3.4",
-        "storybook-addon-vue-info": "^1.1.1"
+        "storybook-addon-vue-info": "^1.1.1",
+        "vue-particle-effect-buttons": "^1.0.3"
     },
     "devDependencies": {
         "@storybook/addon-actions": "5.0.10",
