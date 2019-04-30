@@ -11,14 +11,37 @@ stories.add(
     () => ({
         components: { card },
         props: {
-            color0: {
-                default: color('title', color_0)
+            titleColor: {
+                default: color('titleColor', color_0)
             },
-            text: {
-                default: text('Text', '今夜一起微醺吧！7-ELEVEN「春酒賞」～狐狸蘋果酒、哈密瓜風味絕對是少女系最愛酒單♡')
+            title: {
+                default: text('title', '今夜一起微醺吧！7-ELEVEN「春酒賞」～狐狸蘋果酒、哈密瓜風味絕對是少女系最愛酒單♡')
+            },
+            avatar: {
+                default: text('avatar', 'https://beautybee.imgix.net/girlstyle/system/images/girlstyle-tw_icon.jpg?w=150')
+            },
+            authorName: {
+                default: text('authorName', 'Girlstyle 官方')
+            },
+            cover: {
+                default: text('cover', 'https://girlstyle-tw.imgix.net/wp-content/uploads/2019/04/711%E9%85%92.jpg')
+            },
+            date: {
+                default: text('date', '10 min')
             }
         },
-        template: `<card :color0="color0" :text="text"></card>`
+        template: `<card :titleColor="titleColor" :title="title" :avatar="avatar" :authorName="authorName" :cover="cover" :date="date"></card>`,
+        propsDescription: {
+            card: {
+                // These description will appear in `description` column in props table
+                avatar: '使用者大頭貼網址',
+                title: '文章標題',
+                titleColor: '標題顏色',
+                authorName: '作者名稱',
+                cover: '文章圖片',
+                date: '發文時間'
+            }
+        }
     }),
     {
         notes: 'beautybee post card',
