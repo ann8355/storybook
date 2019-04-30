@@ -1,27 +1,51 @@
 <template>
     <div>
-        <div class="card">
+        <div class="card" @click="click">
             <div class="top">
                 <div class="avatar">
-                    <img src="https://beautybee.imgix.net/girlstyle/system/images/girlstyle-tw_icon.jpg?w=150" alt="">
+                    <img :src="avatar" alt="">
                 </div>
                 <div class="all">
-                    <div class="name">Girlstyle 官方</div>
-                    <div class="date">10 min</div>
+                    <div class="name">{{ authorName }}</div>
+                    <div class="date">{{ date }}</div>
                 </div>
             </div>
             <div class="cover">
-                <img src="https://girlstyle-tw.imgix.net/wp-content/uploads/2019/04/711%E9%85%92.jpg" alt="">
+                <img :src="cover" alt="">
             </div>
-            <div class="title" :style="{ color: color0 }">
-                {{ text }}
+            <div class="title" :style="{ color: titleColor }">
+                {{ title }}
             </div>
         </div>
     </div>
 </template>
 <script>
 export default {
-    props: ['color0', 'text']
+    props: {
+        avatar: {
+            type: String
+        },
+        titleColor: {
+            type: String
+        },
+        title: {
+            type: String
+        },
+        authorName: {
+            type: String
+        },
+        date: {
+            type: String
+        },
+        cover: {
+            type: String
+        }
+    },
+    methods: {
+        click () {
+            console.log('clicked');
+        }
+    }
 }
 </script>
 <style scoped>
