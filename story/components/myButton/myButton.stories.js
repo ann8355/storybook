@@ -3,10 +3,8 @@ import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import myButton from './myButton.vue';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
-import centered from '@storybook/addon-centered/vue';
-const stories = storiesOf('Example|Button', module);
+const stories = storiesOf('Components|Button', module);
 stories.addDecorator(withKnobs);
-stories.addDecorator(centered);
 stories.add(
     'Main btn',
     () => ({

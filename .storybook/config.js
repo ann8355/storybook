@@ -3,7 +3,7 @@ import { withInfo } from 'storybook-addon-vue-info';
 addDecorator(withInfo);
 
 function loadStories() {
-    const req = require.context('../components', true, /\.stories\.js$/);
+    const req = require.context('../story', true, /\.stories\.js$/);
     req.keys().forEach(filename => req(filename));
 }
 configure(loadStories, module);

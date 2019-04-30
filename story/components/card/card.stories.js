@@ -3,11 +3,9 @@ import { withKnobs, color, text } from '@storybook/addon-knobs';
 import card from './card.vue';
 import user from './user.vue';
 import mainContent from './mainContent.vue';
-import centered from '@storybook/addon-centered/vue';
 const color_0 = '#000';
-const stories = storiesOf('Components|Post', module);
+const stories = storiesOf('Components|Post Card', module);
 stories.addDecorator(withKnobs);
-stories.addDecorator(centered);
 stories.add(
     'article post',
     () => ({
