@@ -1,16 +1,11 @@
 {
-    "name": "nuxt-sb",
+    "name": "@beautybee/card",
     "version": "1.0.0",
     "description": "CCD",
     "author": "WEB TEAM",
     "private": true,
     "scripts": {
-        "dev": "nuxt",
-        "build": "nuxt build",
-        "start": "nuxt start",
-        "generate": "nuxt generate",
-        "test": "jest",
-        "storybook": "start-storybook -s ./static -p 9001"
+        "build-b": "vue-cli-service build --target lib --name card ./card.vue"
     },
     "dependencies": {
         "@nuxtjs/axios": "5.3.6",
@@ -20,7 +15,6 @@
         "@storybook/addon-storysource": "^5.0.10",
         "animejs": "^3.0.1",
         "cross-env": "5.2.0",
-        "element-ui": "^2.8.2",
         "nuxt": "2.3.4",
         "storybook-addon-vue-info": "^1.1.1"
     },
