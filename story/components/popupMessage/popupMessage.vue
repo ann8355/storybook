@@ -1,7 +1,6 @@
 <template>
     <div>
-        <button type="button" @click="showPopup">按我顯示提示</button>
-        <section v-if="popup" class="popup">{{ type }}</section>
+        <button type="button" @click="$popupMessage('error', 'hahaha')">按我顯示提示</button>
     </div>
 </template>
 <script>
@@ -10,14 +9,6 @@ export default {
     data () {
         return {
             popup: false
-        }
-    },
-    methods: {
-        showPopup () {
-            this.popup = true;
-            setTimeout(() => {
-                this.popup = false;
-            }, 2000);
         }
     }
 }
@@ -40,28 +31,5 @@ button:hover {
 button:disabled {
     background-color: #999;
     cursor: not-allowed;
-}
-.popup {
-    width: 100px;
-    padding: 10px 30px;
-    color: #fff;
-    text-align: center;
-    position: fixed;
-    top: 50px;
-    left: 0;
-    right: 0;
-    margin: auto;
-    background: #5cac34;
-    border: 1px #458327 solid;
-    border-radius: 6px;
-    animation: top-in 1s forwards;
-}
-@keyframes top-in {
-    0% {
-        top: -20px;
-    }
-    100% {
-        top: 50px;
-    }
 }
 </style>

@@ -1,10 +1,10 @@
-# nuxt-sb
+# Storybook-Nuxt
 
-> CCD
+> Components-Driven Development
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ npm install
 
@@ -18,5 +18,3 @@ $ npm start
 # generate static project
 $ npm run generate
 ```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
