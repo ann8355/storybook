@@ -13,7 +13,7 @@
     z-index: 10005;
     animation: comeDown 0.5s forwards;
     padding: 10px;
-    height: 40px;
+    line-height: 30px;
 }
 #popup_message.mobile {
     text-align: left;

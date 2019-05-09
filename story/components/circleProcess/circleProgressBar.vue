@@ -1,9 +1,9 @@
 <template>
     <div>
-        <svg style="transform: rotate(-90deg)" :width="width" :height="width" xmlns="http://www.w3.org/2000/svg">
+        <svg style="transform: rotate(90deg)" :width="width" :height="width" xmlns="http://www.w3.org/2000/svg">
             <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="5%" stop-color="#F00" />
-                <stop offset="95%" stop-color="#ff0" />
+                <stop offset="10%" :stop-color="colorStart" />
+                <stop offset="50%" :stop-color="colorEnd" />
             </linearGradient>
             <circle :r="(width-radius)/2" :cy="width/2" :cx="width/2" :stroke-width="radius" :stroke="backgroundColor" fill="none" />
             <circle ref="$bar" :r="(width-radius)/2" :cy="width/2" :cx="width/2" stroke="url(#bg)" :stroke-width="radius" :stroke-linecap="isRound ? 'round' : 'square'" :stroke-dasharray="(width-radius)*3.14" :stroke-dashoffset="isAnimation ? (width-radius) * 3.14 : (width - radius) * 3.14 * (100 - progress) / 100" fill="none" />
@@ -17,47 +17,51 @@ export default {
         width: {
             type: [Number, String],
             default: 200
-        }, // 圆的大小
+        }, // 圓形大小
         radius: {
             type: [Number, String],
-            default: 20
-        }, // 进度条厚度
+            default: 10
+        }, // 進度條厚度
         progress: {
             type: [Number, String],
             default: 70
-        }, // 进度条百分比
-        barColor: {
+        }, // 百分比
+        colorStart: {
             type: String,
-            default: '#F2AE57'
-        }, // 进度条颜色
+            default: '#ffc16f'
+        }, // 進度條色
+        colorEnd: {
+            type: String,
+            default: '#ffe191'
+        }, // 進度條色
         backgroundColor: {
             type: String,
-            default: '#FFE8CC'
+            default: '#ededed'
         }, // 背景颜色
-        isAnimation: { // 是否是动画效果
+        isAnimation: {
+            type: Boolean,
+            default: true,
+        }, // 是否是帶動畫
+        isRound: {
             type: Boolean,
             default: true,
         },
-        isRound: { // 是否是圆形画笔
-            type: Boolean,
-            default: true,
-        },
-        id: { // 组件的id，多组件共存时使用
+        id: { 
             type: [String, Number],
             default: 1,
-        },
-        duration: { // 整个动画时长
+        }, // 組件 id，多次使用時確保 id 不同
+        duration: {
             type: [String, Number],
             default: 1000,
-        },
-        delay: { // 延迟多久执行
+        }, // 動畫時間
+        delay: {
             type: [String, Number],
             default: 200,
-        },
-        timeFunction: { // 动画缓动函数
+        }, // 延遲多久執行
+        timeFunction: {
             type: String,
             default: 'cubic-bezier(0.99, 0.01, 0.22, 0.94)',
-        },
+        }, // 動畫緩動函數
     },
     data () {
         return {
@@ -65,17 +69,17 @@ export default {
         }
     },
     beforeDestroy () {
-        // 清除旧组件的样式标签
+        // 清除舊組件的樣式
         document.getElementById(this.idStr) && document.getElementById(this.idStr).remove()
     },
     mounted () {
         if (this.isAnimation) {
-            // 重复定义判断
+            // 重複定義判斷
             if (document.getElementById(this.idStr)) {
                 console.warn('vue-circle-progress should not have same id style')
                 document.getElementById(this.idStr).remove()
             }
-            // 生成动画样式文件
+            // 動態加入 style
             let style = document.createElement('style')
             style.id = this.idStr
             style.type = 'text/css'
@@ -84,9 +88,7 @@ export default {
                 from {stroke-dashoffset: ${(this.width - this.radius) * 3.14}px;}
                 to {stroke-dashoffset: ${(this.width - this.radius) * 3.14 * (100 - this.progress) / 100}px;}}
                 .circle_progress_bar${this.id} {animation: circle_progress_keyframes_name_${this.id} ${this.duration}ms ${this.delay}ms ${this.timeFunction} forwards;}`
-            // 添加新样式文件
             document.getElementsByTagName('head')[0].appendChild(style)
-            // 往svg元素中添加动画class
             this.$refs.$bar.classList.add(`circle_progress_bar${this.id}`)
         }
     },
