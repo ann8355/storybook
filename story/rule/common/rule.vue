@@ -43,7 +43,11 @@
             </div>
             or (以 presslogicui 專案為例)
             <div class="code">
-                npm i -S git+https://gitlab.presslogic.online/andy.wang/presslogicui.git
+                npm i -S git+https://presslogicui:4BUB3py_iJPfXyqz2Z-H@gitlab.presslogic.online/andy.wang/presslogicui.git
+            </div>
+            or (以 beautyui 專案為例)
+            <div class="code">
+                npm i -S git+https://beautyUI:tpt2kypJEz8oHgtiVWXo@gitlab.presslogic.online/andy.wang/beautyui.git
             </div>
             2. 開啟欲使用此 component 的地方並註冊其 component 即可使用。
             <div class="code">
