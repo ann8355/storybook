@@ -60,15 +60,15 @@ export default {
 }
 .like {
     background-repeat: no-repeat;
-    background-image: url('./images/ic_general_like_off.png');
+    background-image: url('./images/ic-general-good-off.svg');
     cursor: pointer;
     margin-right: 5px;
 }
 .liked {
-    background-image: url('./images/ic_general_like_on.png');
+    background-image: url('./images/ic-general-good-on.svg');
 }
 .like:hover {
-    background-image: url('./images/ic_general_like_on.png');
+    background-image: url('./images/ic-general-good-on.svg');
     transition: all 0.3s;
 }
 </style>
