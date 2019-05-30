@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { withKnobs, color, number, boolean } from '@storybook/addon-knobs';
 import myComponent from './backToTop.vue';
 
-const stories = storiesOf('Presslogic|Components', module);
+const stories = storiesOf('Presslogic|BackToTop', module);
 stories.addDecorator(withKnobs);
 stories.add(
     'Back-To-Top',
