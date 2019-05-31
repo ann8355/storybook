@@ -65,7 +65,7 @@ export default {
         },
     methods:{
         handleScroll (event) {
-            if (window.scrollY > 300) {
+            if (window.scrollY > this.scroll) {
               this.show = true
             } else {
               this.show = false
