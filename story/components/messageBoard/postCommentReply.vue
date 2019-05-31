@@ -6,7 +6,7 @@
                     <img :src="user.avatar[0]">
                 </div>
                 <div class="text">
-                    {{ $translate('post_detail_reply_to_nickname') }} {{ data.user.display_name }}
+                    {{ $translate('post_detail_reply_to_nickname') }} {{ data.user_collection.display_name }}
                 </div>
             </div>
             <div class="input">
@@ -83,7 +83,7 @@ export default {
                 comment_time: now,
                 content: self.replyText,
                 like_count: 0,
-                user: {
+                user_collection: {
                     real_name: self.user.real_name,
                     avatar: self.user.avatar,
                     display_name: self.user.display_name
@@ -174,10 +174,11 @@ export default {
 }
 .reply_input {
     border: 1px #eee solid;
-    width: 100%;
+    width: calc(100% - 40px);
     padding: 5px;
     line-height: 20px;
     border-radius: 4px;
+    outline: none;
 }
 .input {
     margin-left: 30px;

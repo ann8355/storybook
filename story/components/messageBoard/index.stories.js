@@ -22,13 +22,13 @@ const allCommentList = [
         like_count: 0,
         user_id: '5c70c4d4dfd6fd503e183346',
         post_id: '5ccbcb1cdfd6fd42064fab95',
-        content: '城市生存',
+        content: '現在的年輕人，不像我們以前吃苦當吃補，22k 剛好而已',
         updated_at: '2019-05-10T10:34:28+00:00',
         created_at: '2019-05-10T10:34:28+00:00',
         id: '5cd553b4dfd6fd42161f1a8d',
         reply_user_list: {},
         content_tag_user_list: {},
-        comment_time: '2019-05-10T10:34:28+00:00',
+        comment_time: '2019-05-01 18:00:00',
         timestamp: 1557484468,
         replies_num: 4,
         total_comments: 29,
@@ -38,16 +38,16 @@ const allCommentList = [
             _id: '5c70c4d4dfd6fd503e183346',
             first_name: '',
             last_name: '',
-            display_name: 'guest123',
+            display_name: '郭董生氣',
             real_name: '5c70c4d4dfd6fd503e183346',
-            about: 'Hi~',
+            about: '媽祖托夢給我，所以我只好選一波',
             fol_count: 1,
             post_count: 0,
             avatar_path: ['girlstyle/posts/images/15591888712971bfxRu3Mrha.jpg'],
             cover_path: ['girlstyle/posts/images/15586876823664U39jn7QNWl.jpg'],
             followed: false,
-            avatar: ['https://beautybee.imgix.net/girlstyle/posts/images/15591888712971bfxRu3Mrha.jpg'],
-            cover: ['https://beautybee.imgix.net/girlstyle/posts/images/15586876823664U39jn7QNWl.jpg']
+            avatar: ['https://beautybee.imgix.net/girlstyle/posts/images/15592877056971Am4CWyuuus.jpg'],
+            cover: ['https://beautybee.imgix.net/girlstyle/posts/images/15592881503105DcRqh9HsXl.jpg']
         },
         user: {
             _id: '5c70c4d4dfd6fd503e183346',
@@ -72,13 +72,13 @@ const allCommentList = [
         like_count: 0,
         user_id: '5c70c4d4dfd6fd503e183346',
         post_id: '5ccbcb1cdfd6fd42064fab95',
-        content: '事實上次錯誤',
+        content: '樓上你在大聲什麼啦',
         updated_at: '2019-05-10T10:34:12+00:00',
         created_at: '2019-05-10T10:34:12+00:00',
         id: '5cd553a4dfd6fd42571312b8',
         reply_user_list: {},
         content_tag_user_list: {},
-        comment_time: '2019-05-10T10:34:12+00:00',
+        comment_time: '2019-05-10 12:00:00',
         timestamp: 1557484452,
         replies_num: 0,
         total_comments: 29,
@@ -88,16 +88,16 @@ const allCommentList = [
             _id: '5c70c4d4dfd6fd503e183346',
             first_name: '',
             last_name: '',
-            display_name: 'guest123',
+            display_name: '睏寶',
             real_name: '5c70c4d4dfd6fd503e183346',
-            about: 'Hi~',
-            fol_count: 1,
+            about: '我只是眼睛小好嗎? (白眼',
+            fol_count: 1209,
             post_count: 0,
             avatar_path: ['girlstyle/posts/images/15591888712971bfxRu3Mrha.jpg'],
             cover_path: ['girlstyle/posts/images/15586876823664U39jn7QNWl.jpg'],
             followed: false,
-            avatar: ['https://beautybee.imgix.net/girlstyle/posts/images/15591888712971bfxRu3Mrha.jpg'],
-            cover: ['https://beautybee.imgix.net/girlstyle/posts/images/15586876823664U39jn7QNWl.jpg']
+            avatar: ['https://beautybee.imgix.net/girlstyle/posts/images/15592888735478T0uSj2ZGVM.jpg'],
+            cover: ['https://beautybee.imgix.net/girlstyle/posts/images/15592888735478T0uSj2ZGVM.jpg']
         }
     }
 ];
@@ -365,7 +365,10 @@ stories.add(
                 loadMore: '第一層回覆是否顯示載入更多按鈕',
                 postDisable: '是否禁用留言恇',
                 loading: '是否顯示 loading',
-                reply: '回應列表'
+                reply: '回應列表',
+                layer: '是否為彈出層用',
+                lang: '語系',
+                newReply: '新增回覆的值'
             }
         },
         template: `<myComponent :user="user" :commentTotal="commentTotal" :commentList="commentList" :commentNum="commentNum" :loadMore="loadMore" :postDisable="postDisable" :loading="loading" :reply="reply" @postComment="postComment" @loadReplyList="loadReplyList" />`,
@@ -378,7 +381,7 @@ stories.add(
                     comment_time: now.getFullYear() + '-' + now.getMonth() + '-' + now.getDate() + ' ' + now.getHours() + ':' + now.getMinutes(),
                     content: inputComment,
                     like_count: 0,
-                    user: {
+                    user_collection: {
                         real_name: this.user.real_name,
                         avatar: this.user.avatar,
                         display_name: this.user.display_name
@@ -388,7 +391,6 @@ stories.add(
                 this.commentNum++;
             },
             loadReplyList(params) {
-                console.log(params);
                 this.reply = allReplyList;
             }
         }
@@ -398,6 +400,8 @@ stories.add(
             [ 版本紀錄 ]
 
             1.0.0 版 - 初級版
+
+            作者：Daddy
         `,
         info: {
             summary: `留言板第一版，內含雙層回覆`

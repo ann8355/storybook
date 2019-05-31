@@ -1,6 +1,7 @@
 <template>
     <div class="comment_box">
         <div class="comment">
+            <avatar :isLazyLoad="false" :profile="data.user_collection" :avatarWidth="30" />
             <div class="middle">
                 <div v-if="!edit">
                     <div class="message">
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import avatar from '../avatarWithText/avatarWithText.vue';
 import caption from './comment.json';
 import postCommentMoreAction from './postCommentMoreActions';
 import postCommentReply from './postCommentReply';
@@ -47,7 +49,8 @@ export default {
     },
     components: {
         postCommentMoreAction,
-        postCommentReply
+        postCommentReply,
+        avatar
     },
     methods: {
         reply_input_box_open (type) {

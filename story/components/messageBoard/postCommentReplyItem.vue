@@ -1,6 +1,7 @@
 <template>
     <section>
         <div class="comment" v-if="showThis">
+            <avatar :isLazyLoad="false" :profile="data.user_collection" :avatarWidth="30" />
             <div class="middle">
                 <div v-if="!edit">
                     <div class="message" v-html="content"></div>
@@ -38,7 +39,7 @@
                     <img :src="user.avatar[0]">
                 </div>
                 <div class="text">
-                    {{ $translate('post_detail_reply_to_nickname') }} {{ data.user.display_name }}
+                    {{ $translate('post_detail_reply_to_nickname') }} {{ data.user_collection.display_name }}
                 </div>
             </div>
             <div class="input">
@@ -48,6 +49,7 @@
     </section>
 </template>
 <script>
+import avatar from '../avatarWithText/avatarWithText.vue';
 import caption from './comment.json';
 export default {
     props: ['data', 'idx', 'user', 'lang'],
@@ -68,6 +70,9 @@ export default {
             isTagName: false,
             tagPlace: Number
         };
+    },
+    components: {
+        avatar
     },
     watch: {
         'replyText': function (val) { // Tag 人
@@ -96,6 +101,8 @@ export default {
         } else {
             this.content = this.data.content;
         }
+        console.log('-----');
+        console.log(this.data);
     },
     methods: {
         showReplyInput () {
