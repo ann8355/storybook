@@ -30,7 +30,7 @@ const allCommentList = [
         content_tag_user_list: {},
         comment_time: '2019-05-01 18:00:00',
         timestamp: 1557484468,
-        replies_num: 4,
+        replies_num: 0,
         total_comments: 29,
         content_tag_user_collection: {},
         liked: false,
