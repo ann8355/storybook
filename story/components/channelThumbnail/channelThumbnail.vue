@@ -15,30 +15,7 @@ export default {
         // 頻道列表
         channelList: {
             type: Array,
-            default: [
-                {
-                    _id: '5b4c6aa20832663e0b23cad5',
-                    thumbnail: 'https://images.girlstyle.com/girlstyle/channel/images/thumbnail_beauty.jpg',
-                    names: {
-                        en: 'Beauty',
-                        ko: '뷰티',
-                        'zh-CN': '美容',
-                        'zh-HK': '美容',
-                        'zh-TW': '美容'
-                    }
-                },
-                {
-                    _id: '5b4c6aa20832663e0b23cad7',
-                    thumbnail: 'https://images.girlstyle.com/girlstyle/channel/images/thumbnail_fashion.jpg',
-                    names: {
-                        en: 'Fashion',
-                        ko: '패션',
-                        'zh-CN': '时尚',
-                        'zh-HK': '時尚',
-                        'zh-TW': '時尚'
-                    }
-                }
-            ],
+            default: [],
             required: true
         },
         // 語系
@@ -55,41 +32,43 @@ export default {
         /* style */
         channelThumb: {
             type: Object,
-            default: () => {
-                return {
-                    width: {
-                        type: [Number, String],
-                        default: '100%'
-                    },
-                    flexDirection: {
-                        type: String,
-                        default: 'row'
-                    },
-                    flexWrap: {
-                        type: String,
-                        default: 'wrap'
-                    }
-                }
-            }
+            default: {}
+            // () => {
+            //     return {
+            //         width: {
+            //             type: [Number, String],
+            //             default: '100%'
+            //         },
+            //         flexDirection: {
+            //             type: String,
+            //             default: 'row'
+            //         },
+            //         flexWrap: {
+            //             type: String,
+            //             default: 'wrap'
+            //         }
+            //     }
+            // }
         },
         channelEle: {
             type: Object,
-            default: () => {
-                return {
-                    width: {
-                        type: [Number, String],
-                        default: '104px'
-                    },
-                    height: {
-                        type: [Number, String],
-                        default: '104px'
-                    },
-                    borderRadius: {
-                        type: [Number, String],
-                        default: '6px'
-                    }
-                }
-            }
+            default: {}
+            // () => {
+            //     return {
+            //         width: {
+            //             type: [Number, String],
+            //             default: '104px'
+            //         },
+            //         height: {
+            //             type: [Number, String],
+            //             default: '104px'
+            //         },
+            //         borderRadius: {
+            //             type: [Number, String],
+            //             default: '6px'
+            //         }
+            //     }
+            // }
         }
     },
     data () {
