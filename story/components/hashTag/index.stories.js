@@ -30,7 +30,7 @@ stories.add(
                 customStyle: '客製化樣式(class name)'
             }
         },
-        template: `<div style="display: flex;"><myComponent style="cursor: pointer;" tagRouter="tagRouter" :tagName="tagName" :tagSymbol="tagSymbol" :iconSrc="iconSrc" :iconSize="iconSize" :customStyle="customStyle" /></div>`
+        template: `<div style="display: flex;"><myComponent style="cursor: pointer;" tagRouter="tagRouter" :tagName="tagName" :tagSymbol="tagSymbol" /></div>`
     }),
     {
         notes: `
