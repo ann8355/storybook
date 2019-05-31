@@ -77,8 +77,8 @@ export default {
     watch: {
         'replyText': function (val) { // Tag 人
             if (this.data.user_id !== this.user._id) {
-                let tagNameLength = this.data.user.display_name.length + 1;
-                let tagName = val.indexOf('@' + this.data.user.display_name + ' ');
+                let tagNameLength = this.data.user_collection.display_name.length + 1;
+                let tagName = val.indexOf('@' + this.data.user_collection.display_name + ' ');
                 if (tagName < 0) {
                     if (this.isTagName) {
                         this.replyText = this.replyText.substring(0, this.tagPlace) + this.replyText.substring(this.tagPlace + tagNameLength);
@@ -111,7 +111,7 @@ export default {
             } else {
                 this.isTagName = true;
                 if (this.data.user_id !== this.user._id) {
-                    this.replyText = '@' + this.data.user.display_name + ' ';
+                    this.replyText = '@' + this.data.user_collection.display_name + ' ';
                 }
                 this.replyBox = true;
             }
@@ -122,8 +122,8 @@ export default {
         submitReply () {
             let params;
             this.replyBox = false;
-            if (this.replyText.indexOf('@' + this.data.user.display_name + ' ') >= 0 && this.data.user_id !== this.user._id) {
-                let tagNameLength = this.data.user.display_name.length + 2;
+            if (this.replyText.indexOf('@' + this.data.user_collection.display_name + ' ') >= 0 && this.data.user_id !== this.user._id) {
+                let tagNameLength = this.data.user_collection.display_name.length + 2;
                 this.replyText = this.replyText.substring(0, this.tagPlace) + '@' + this.data.user_id + ' ' + this.replyText.substring(this.tagPlace + tagNameLength);
                 params = { post_id: this.data.post_id, content: this.replyText, parent_id: this.data.parent_id, reply_user_list: { user: this.data.user_id }, tagName: this.data.user_collection.display_name };
             } else {

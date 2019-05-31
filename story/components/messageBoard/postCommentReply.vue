@@ -103,18 +103,16 @@ export default {
             let newComment;
             let tagPlace;
             if (params.reply_user_list) {
-                tagPlace = params.content.indexOf('@' + params.reply_user_list.user);
+                tagPlace = params.content.indexOf('@' + params.reply_user_list.user_collection);
             }
-            if (tagPlace >= 0) {
-                tagContent = params.content.substring(0, tagPlace) + '<span class="atName">@' + params.tagName + '</span>' + params.content.substring(params.reply_user_list.user.length + 1 + tagPlace);
-            } else {
-                tagContent = params.content;
-            }
+
+            tagContent = params.content;
+
             newComment = {
                 comment_time: now,
                 content: tagContent,
                 like_count: 0,
-                user: {
+                user_collection: {
                     real_name: self.user.real_name,
                     avatar: self.user.avatar,
                     display_name: self.user.display_name
