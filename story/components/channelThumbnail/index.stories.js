@@ -1,42 +1,146 @@
 import { storiesOf } from '@storybook/vue';
 import { withKnobs, select, text, number, object, boolean } from '@storybook/addon-knobs';
+import demo from './demo.vue';
 import channelThumbnail from './channelThumbnail.vue';
+import selectButton from './selectButton.vue';
 
 const stories = storiesOf('Beautybee|channelThumbnail', module);
 stories.addDecorator(withKnobs);
+const channelList = [
+    {
+        _id: '5b4c6aa20832663e0b23cad5',
+        thumbnail: 'https://images.girlstyle.com/girlstyle/channel/images/thumbnail_beauty.jpg',
+        names: {
+            en: 'Beauty',
+            ko: '뷰티',
+            'zh-CN': '美容',
+            'zh-HK': '美容',
+            'zh-TW': '美容'
+        }
+    },
+    {
+        _id: '5b4c6aa20832663e0b23cad7',
+        thumbnail: 'https://images.girlstyle.com/girlstyle/channel/images/thumbnail_fashion.jpg',
+        names: {
+            en: 'Fashion',
+            ko: '패션',
+            'zh-CN': '时尚',
+            'zh-HK': '時尚',
+            'zh-TW': '時尚'
+        }
+    },
+    {
+        _id: '5b7f980633c4680f0d287ba2',
+        thumbnail: 'https://images.girlstyle.com/girlstyle/channel/images/thumbnail_hot_topics.jpg',
+        names: {
+            en: 'Hot Topics',
+            ko: '핫이슈',
+            'zh-CN': '热话',
+            'zh-HK': '熱話',
+            'zh-TW': '熱話'
+        }
+    },
+    {
+        _id: '5b4c6aa20832663e0b23cada',
+        thumbnail: 'https://images.girlstyle.com/girlstyle/channel/images/thumbnail_food.jpg',
+        names: {
+            en: 'Food',
+            ko: '푸드',
+            'zh-CN': '美食',
+            'zh-HK': '美食',
+            'zh-TW': '美食'
+        }
+    },
+    {
+        _id: '5b4c6aa20832663e0b23cad9',
+        thumbnail: 'https://images.girlstyle.com/girlstyle/channel/images/thumbnail_trevel.jpg',
+        names: {
+            en: 'Travel',
+            ko: '여행',
+            'zh-CN': '旅游',
+            'zh-HK': '旅遊',
+            'zh-TW': '旅遊'
+        }
+    }
+];
+const lang = ['en', 'ko', 'zh-CN', 'zh-HK', 'zh-TW'];
+const inputType = ['checkbox', 'radio'];
+const channelThumb = {};
+const channelEle = {
+    width: '104px',
+    height: '104px',
+    margin: '0 7px 15px'
+};
+const channelBtn = {
+    width: '200px',
+    height: '44px'
+};
+const buttonText = {
+    en: ['Select', 'more', 'Done'],
+    ko: ['더 선택해주세요.', '완료'],
+    'zh-CN': ['请选择', '个', '完成'],
+    'zh-HK': ['請選擇', '個', '完成'],
+    'zh-TW': ['請選擇', '個', '完成']
+};
+stories.add(
+    'demo',
+    () => ({
+        components: { demo },
+        props: {
+            channelList: {
+                default: object('channelList', channelList)
+            },
+            lang: {
+                default: select('language', lang)
+            },
+            inputType: {
+                default: select('inputType', inputType)
+            },
+            channelThumb: {
+                default: object('channelThumb', channelThumb)
+            },
+            channelEle: {
+                default: object('channelEle', channelEle)
+            },
+            channelBtn: {
+                default: object('channelBtn', channelBtn)
+            },
+            getMount: {
+                default: number('getMount', 3)
+            },
+            buttonText: {
+                default: object('channelBtn', buttonText)
+            }
+        },
+        template: `
+            <demo :channelList="channelList" :lang="lang" :inputType="inputType" :getMount="getMount" :channelThumb="channelThumb" :channelEle="channelEle" :buttonText="buttonText" />
+        `
+    }),
+    {
+        notes: `
+        [ 版本紀錄 ]
+        1.0.0 版
+
+        [ 事件方法 ]
+        無
+
+        作者：Agnes Kao
+    `,
+        info: {
+            summary: 'demo 頻道卡片 + 按鈕'
+        }
+    }
+);
 stories.add(
     'channelThumbnail',
     () => ({
         components: { channelThumbnail },
         props: {
             channelList: {
-                default: object('channelList', [
-                    {
-                        _id: '5b4c6aa20832663e0b23cad5',
-                        thumbnail: 'https://images.girlstyle.com/girlstyle/channel/images/thumbnail_beauty.jpg',
-                        names: {
-                            en: 'Beauty',
-                            ko: '뷰티',
-                            'zh-CN': '美容',
-                            'zh-HK': '美容',
-                            'zh-TW': '美容'
-                        }
-                    },
-                    {
-                        _id: '5b4c6aa20832663e0b23cad7',
-                        thumbnail: 'https://images.girlstyle.com/girlstyle/channel/images/thumbnail_fashion.jpg',
-                        names: {
-                            en: 'Fashion',
-                            ko: '패션',
-                            'zh-CN': '时尚',
-                            'zh-HK': '時尚',
-                            'zh-TW': '時尚'
-                        }
-                    }
-                ])
+                default: object('channelList', channelList)
             },
             lang: {
-                default: select('language', ['en', 'ko', 'zh-CN', 'zh-HK', 'zh-TW'])
+                default: select('language', lang)
             },
             inputType: {
                 default: select('inputType', ['checkbox', 'radio'])
@@ -53,12 +157,7 @@ stories.add(
                 default: text('===== breakline ===== breakline ===== breakline ===== breakline ===== breakline ===== ', '')
             },
             channelEle: {
-                default: object('channelEle', {
-                    width: text('channelEleWidth', '104px'),
-                    height: text('channelEleHeight', '104px'),
-                    borderRadius: text('borderRadius', '6px'),
-                    margin: text('margin', '0 7px 15px')
-                })
+                default: object('channelEle', channelEle)
             }
         },
         methods: {},
@@ -96,9 +195,79 @@ stories.add(
 
             [ 事件方法 ]
             無
+
+            作者：Agnes Kao
         `,
         info: {
             summary: '頻道卡片：可自訂單選或複選、卡片大小、圓角樣式、排版方式'
+        }
+    }
+);
+
+stories.add(
+    'selectButton',
+    () => ({
+        components: { selectButton },
+        props: {
+            lang: {
+                default: select('language', ['en', 'ko', 'zh-CN', 'zh-HK', 'zh-TW'])
+            },
+            countNum: {
+                default: number('countNum', 3)
+            },
+            buttonText: {
+                default: object('buttonText', buttonText)
+            },
+            channelBtn: {
+                default: object('channelBtn', {
+                    width: text('channelBtnWidth', '200px'),
+                    height: text('channelBtnHeight', '44px'),
+                    fontWeight: text('channelBtnFontWeight', 'bold'),
+                    fontSize: text('channelBtnFontSize', '14px'),
+                    color: text('channelBtnFontColor', '#fff'),
+                    borderRadius: text('channelBtnRadius', '44px')
+                })
+            }
+        },
+        methods: {},
+        propsDescription: {
+            selectButton: {
+                // These description will appear in `description` column in props table
+                lang: '（必填）目前語系，預設"en"',
+                countNum: '倒數開始數字，預設"3"',
+                channelBtn: `
+                width: '按鈕寬度，預設"200px"'，
+                height: '按鈕高度，預設"44px"'，
+                fontWeight: '按鈕文字樣式，預設"粗體"'，
+                fontSize: '按鈕文字樣式，預設"12px"'，
+                color: '按鈕文字樣式，預設"#fff"'，
+                borderRadius: '按鈕外觀樣式，圓角預設"44px"'
+
+            `,
+                channelEle: `
+                width: '頻道卡片寬度，預設"104px"'，
+                height: '頻道卡片高度，預設"104px"'，
+                borderRadius: '頻道卡片圓角，預設"6px"'，
+                margin: '頻道卡片元素的間距，預設"0 7px 15px"'
+            `
+            }
+        },
+        template: `
+        <selectButton :lang="lang" :countNum="countNum" :buttonText="buttonText" :channelBtn="channelBtn" />
+    `
+    }),
+    {
+        notes: `
+        [ 版本紀錄 ]
+        1.0.0 版
+
+        [ 事件方法 ]
+        無
+
+        作者：Agnes Kao
+    `,
+        info: {
+            summary: '倒數按鈕：可自訂倒數數字、按鈕外觀（包含大小、顏色、圓角樣式）'
         }
     }
 );

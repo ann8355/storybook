@@ -24,6 +24,11 @@ export default {
             default: 'en',
             required: true
         },
+        // 倒數數字
+        getMount: {
+            type: [Number, String],
+            default: ''
+        },
         /* dom */
         inputType: {
             type: String,
@@ -32,43 +37,15 @@ export default {
         /* style */
         channelThumb: {
             type: Object,
-            default: {}
-            // () => {
-            //     return {
-            //         width: {
-            //             type: [Number, String],
-            //             default: '100%'
-            //         },
-            //         flexDirection: {
-            //             type: String,
-            //             default: 'row'
-            //         },
-            //         flexWrap: {
-            //             type: String,
-            //             default: 'wrap'
-            //         }
-            //     }
-            // }
+            default: function () {
+                return {}
+            }
         },
         channelEle: {
             type: Object,
-            default: {}
-            // () => {
-            //     return {
-            //         width: {
-            //             type: [Number, String],
-            //             default: '104px'
-            //         },
-            //         height: {
-            //             type: [Number, String],
-            //             default: '104px'
-            //         },
-            //         borderRadius: {
-            //             type: [Number, String],
-            //             default: '6px'
-            //         }
-            //     }
-            // }
+            default: function () {
+                return {}
+            }
         }
     },
     data () {
@@ -76,7 +53,14 @@ export default {
             selectChannel: []
         }
     },
+    watch: {
+        'selectChannel' (val) {
+            this.selectLen = Math.max(0, this.getMount - val.length);
+            this.$emit('getChoosenMount', this.selectLen);
+        }
+    },
     methods: {
+
     }
 }
 </script>
@@ -93,6 +77,9 @@ li {
     flex-wrap: wrap;
 }
 .channelBox .item {
+    width: 104px;
+    height: 104px;
+    border-radius: 6px;
     position: relative;
     overflow: hidden;
 }
