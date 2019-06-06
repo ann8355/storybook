@@ -145,6 +145,9 @@ stories.add(
             inputType: {
                 default: select('inputType', ['checkbox', 'radio'])
             },
+            getMount: {
+                default: number('getMount', 3)
+            },
             channelThumb: {
                 default: object('channelThumb', {
                     width: text('channelThumbWidth', '100%'),
@@ -160,13 +163,19 @@ stories.add(
                 default: object('channelEle', channelEle)
             }
         },
-        methods: {},
+        methods: {
+            getChoosenChannelIds(channelIds) {
+                console.log(channelIds);
+                // 在此執行 Action_Channel - subscribe by IDs API
+            }
+        },
         propsDescription: {
             channelThumbnail: {
                 // These description will appear in `description` column in props table
                 channelList: '（必填）頻道資料',
                 lang: '（必填）目前語系，預設"en"',
                 inputType: '單選或是複選，預設"複選"',
+                getMount: '最少要選擇 N 個，預設"3"',
                 channelThumb: `
                     width: '頻道卡片父層寬度，預設"100%"'，
                     flexDirection: '卡片排列方向，預設 row'，
@@ -194,7 +203,12 @@ stories.add(
             1.0.0 版
 
             [ 事件方法 ]
-            無
+            getChoosenChannelIds (channelIds)：
+            回傳參數：被選取的頻道 ID
+            ex:
+                getChoosenChannelIds (channelIds) {
+                    // 在此執行回傳給父層
+                }
 
             作者：Agnes Kao
         `,
@@ -211,6 +225,9 @@ stories.add(
         props: {
             lang: {
                 default: select('language', ['en', 'ko', 'zh-CN', 'zh-HK', 'zh-TW'])
+            },
+            selectChannels: {
+                default: object('selectChannels', ['a', 'b', 'c'])
             },
             countNum: {
                 default: number('countNum', 3)
@@ -229,11 +246,19 @@ stories.add(
                 })
             }
         },
-        methods: {},
+        methods: {
+            actionSubChannel(channelIds) {
+                if (channelIds) {
+                    // 在此執行 Action_Channel - subscribe by IDs API
+                    console.log(channelIds);
+                }
+            }
+        },
         propsDescription: {
             selectButton: {
                 // These description will appear in `description` column in props table
                 lang: '（必填）目前語系，預設"en"',
+                selectChannels: `被選擇的頻道ID，預設"['a', 'b', 'c']"`,
                 countNum: '倒數開始數字，預設"3"',
                 channelBtn: `
                 width: '按鈕寬度，預設"200px"'，
@@ -253,7 +278,7 @@ stories.add(
             }
         },
         template: `
-        <selectButton :lang="lang" :countNum="countNum" :buttonText="buttonText" :channelBtn="channelBtn" />
+        <selectButton :lang="lang" :selectChannels="selectChannels" :countNum="countNum" :buttonText="buttonText" :channelBtn="channelBtn" @actionSubChannel="actionSubChannel" />
     `
     }),
     {
@@ -262,7 +287,12 @@ stories.add(
         1.0.0 版
 
         [ 事件方法 ]
-        無
+        actionSubChannel (channelIds)：
+        回傳參數：被選取的頻道 ID
+        ex:
+            getChoosenChannelIds (channelIds) {
+                // 在此執行 Action_Channel - subscribe by IDs API
+            }
 
         作者：Agnes Kao
     `,
