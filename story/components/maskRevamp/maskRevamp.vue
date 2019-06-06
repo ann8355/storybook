@@ -1,25 +1,29 @@
 <template>
   <div class="mask" v-show="show" :style="{backgroundColor: background}">
-  	<a class="mask-box" v-if="device === 'desktop'" :href="url">
+  	<div class="mask-box" v-if="device === 'desktop'">
 			<i class="el-icon-close" :style="{color: iconColor, fontSize:`${iconSize}px`}" @click="closeMask"></i>
-			<img :src="require(`${blogSrcDesktop}`)" v-if="viewer === 'blog'">
-			<img :src="require(`${userSrcDesktop}`)" v-else-if="viewer === 'user'">
-			<div class="mask-link-box">
-				<goBeautyButton :url="url" :btnTxt="btnTxt" :btnTxtColor="btnTxtColor" :btnTxtSize="btnTxtSize"/>
-				<div class="txt-download">GET THE APP</div>
-				<linkDownload :android="android" :ios="ios" :iosUrl="iosUrl" :androidUrl="androidUrl" :androidSrc="androidSrc" :iosSrc="iosSrc"/>
-			</div>
-		</a>
-		<a class="mask-box mobile" v-else-if="device === 'mobile'" :href="url">
+			<a :href="url">
+				<img :src="require(`${blogSrcDesktop}`)" v-if="viewer === 'blog'">
+				<img :src="require(`${userSrcDesktop}`)" v-else-if="viewer === 'user'">
+				<div class="mask-link-box">
+					<goBeautyButton :url="url" :btnTxt="btnTxt" :btnTxtColor="btnTxtColor" :btnTxtSize="btnTxtSize"/>
+					<div class="txt-download">GET THE APP</div>
+					<linkDownload :android="android" :ios="ios" :iosUrl="iosUrl" :androidUrl="androidUrl" :androidSrc="androidSrc" :iosSrc="iosSrc"/>
+				</div>
+			</a>
+		</div>
+		<div class="mask-box mobile" v-else-if="device === 'mobile'">
 			<i class="el-icon-close" :style="{color: iconColor, fontSize:`${iconSize}px`}" @click="closeMask"></i>
-			<img :src="require(`${blogSrcMobile}`)" v-if="viewer === 'blog'">
-			<img :src="require(`${userSrcMobile}`)" v-else-if="viewer === 'user'">
-			<div class="mask-link-box">
-				<goBeautyButton :url="url" :btnTxt="btnTxt" :btnTxtColor="btnTxtColor" :btnTxtSize="16"/>
-				<div class="txt-download">GET THE APP</div>
-				<linkDownload :android="android" :ios="ios" :iosUrl="iosUrl" :androidUrl="androidUrl" :androidSrc="androidSrc" :iosSrc="iosSrc"/>
-			</div>
-		</a>
+			<a :href="url">
+				<img :src="require(`${blogSrcMobile}`)" v-if="viewer === 'blog'">
+				<img :src="require(`${userSrcMobile}`)" v-else-if="viewer === 'user'">
+				<div class="mask-link-box">
+					<goBeautyButton :url="url" :btnTxt="btnTxt" :btnTxtColor="btnTxtColor" :btnTxtSize="16"/>
+					<div class="txt-download">GET THE APP</div>
+					<linkDownload :android="android" :ios="ios" :iosUrl="iosUrl" :androidUrl="androidUrl" :androidSrc="androidSrc" :iosSrc="iosSrc"/>
+				</div>
+			</a>
+		</div>
   </div>
 </template>
 <script>
