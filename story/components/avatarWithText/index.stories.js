@@ -75,6 +75,8 @@ stories.add(
         1. 安裝此元件前須確認該專案已有‘vue-lazyload’ 和‘element-ui’的Popover套件
         2. detail屬性傳入的字串可為 一般文字 或 具有自訂樣式的html    
         
+        [ 作者 ]
+        Anne
     `,
         info: {
             summary: '個人頭像和名字,並選擇是否懸浮個人資料卡片功能：可自訂頭像大小,直向或橫向排列,個人名稱下方是否要有其他資訊文字detail,和處理未登入狀態的＠handleLogin事件'

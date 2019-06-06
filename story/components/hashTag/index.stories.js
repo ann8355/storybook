@@ -37,6 +37,8 @@ stories.add(
         [ 版本紀錄 ]
         1.0.0 版
         
+        [ 作者 ]
+        Anne
     `,
         info: {
             summary: '標籤元素：可自訂標籤的樣式（在customStyle屬性寫自訂樣式的class name）以及標籤名字前的小圖示或特殊符號'

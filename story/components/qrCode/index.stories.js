@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { withKnobs, boolean, number} from '@storybook/addon-knobs';
+import { withKnobs, boolean, number, text} from '@storybook/addon-knobs';
 import myComponent from './qrCode.vue';
 
 const stories = storiesOf('Beautybee|QRcode', module);
@@ -20,6 +20,9 @@ stories.add(
             },
             qrCodeSize: {
                 default: number('qrCodeSize', 96)
+            },
+            place: {
+                default: text('place', 'bottom')
             }
         },
         propsDescription: {
@@ -31,7 +34,7 @@ stories.add(
                 place: 'qr code 出現位置,可代入的值有[top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end]'
             }
         },
-        template: `<myComponent :android="android" :ios="ios" :popSize="popSize" :qrCodeSize="qrCodeSize" style="width: 300px;"/>`
+        template: `<myComponent :android="android" :ios="ios" :popSize="popSize" :qrCodeSize="qrCodeSize" :place="place" style="width: 300px;height: 100px;"/>`
     }),
     {
         notes: `
