@@ -1,10 +1,10 @@
 <template>
   <div class="link-download-box">
     <a :href="iosUrl" v-if="ios">
-	  	<img src="./images/ios.png" />
+	  	<img :src="require(`${iosSrc}`)" />
 	  </a>
 	  <a :href="androidUrl" v-if="android">
-		  <img src="./images/android.png" />
+		  <img :src="require(`${androidSrc}`)" />
 	  </a>
 	</div>
 </template>
@@ -19,6 +19,14 @@ export default {
   	ios: {
       type: Boolean,
       default: true
+    },
+    androidSrc: {
+      type: String,
+      default: './images/android.png'
+    },
+    iosSrc: {
+      type: String,
+      default: './images/ios.png'
     },
     androidUrl: {
       type: String,

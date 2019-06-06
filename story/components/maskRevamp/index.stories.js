@@ -20,6 +20,21 @@ stories.add(
 					device: {
 						default: text('device', 'desktop')
 					},
+					url: {
+						default: text('url', 'https://beautybee.com/')
+					  },
+					blogSrcDesktop: {
+						default: text('blogSrcDesktop', './images/popup_blog_d.jpg')
+					},
+					userSrcDesktop: {
+						default: text('userSrcDesktop', './images/popup_user_d.jpg')
+					},
+					blogSrcMobile: {
+						default: text('blogSrcMobile','./images/popup_blog_m.jpg')
+					},
+					userSrcMobile: {
+						default: text('userSrcMobile', './images/popup_user_m.jpg')
+					},
 					viewer: {
 						default: text('viewer', 'blog')
 					},
@@ -32,14 +47,20 @@ stories.add(
 				},
 				propsDescription: {
 					maskRevamp: {
+						show: '遮罩是否開啟',
+						url: '點擊圖面連結',
 						background: 'mask 背景顏色',
+						blogSrcDesktop: '作者桌機版圖片',
+						userSrcDesktop: '使用者桌機版圖片',
+						blogSrcMobile: '作者行動版圖片',
+						userSrcMobile: '使用者行動版圖片',
 						device: '使用裝置 （只能 desktop 或 mobile )',
 						viewer: '瀏覽者身份 （只能 blog 或 user )',
 						iconColor: '關閉 mask icon 背景顏色',
 						iconSize: '關閉 mask icon 大小'
 					}
 				},
-				template: `<maskRevamp  :show="show" :background="background" :device="device" :viewer="viewer" :iconColor="iconColor" :iconSize="iconSize" />`
+				template: `<maskRevamp  :show="show" :background="background" :device="device" :url="url" :viewer="viewer" :iconColor="iconColor" :iconSize="iconSize" :blogSrcDesktop="blogSrcDesktop" :userSrcDesktop="userSrcDesktop" :blogSrcMobile="blogSrcMobile" :userSrcMobile="userSrcMobile" />`
     }),
     {
         notes: '回到最上層按鈕',
@@ -96,6 +117,12 @@ stories.add(
 				ios: {
 					default: boolean('ios', true)
 				},
+				androidSrc: {
+					default: text('androidSrc', './images/android.png')
+				},
+				iosSrc: {
+					default: text('iosSrc', './images/ios.png')
+				},
 				androidUrl: {
 					default: text('androidUrl', 'https://www.google.com.tw')
 				},
@@ -106,10 +133,12 @@ stories.add(
 			propsDescription: {
 				android: 'android 按鈕是否顯示',
 				ios: 'ios 按鈕是否顯示',
+				androidSrc: 'android 圖片位置',
+				iosSrc: 'ios 圖片位置',
 				androidUrl: 'android 連結',
 				iosUrl: 'ios 連結'
 		},
-		template: `<linkDownload :android="android" :ios="ios" :iosUrl="iosUrl" :androidUrl="androidUrl"/>`
+		template: `<linkDownload :android="android" :ios="ios" :iosUrl="iosUrl" :androidUrl="androidUrl" :androidSrc="androidSrc" :iosSrc="iosSrc"/>`
 	}),
 	{
 			notes: 'linkDownload button Revamp for BeautyBee',
