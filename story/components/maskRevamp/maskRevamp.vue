@@ -1,25 +1,25 @@
 <template>
   <div class="mask" v-show="show" :style="{backgroundColor: background}">
-  	<div class="mask-box" v-if="device === 'desktop'">
+  	<a class="mask-box" v-if="device === 'desktop'" :href="url">
 			<i class="el-icon-close" :style="{color: iconColor, fontSize:`${iconSize}px`}" @click="closeMask"></i>
-			<img src="./images/popup_blog_d.jpg" v-if="viewer === 'blog'">
-			<img src="./images/popup_user_d.jpg" v-else-if="viewer === 'user'">
+			<img :src="require(`${blogSrcDesktop}`)" v-if="viewer === 'blog'">
+			<img :src="require(`${userSrcDesktop}`)" v-else-if="viewer === 'user'">
 			<div class="mask-link-box">
 				<goBeautyButton :url="url" :btnTxt="btnTxt" :btnTxtColor="btnTxtColor" :btnTxtSize="btnTxtSize"/>
 				<div class="txt-download">GET THE APP</div>
-				<linkDownload :android="android" :ios="ios" :iosUrl="iosUrl" :androidUrl="androidUrl"/>
+				<linkDownload :android="android" :ios="ios" :iosUrl="iosUrl" :androidUrl="androidUrl" :androidSrc="androidSrc" :iosSrc="iosSrc"/>
 			</div>
-		</div>
-		<div class="mask-box mobile" v-else-if="device === 'mobile'">
+		</a>
+		<a class="mask-box mobile" v-else-if="device === 'mobile'" :href="url">
 			<i class="el-icon-close" :style="{color: iconColor, fontSize:`${iconSize}px`}" @click="closeMask"></i>
-			<img src="./images/popup_blog_m.jpg" v-if="viewer === 'blog'">
-			<img src="./images/popup_user_m.jpg" v-else-if="viewer === 'user'">
+			<img :src="require(`${blogSrcMobile}`)" v-if="viewer === 'blog'">
+			<img :src="require(`${userSrcMobile}`)" v-else-if="viewer === 'user'">
 			<div class="mask-link-box">
 				<goBeautyButton :url="url" :btnTxt="btnTxt" :btnTxtColor="btnTxtColor" :btnTxtSize="16"/>
 				<div class="txt-download">GET THE APP</div>
-				<linkDownload :android="android" :ios="ios" :iosUrl="iosUrl" :androidUrl="androidUrl"/>
+				<linkDownload :android="android" :ios="ios" :iosUrl="iosUrl" :androidUrl="androidUrl" :androidSrc="androidSrc" :iosSrc="iosSrc"/>
 			</div>
-		</div>
+		</a>
   </div>
 </template>
 <script>
@@ -39,6 +39,26 @@ import linkDownload from './linkDownload.vue';
 			device:{
 				type: String,
 				default: 'desktop'
+			},
+			url: {
+        type: String,
+        default: 'https://beautybee.com/'
+      },
+			blogSrcDesktop:{
+				type: String,
+				default: './images/popup_blog_d.jpg'
+			},
+			userSrcDesktop:{
+				type: String,
+				default: './images/popup_user_d.jpg'
+			},
+			blogSrcMobile:{
+				type: String,
+				default: './images/popup_blog_m.jpg'
+			},
+			userSrcMobile:{
+				type: String,
+				default: './images/popup_user_m.jpg'
 			},
 			viewer:{
 				type: String,
