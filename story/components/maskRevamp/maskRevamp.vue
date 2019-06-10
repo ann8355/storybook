@@ -1,10 +1,10 @@
 <template>
-  <div class="mask" v-show="show" :style="{backgroundColor: background}">
+  <div class="mask" v-show="maskShow" :style="{backgroundColor: background}">
   	<div class="mask-box" v-if="device === 'desktop'">
 			<i class="el-icon-close" :style="{color: iconColor, fontSize:`${iconSize}px`}" @click="closeMask"></i>
 			<a :href="url">
-				<img :src="require(`${blogSrcDesktop}`)" v-if="viewer === 'blog'">
-				<img :src="require(`${userSrcDesktop}`)" v-else-if="viewer === 'user'">
+				<img :src="blogSrcDesktop" v-if="viewer === 'blog'">
+				<img :src="userSrcDesktop" v-else-if="viewer === 'user'">
 				<div class="mask-link-box">
 					<goBeautyButton :url="url" :btnTxt="btnTxt" :btnTxtColor="btnTxtColor" :btnTxtSize="btnTxtSize"/>
 					<div class="txt-download">GET THE APP</div>
@@ -15,8 +15,8 @@
 		<div class="mask-box mobile" v-else-if="device === 'mobile'">
 			<i class="el-icon-close" :style="{color: iconColor, fontSize:`${iconSize}px`}" @click="closeMask"></i>
 			<a :href="url">
-				<img :src="require(`${blogSrcMobile}`)" v-if="viewer === 'blog'">
-				<img :src="require(`${userSrcMobile}`)" v-else-if="viewer === 'user'">
+				<img :src="blogSrcMobile" v-if="viewer === 'blog'">
+				<img :src="userSrcMobile" v-else-if="viewer === 'user'">
 				<div class="mask-link-box">
 					<goBeautyButton :url="url" :btnTxt="btnTxt" :btnTxtColor="btnTxtColor" :btnTxtSize="16"/>
 					<div class="txt-download">GET THE APP</div>
@@ -31,7 +31,7 @@ import goBeautyButton from './goBeautyButton.vue';
 import linkDownload from './linkDownload.vue';
 	export default {
 		props:{
-			show: {
+			maskShow: {
         type: Boolean,
         default: true
 			},
@@ -50,19 +50,19 @@ import linkDownload from './linkDownload.vue';
       },
 			blogSrcDesktop:{
 				type: String,
-				default: './images/popup_blog_d.jpg'
+				default: 'https://assets.girlstyle.com/uat/girlstyle-tw/static/images/beautybee/popup_blog_d.jpg'
 			},
 			userSrcDesktop:{
 				type: String,
-				default: './images/popup_user_d.jpg'
+				default: 'https://assets.girlstyle.com/uat/girlstyle-tw/static/images/beautybee/popup_user_d.jpg'
 			},
 			blogSrcMobile:{
 				type: String,
-				default: './images/popup_blog_m.jpg'
+				default: 'https://assets.girlstyle.com/uat/girlstyle-tw/static/images/beautybee/popup_blog_m.jpg'
 			},
 			userSrcMobile:{
 				type: String,
-				default: './images/popup_user_m.jpg'
+				default: 'https://assets.girlstyle.com/uat/girlstyle-tw/static/images/beautybee/popup_user_m.jpg'
 			},
 			viewer:{
 				type: String,
@@ -79,7 +79,7 @@ import linkDownload from './linkDownload.vue';
 		},
 		data(){
 			return {
-        show: true
+        maskShow: true
       }
 		},
 		components: {
@@ -88,7 +88,7 @@ import linkDownload from './linkDownload.vue';
 		},
 		methods:{
     closeMask() {
-      this.show = !this.show
+      this.maskShow = !this.maskShow
     }
 	}
 	}
@@ -96,8 +96,11 @@ import linkDownload from './linkDownload.vue';
 <style scoped>
 .mask {
 	position: fixed;
+	top: 0;
+	left: 0;
 	width: 100vw;
 	height: 100vh;
+	z-index: 100;
 }
 .mask .mask-box {
 	position: absolute;

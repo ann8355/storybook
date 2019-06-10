@@ -11,8 +11,8 @@ stories.add(
     () => ({
 				components: { maskRevamp },
 				props: {
-					show: {
-						default: boolean('show', true)
+					maskShow: {
+						default: boolean('maskShow', true)
 					},
 					background:{
 						default: color('background', 'rgba(0,0,0,.7)')
@@ -24,16 +24,16 @@ stories.add(
 						default: text('url', 'https://beautybee.com/')
 					  },
 					blogSrcDesktop: {
-						default: text('blogSrcDesktop', './images/popup_blog_d.jpg')
+						default: text('blogSrcDesktop', 'https://assets.girlstyle.com/uat/girlstyle-tw/static/images/beautybee/popup_blog_d.jpg')
 					},
 					userSrcDesktop: {
-						default: text('userSrcDesktop', './images/popup_user_d.jpg')
+						default: text('userSrcDesktop', 'https://assets.girlstyle.com/uat/girlstyle-tw/static/images/beautybee/popup_user_d.jpg')
 					},
 					blogSrcMobile: {
-						default: text('blogSrcMobile','./images/popup_blog_m.jpg')
+						default: text('blogSrcMobile','https://assets.girlstyle.com/uat/girlstyle-tw/static/images/beautybee/popup_blog_m.jpg')
 					},
 					userSrcMobile: {
-						default: text('userSrcMobile', './images/popup_user_m.jpg')
+						default: text('userSrcMobile', 'https://assets.girlstyle.com/uat/girlstyle-tw/static/images/beautybee/popup_user_m.jpg')
 					},
 					viewer: {
 						default: text('viewer', 'blog')
@@ -47,7 +47,7 @@ stories.add(
 				},
 				propsDescription: {
 					maskRevamp: {
-						show: '遮罩是否開啟',
+						maskShow: '遮罩是否開啟',
 						url: '點擊圖面連結',
 						background: 'mask 背景顏色',
 						blogSrcDesktop: '作者桌機版圖片',
@@ -60,7 +60,7 @@ stories.add(
 						iconSize: '關閉 mask icon 大小'
 					}
 				},
-				template: `<maskRevamp  :show="show" :background="background" :device="device" :url="url" :viewer="viewer" :iconColor="iconColor" :iconSize="iconSize" :blogSrcDesktop="blogSrcDesktop" :userSrcDesktop="userSrcDesktop" :blogSrcMobile="blogSrcMobile" :userSrcMobile="userSrcMobile" />`
+				template: `<maskRevamp  :maskShow="maskShow" :background="background" :device="device" :url="url" :viewer="viewer" :iconColor="iconColor" :iconSize="iconSize" :blogSrcDesktop="blogSrcDesktop" :userSrcDesktop="userSrcDesktop" :blogSrcMobile="blogSrcMobile" :userSrcMobile="userSrcMobile" />`
     }),
     {
         notes: '回到最上層按鈕',
@@ -118,10 +118,10 @@ stories.add(
 					default: boolean('ios', true)
 				},
 				androidSrc: {
-					default: text('androidSrc', './images/android.png')
+					default: text('androidSrc', 'https://assets.girlstyle.com/uat/girlstyle-tw/static/images/beautybee/playstore.png')
 				},
 				iosSrc: {
-					default: text('iosSrc', './images/ios.png')
+					default: text('iosSrc', 'https://assets.girlstyle.com/uat/girlstyle-tw/static/images/beautybee/appstore.png')
 				},
 				androidUrl: {
 					default: text('androidUrl', 'https://www.google.com.tw')
