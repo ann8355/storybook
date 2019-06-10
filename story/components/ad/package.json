@@ -1,0 +1,10 @@
+{
+    "name": "@presslogic/ad",
+    "version": "1.0.0",
+    "description": "GirlStyle Mobile Video Ad",
+    "author": "Tim",
+    "private": true,
+    "scripts": {
+        "build-b": "vue-cli-service build --target lib --name Ad ./index.vue"
+    }
+}
