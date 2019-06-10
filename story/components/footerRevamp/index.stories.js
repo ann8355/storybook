@@ -22,8 +22,8 @@ stories.add(
 					background: {
 						default: color('txtColor', '#4a4a4a')
 					},
-					show: {
-						default: boolean('show', false)
+					footerRevampShow: {
+						default: boolean('footerRevampShow', false)
 					},
 					iconScrollX: {
 						default: number('iconScrollX', 15)
@@ -34,11 +34,11 @@ stories.add(
 						txt: '顯示文字',
 						txtColor: '文字顏色',
 						txtSize: '文字大小',
-						show: '是否顯示',
+						footerRevampShow: '是否顯示',
 						iconScrollX: 'icon 右邊距離'
 					}
 			},
-			template: `<div style="height: 900px"><footerRevamp :txt="txt" :txtColor="txtColor" :txtSize="txtSize" :show="show" :iconScrollX="iconScrollX"/></div>`
+			template: `<div style="height: 900px"><footerRevamp :txt="txt" :txtColor="txtColor" :txtSize="txtSize" :footerRevampShow="footerRevampShow" :iconScrollX="iconScrollX"/></div>`
     }),
     {
         notes: 'Footer Revamp for BeautyBee',
