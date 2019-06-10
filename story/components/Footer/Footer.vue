@@ -9,7 +9,7 @@
     >
         <Logo
             :logoHeight="logoHeight"
-            :spacingBetweenLogos="spacingBetweenLogos"
+            :spacingBetweenLogoAndDividingline="spacingBetweenLogoAndDividingline"
             :companyLogoReference="companyLogoReference"
             :companyLink="companyLink"
             :magazineLogoReference="magazineLogoReference"
@@ -20,7 +20,7 @@
             :navLinkColor="navLinkColor"
             :spacingBetweenLogoAndNavlink="spacingBetweenLogoAndNavlink"
             :spacingBetweenNavlinkAndCopyright="spacingBetweenNavlinkAndCopyright"
-            :spacingBetweenNavlinks= "spacingBetweenNavlinks"
+            :spacingBetweenNavlinks="spacingBetweenNavlinks"
         />
         <Copyright
             :magazineName="magazineName"
@@ -77,7 +77,7 @@ export default {
             type: Number,
             default: 80
         },
-        spacingBetweenLogos: {
+        spacingBetweenLogoAndDividingline: {
             type: Number,
             default: 20
         },

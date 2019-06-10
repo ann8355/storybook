@@ -2,8 +2,7 @@
     <div 
         class="copyright"
         :style="{ 
-            color: copyrightColor, 
-            background: copyrightBgColor
+            color: copyrightColor
         }"
     >Copyright &copy; {{ new Date().getFullYear() }} PressLogic {{ magazineName }}. All right reserved</div>
 </template>

@@ -3,7 +3,7 @@
         <a  target="_blank"
             :href="companyLink"
             :style="{ 
-                paddingRight: `${spacingBetweenLogos}px`,
+                paddingRight: `${spacingBetweenLogoAndDividingline}px`,
                 height: `${logoHeight}px`
             }"
         >
@@ -15,7 +15,7 @@
         <a  target="_blank"
             :href="magazineLink"
             :style="{ 
-                paddingLeft: `${spacingBetweenLogos}px`,
+                paddingLeft: `${spacingBetweenLogoAndDividingline}px`,
                 height: `${logoHeight}px`
             }"
         >
@@ -50,7 +50,7 @@ export default {
             type: Number,
             default: 80
         },
-        spacingBetweenLogos: {
+        spacingBetweenLogoAndDividingline: {
             type: Number,
             default: 20
         }

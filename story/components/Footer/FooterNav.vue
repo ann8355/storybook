@@ -3,7 +3,7 @@
         marginTop: `${spacingBetweenLogoAndNavlink}px`,
         marginBottom: `${spacingBetweenNavlinkAndCopyright}px`
     }">
-        <ul>
+        <ul v-show="isNavlinklistShowing">
             <li v-for="(link, i) in navLinkList" :key='i'>
                 <a 
                     :style="{ 
@@ -43,7 +43,11 @@ export default {
         },
     },
     watch: {},
-    computed: {},
+    computed: {
+        isNavlinklistShowing() {
+            return Boolean(this.navLinkList.length)
+        }
+    },
     data() {
         return {}
     },
