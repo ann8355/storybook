@@ -1,9 +1,19 @@
 <template>
-  <div class="langSelector">
-    <div v-for="item in language" :key="item.code"
-      class="langBtn" :class="{active: selectedLang.code === item.code }"
-      type="text" @click="handleChangeLanguage(item)">
-      {{ item.name }}
+  <div>
+    <div v-if="type === 'button'" class="langSelector">
+      <div v-for="item in language" :key="item.code"
+        class="langBtn" :class="{active: selectedLang.code === item.code }"
+        type="text" @click="handleChangeLang(item)">
+        {{ item.name }}
+      </div>
+    </div>
+    <div v-if="type === 'dropList'" class="dropDown">
+      <el-select class="navLang" v-model="currentLangDrop"
+        @change="handleDropChange" :placeholder="selectedLang.name">
+        <el-option v-for="item in language" :key="item.code"
+          :label="item.name" :value="item.code">
+        </el-option>
+      </el-select>
     </div>
   </div>
 
@@ -11,7 +21,16 @@
 
 <script type="text/javascript">
 export default {
+    data() {
+        return {
+            currentLangDrop: ''
+        };
+    },
     props: {
+        type: {
+            type: String,
+            default: 'button'
+        },
         lang: {
             type: String,
             required: true
@@ -31,9 +50,8 @@ export default {
         }
     },
     methods: {
-        handleChangeLanguage(currentLang) {
+        handleChangeLang(currentLang) {
             let lang = currentLang.code;
-            console.log('hihi');
             //  如果有登入, 跟父層調用 updateProfile api, 並傳遞當前所選語系
             if (this.isAuth) {
                 this.$emit('updateProfile', lang);
@@ -42,6 +60,10 @@ export default {
                 this.$emit('updateLanguage', lang);
                 this.$emit('setLangToCookie', lang);
             }
+        },
+        handleDropChange() {
+            const langData = this.language.find(item => item.code === this.currentLangDrop);
+            this.handleChangeLang(langData);
         }
     }
 };

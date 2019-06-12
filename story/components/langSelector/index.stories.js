@@ -34,6 +34,9 @@ stories.add(
     () => ({
         components: { langSelector },
         props: {
+            type: {
+                default: text('type', 'button')
+            },
             lang: {
                 default: text('lang', 'en')
             },
@@ -41,7 +44,7 @@ stories.add(
                 default: object('language', language)
             },
             isAuth: {
-                default: boolean('isAuth', false)
+                default: boolean('isAuth', true)
             }
         },
         data() {
@@ -52,6 +55,7 @@ stories.add(
 
         propsDescription: {
             langSelector: {
+                type: '（非必填）預設為 button 樣式, button / dropList',
                 lang: '（必填）目前語系',
                 language: '（必填）所有語系列表資料',
                 isAuth: '若為 true，表示用戶已登入狀態，切換語系時將會調用 updateProfile 方法, 否則調用 updateLanguage 方法'
@@ -94,7 +98,7 @@ stories.add(
                 document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
             }
         },
-        template: `<langSelector :isAuth="isAuth" :language="language" :lang="currentLang" @updateProfile="updateProfile" @updateLanguage="updateLanguage" @setLangToCookie="setLangToCookie" />`
+        template: `<langSelector :type="type" :isAuth="isAuth" :language="language" :lang="currentLang" @updateProfile="updateProfile" @updateLanguage="updateLanguage" @setLangToCookie="setLangToCookie" />`
     }),
     {
         notes: `
@@ -105,7 +109,7 @@ stories.add(
           Mars
         `,
         info: {
-            summary: '標籤元素：可自訂標籤的樣式（在customStyle屬性寫自訂樣式的class name）以及標籤名字前的小圖示或特殊符號'
+            summary: '語系切換：提供所有語系列表資料，將自動產生語系列表，並於語系切換時依據 isAuth 狀態觸發對應方法，並回傳所選語系 id, 提供兩款樣式 [button | dropList], 可傳遞 type props 參數設置'
         }
     }
 );
