@@ -45,7 +45,7 @@ stories.add(
 
                 size: '收藏標籤大小',
                 isBooked: '是否已收藏(目前收藏的狀態)',
-                isLogin: '[必填]是否為登入狀態(登入時才能進行按讚動作)'
+                isLogin: '[必填]是否為登入狀態(登入時才能進行收藏動作)'
             }
         },
         template: `<myComponent :size="size" :isLogin="isLogin" :isBooked="isbooked" @collect="collect" @handleLogin="handleLogin" />`
@@ -75,7 +75,7 @@ stories.add(
         
     `,
         info: {
-            summary: '收藏功能：可自訂收藏大小,按讚後觸發的＠collect事件和處理未登入狀態的＠handleLogin事件'
+            summary: '收藏功能：可自訂收藏大小,按收藏後觸發的＠collect事件和處理未登入狀態的＠handleLogin事件'
         }
     }
 );
