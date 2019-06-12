@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { withKnobs, boolean, number } from '@storybook/addon-knobs';
+import { withKnobs, boolean, number, text } from '@storybook/addon-knobs';
 import myComponent from './bookmark.vue';
 
 const stories = storiesOf('Beautybee|bookmark', module);
@@ -17,6 +17,9 @@ stories.add(
             },
             isLogin: {
                 default: boolean('isLogin', true)
+            },
+            device: {
+                default: text('device', 'desktop')
             }
         },
         data() {
@@ -45,10 +48,11 @@ stories.add(
 
                 size: '收藏標籤大小',
                 isBooked: '是否已收藏(目前收藏的狀態)',
-                isLogin: '[必填]是否為登入狀態(登入時才能進行收藏動作)'
+                isLogin: '[必填]是否為登入狀態(登入時才能進行收藏動作)',
+                device: ' [必填]裝置類型，mobile或desktop（desktop才有hover效果）'
             }
         },
-        template: `<myComponent :size="size" :isLogin="isLogin" :isBooked="isbooked" @collect="collect" @handleLogin="handleLogin" />`
+        template: `<myComponent :size="size" :isLogin="isLogin" :isBooked="isbooked" :device="device" @collect="collect" @handleLogin="handleLogin" />`
     }),
     {
         notes: `
