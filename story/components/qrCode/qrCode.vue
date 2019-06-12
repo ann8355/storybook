@@ -1,16 +1,16 @@
 <template>
   <div class="barCodeButtons">
     <el-popover ref="android" :placement="place" :width="popSize" trigger="hover" popper-class="b-barCode">
-      <img src="./images/ic_qr_android.png" :width="qrCodeSize" :height="qrCodeSize" />
+      <figure class="popAndroid" :style="{width: `${qrCodeSize}px`, height: `${qrCodeSize}px`}"></figure>
     </el-popover>
     <el-popover ref="ios" :placement="place" :width="popSize" trigger="hover" popper-class="b-barCode">
-      <img src="./images/ic_qr_ios.png" :width="qrCodeSize" :height="qrCodeSize" />
+      <figure class="popIos" :style="{width: `${qrCodeSize}px`, height: `${qrCodeSize}px`}"></figure>
     </el-popover>
     <a href="javascript:void(0)" v-popover:android v-if="android">
-      <img src="./images/android.png" />
+      <figure class="img android"></figure>
     </a>
     <a href="javascript:void(0)" v-popover:ios v-if="ios">
-      <img src="./images/ios.png" />
+      <figure class="img ios"></figure>
     </a>
   </div>
 </template>
@@ -49,9 +49,34 @@ export default {
   }
 }
 </script>
-<style>
-.barCodeButtons img {
+<style scoped>
+figure {
+  margin: 0;
+}
+.barCodeButtons .img {
     width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    background-position: center;
+}
+.barCodeButtons .android {
+    background-image: url('./images/android.png');
+}
+.barCodeButtons .ios {
+    background-image: url('./images/ios.png');
+}
+</style>
+<style>
+.el-popover.el-popper.b-barCode .popAndroid, .el-popover.el-popper.b-barCode .popIos {
+    background-color: rgba(0, 0, 0, 0.9);
+    background-size: 100% 100%;
+    background-position: center;
+}
+.el-popover.el-popper.b-barCode .popAndroid {
+    background-image: url('./images/ic_qr_android.png');
+}
+.el-popover.el-popper.b-barCode .popIos {
+    background-image: url('./images/ic_qr_ios.png');
 }
 .el-popover.el-popper.b-barCode {
     background-color: rgba(0, 0, 0, 0.9);
@@ -63,8 +88,8 @@ export default {
     justify-content: center;
     align-items: center;
 }
-.el-popover.el-popper.b-barCode .popper__arrow::after {
-    border-top-color: black;
-    border-bottom-color: black;
+.el-popover.el-popper.b-barCode .popper__arrow ,.el-popover.el-popper.b-barCode .popper__arrow::after {
+    border-style: none;
+    display: none;
 }
 </style>

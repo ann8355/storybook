@@ -1,10 +1,10 @@
 <template>
   <div class="link-download-box">
     <a :href="iosUrl" v-if="ios">
-	  	<img :src="require(`${iosSrc}`)" />
+	  	<img :src="iosSrc" />
 	  </a>
 	  <a :href="androidUrl" v-if="android">
-		  <img :src="require(`${androidSrc}`)" />
+		  <img :src="androidSrc" />
 	  </a>
 	</div>
 </template>
@@ -22,11 +22,11 @@ export default {
     },
     androidSrc: {
       type: String,
-      default: './images/android.png'
+      default: 'https://assets.girlstyle.com/uat/girlstyle-tw/static/images/beautybee/playstore.png'
     },
     iosSrc: {
       type: String,
-      default: './images/ios.png'
+      default: 'https://assets.girlstyle.com/uat/girlstyle-tw/static/images/beautybee/appstore.png'
     },
     androidUrl: {
       type: String,

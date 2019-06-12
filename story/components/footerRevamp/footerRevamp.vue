@@ -1,5 +1,5 @@
 <template>
-  <div class="revamp-footer" v-show="show" :style="{backgroundColor:background}">
+  <div class="revamp-footer" v-show="footerRevampShow" :style="{backgroundColor:background}">
     <span :style="{color:txtColor,fontSize:`${txtSize}px`}">{{ txt }}</span>
     <goBeautyButton :url="url" :btnTxt="btnTxt" :btnBackground="btnBackground" :btnTxtColor="btnTxtColor" :btnTxtSize="btnTxtSize"/>
     <i class="el-icon-close" :style="{right:`${iconScrollX}px`}" @click="close"></i>
@@ -25,7 +25,7 @@ export default {
 				type: String,
 				default: '#4a4a4a'
       },
-    show: {
+    footerRevampShow: {
       type: Boolean,
       default: false
     },
@@ -36,7 +36,7 @@ export default {
   },
   data(){
     return {
-      show: false
+      footerRevampShow: false
     }
   },
   components: {
@@ -44,7 +44,7 @@ export default {
   },
   methods:{
     close() {
-      this.show = !this.show
+      this.footerRevampShow = !this.footerRevampShow
     }
 	}
 }

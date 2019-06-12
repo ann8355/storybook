@@ -67,6 +67,8 @@ stories.add(
                 }
             }
         
+        [ 作者 ]
+        Anne
     `,
         info: {
             summary: '按讚功能：可自訂愛心大小,按讚後觸發的＠actionLike事件和處理未登入狀態的＠handleLogin事件'
