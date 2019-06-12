@@ -1,12 +1,12 @@
 <template>
     <section class="demo">
         <channelThumbnail class="demoChannel" :channelList="channelList" :lang="lang" :inputType="inputType" :getMount="getMount" :channelThumb="channelThumb" :channelEle="channelEle" @getChoosenChannelIds="getChoosenChannelIds" />
-        <selectButton :lang="lang" :selectChannels="selectChannels" :countNum="countNum" :buttonText="buttonText" :channelBtn="channelBtn" @actionSubChannel="actionSubChannel" />
+        <counterButton :lang="lang" :selectChannels="selectChannels" :countNum="countNum" :buttonText="buttonText" :channelBtn="channelBtn" @actionSubChannel="actionSubChannel" />
     </section>
 </template>
 <script>
 import channelThumbnail from './channelThumbnail.vue';
-import selectButton from './selectButton.vue';
+import counterButton from './counterButton.vue';
 export default {
     props: {
         channelList: {
@@ -40,7 +40,7 @@ export default {
             }
         },
         buttonText: {
-            type: Object,
+            type: Array,
             default: function () {
                 return {}
             }
@@ -61,7 +61,7 @@ export default {
     },
     components: {
         channelThumbnail,
-        selectButton
+        counterButton
     },
     methods: {
         getChoosenChannelIds (val) {
