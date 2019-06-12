@@ -1,5 +1,5 @@
 <template>
-    <button :style="`width:${size}px;height:${size}px`" :class="isBooked?'isBook':''" @click="collect()"></button>
+    <button :style="`width:${size}px;height:${size}px`" :class="[isBooked?'isBook':'', device==='desktop'?'desktopBook':'mobileBook']" @click="collect()"></button>
 </template>
 <script>
 export default {
@@ -18,6 +18,12 @@ export default {
         isLogin: {
             type: Boolean,
             required: true
+        },
+        // 裝置類型（desktop or mobile）desktop才有hover效果
+        device: {
+            type: String,
+            required: true,
+            default: 'desktop'
         }
 
     },
@@ -51,7 +57,7 @@ button {
 .isBook {
     background-image: url('./images/ic-general-bookmark-on.svg');
 }
-button:hover {
+button.desktopBook:hover {
     transition: 0.3s;
     background-image: url('./images/ic-general-bookmark-on.svg');
 }
