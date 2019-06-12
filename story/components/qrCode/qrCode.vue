@@ -54,10 +54,12 @@ figure {
   margin: 0;
 }
 .barCodeButtons .img {
-    width: 100%;
-    height: 100%;
     background-size: 100% 100%;
     background-position: center;
+}
+.barCodeButtons .img, .barCodeButtons .a {
+  width: 100%;
+  height: 100%;
 }
 .barCodeButtons .android {
     background-image: url('./images/android.png');
