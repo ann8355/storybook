@@ -1,10 +1,10 @@
 {
-    "name": "@beautybee/channel-thumbnail",
+    "name": "@beautybee/select-channel-thumbnail",
     "version": "1.0.0",
-    "description": "channel thumbnail",
+    "description": "select channel thumbnail",
     "author": "WEB TEAM - AgnesKao",
     "private": true,
     "scripts": {
-        "build-b": "vue-cli-service build --target lib --name channel-thumbnail ./channelThumbnail.vue"
+        "build-b": "vue-cli-service build --target lib --name select-channel-thumbnail ./selectChannelThumbnail.vue"
     }
 }

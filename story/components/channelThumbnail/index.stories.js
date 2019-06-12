@@ -1,13 +1,21 @@
-import { storiesOf } from '@storybook/vue';
-import { withKnobs, select, text, number, object, boolean } from '@storybook/addon-knobs';
-import demo from './demo.vue';
+import {
+    storiesOf
+} from '@storybook/vue';
+import {
+    withKnobs,
+    select,
+    text,
+    number,
+    object,
+    boolean
+} from '@storybook/addon-knobs';
+import selectChannelThumbnail from './selectChannelThumbnail.vue';
 import channelThumbnail from './channelThumbnail.vue';
 import selectButton from './selectButton.vue';
 
 const stories = storiesOf('Beautybee|channelThumbnail', module);
 stories.addDecorator(withKnobs);
-const channelList = [
-    {
+const channelList = [{
         _id: '5b4c6aa20832663e0b23cad5',
         thumbnail: 'https://images.girlstyle.com/girlstyle/channel/images/thumbnail_beauty.jpg',
         names: {
@@ -83,9 +91,11 @@ const buttonText = {
     'zh-TW': ['請選擇', '個', '完成']
 };
 stories.add(
-    'demo',
+    'selectChannelThumbnail',
     () => ({
-        components: { demo },
+        components: {
+            selectChannelThumbnail
+        },
         props: {
             channelList: {
                 default: object('channelList', channelList)
@@ -113,10 +123,9 @@ stories.add(
             }
         },
         template: `
-            <demo :channelList="channelList" :lang="lang" :inputType="inputType" :getMount="getMount" :channelThumb="channelThumb" :channelEle="channelEle" :buttonText="buttonText" />
+            <selectChannelThumbnail :channelList="channelList" :lang="lang" :inputType="inputType" :getMount="getMount" :channelThumb="channelThumb" :channelEle="channelEle" :buttonText="buttonText" />
         `
-    }),
-    {
+    }), {
         notes: `
         [ 版本紀錄 ]
         1.0.0 版
@@ -134,7 +143,9 @@ stories.add(
 stories.add(
     'channelThumbnail',
     () => ({
-        components: { channelThumbnail },
+        components: {
+            channelThumbnail
+        },
         props: {
             channelList: {
                 default: object('channelList', channelList)
@@ -196,8 +207,7 @@ stories.add(
                 <channelThumbnail :channelList="channelList" :lang="lang" :inputType="inputType" :channelThumb="channelThumb" :channelEle="channelEle" />
             </div>
         `
-    }),
-    {
+    }), {
         notes: `
             [ 版本紀錄 ]
             1.0.0 版
@@ -221,7 +231,9 @@ stories.add(
 stories.add(
     'selectButton',
     () => ({
-        components: { selectButton },
+        components: {
+            selectButton
+        },
         props: {
             lang: {
                 default: select('language', ['en', 'ko', 'zh-CN', 'zh-HK', 'zh-TW'])
@@ -280,8 +292,7 @@ stories.add(
         template: `
         <selectButton :lang="lang" :selectChannels="selectChannels" :countNum="countNum" :buttonText="buttonText" :channelBtn="channelBtn" @actionSubChannel="actionSubChannel" />
     `
-    }),
-    {
+    }), {
         notes: `
         [ 版本紀錄 ]
         1.0.0 版
