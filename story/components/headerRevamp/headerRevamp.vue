@@ -5,14 +5,10 @@
       發稿撰文，前往下載
       <span>BeautyBee</span>
     </p>
-    <div
-      class="btn beautyBeeApp"
-      :style="{backgroundColor:btnBackground,color:btncolor}"
-    >{{firstBtnTxt}}</div>
-    <div
-      class="btn beautyBeeApp"
-      :style="{backgroundColor:btnBackground,color:btncolor}"
-    >{{secondBtnTxt}}</div>
+    <div id="beautyBeeApp">
+      <div class="btn" :style="{backgroundColor:btnBackground,color:btncolor}">{{firstBtnTxt}}</div>
+      <div class="btn" :style="{backgroundColor:btnBackground,color:btncolor}">{{secondBtnTxt}}</div>
+    </div>
     <i class="el-icon-close" :style="{lineHeight:`${barHeight}px` }" @click="clodeHeader()"></i>
   </div>
 </template>
@@ -21,7 +17,7 @@ export default {
     props: {
         show: {
             type: Boolean,
-            default: true
+            default: false
         },
         barHeight: {
             type: Number,
@@ -60,6 +56,7 @@ export default {
     methods: {
         clodeHeader() {
             this.showHeader = !this.showHeader;
+            this.$emit('bbMobileHeader', this.showHeader);
         }
     }
 };
@@ -77,6 +74,7 @@ export default {
 
 .header-beauty-mobile img {
     vertical-align: middle;
+    margin-right: 12px;
 }
 
 .header-beauty-mobile p {
@@ -84,10 +82,15 @@ export default {
     font-size: 12px;
     color: #ffffff;
     margin: 0;
+    margin-right: 4px;
 }
 
 .header-beauty-mobile p span {
     color: #ff5a5a;
+}
+
+#beautyBeeApp {
+    display: inline-block;
 }
 
 .header-beauty-mobile .btn {
@@ -96,6 +99,7 @@ export default {
     padding: 5px 10px;
     border-radius: 16px;
     cursor: pointer;
+    margin-right: 8px;
 }
 
 .header-beauty-mobile i {

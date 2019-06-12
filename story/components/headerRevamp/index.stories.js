@@ -10,7 +10,7 @@ stories.add(
         components: { headerRevamp },
         props: {
             show: {
-                default: boolean('show', true)
+                default: boolean('show', false)
             },
             barHeight: {
                 default: number('barHeight', 54)
