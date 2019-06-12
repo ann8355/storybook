@@ -1,13 +1,21 @@
-import { storiesOf } from '@storybook/vue';
-import { withKnobs, select, text, number, object, boolean } from '@storybook/addon-knobs';
-import demo from './demo.vue';
+import {
+    storiesOf
+} from '@storybook/vue';
+import {
+    withKnobs,
+    select,
+    text,
+    number,
+    object,
+    boolean
+} from '@storybook/addon-knobs';
+import selectChannelThumbnail from './selectChannelThumbnail.vue';
 import channelThumbnail from './channelThumbnail.vue';
 import selectButton from './selectButton.vue';
 
 const stories = storiesOf('Beautybee|channelThumbnail', module);
 stories.addDecorator(withKnobs);
-const channelList = [
-    {
+const channelList = [{
         _id: '5b4c6aa20832663e0b23cad5',
         thumbnail: 'https://images.girlstyle.com/girlstyle/channel/images/thumbnail_beauty.jpg',
         names: {
@@ -83,9 +91,11 @@ const buttonText = {
     'zh-TW': ['請選擇', '個', '完成']
 };
 stories.add(
-    'demo',
+    'selectChannelThumbnail',
     () => ({
-        components: { demo },
+        components: {
+            selectChannelThumbnail
+        },
         props: {
             channelList: {
                 default: object('channelList', channelList)
@@ -113,10 +123,9 @@ stories.add(
             }
         },
         template: `
-            <demo :channelList="channelList" :lang="lang" :inputType="inputType" :getMount="getMount" :channelThumb="channelThumb" :channelEle="channelEle" :buttonText="buttonText" />
+            <selectChannelThumbnail :channelList="channelList" :lang="lang" :inputType="inputType" :getMount="getMount" :channelThumb="channelThumb" :channelEle="channelEle" :buttonText="buttonText" />
         `
-    }),
-    {
+    }), {
         notes: `
         [ 版本紀錄 ]
         1.0.0 版
@@ -134,7 +143,9 @@ stories.add(
 stories.add(
     'channelThumbnail',
     () => ({
-        components: { channelThumbnail },
+        components: {
+            channelThumbnail
+        },
         props: {
             channelList: {
                 default: object('channelList', channelList)
@@ -144,6 +155,9 @@ stories.add(
             },
             inputType: {
                 default: select('inputType', ['checkbox', 'radio'])
+            },
+            getMount: {
+                default: number('getMount', 3)
             },
             channelThumb: {
                 default: object('channelThumb', {
@@ -160,13 +174,19 @@ stories.add(
                 default: object('channelEle', channelEle)
             }
         },
-        methods: {},
+        methods: {
+            getChoosenChannelIds(channelIds) {
+                console.log(channelIds);
+                // 在此執行 Action_Channel - subscribe by IDs API
+            }
+        },
         propsDescription: {
             channelThumbnail: {
                 // These description will appear in `description` column in props table
                 channelList: '（必填）頻道資料',
                 lang: '（必填）目前語系，預設"en"',
                 inputType: '單選或是複選，預設"複選"',
+                getMount: '最少要選擇 N 個，預設"3"',
                 channelThumb: `
                     width: '頻道卡片父層寬度，預設"100%"'，
                     flexDirection: '卡片排列方向，預設 row'，
@@ -187,14 +207,18 @@ stories.add(
                 <channelThumbnail :channelList="channelList" :lang="lang" :inputType="inputType" :channelThumb="channelThumb" :channelEle="channelEle" />
             </div>
         `
-    }),
-    {
+    }), {
         notes: `
             [ 版本紀錄 ]
             1.0.0 版
 
             [ 事件方法 ]
-            無
+            getChoosenChannelIds (channelIds)：
+            回傳參數：被選取的頻道 ID
+            ex:
+                getChoosenChannelIds (channelIds) {
+                    // 在此執行回傳給父層
+                }
 
             作者：Agnes Kao
         `,
@@ -207,10 +231,15 @@ stories.add(
 stories.add(
     'selectButton',
     () => ({
-        components: { selectButton },
+        components: {
+            selectButton
+        },
         props: {
             lang: {
                 default: select('language', ['en', 'ko', 'zh-CN', 'zh-HK', 'zh-TW'])
+            },
+            selectChannels: {
+                default: object('selectChannels', ['a', 'b', 'c'])
             },
             countNum: {
                 default: number('countNum', 3)
@@ -229,11 +258,19 @@ stories.add(
                 })
             }
         },
-        methods: {},
+        methods: {
+            actionSubChannel(channelIds) {
+                if (channelIds) {
+                    // 在此執行 Action_Channel - subscribe by IDs API
+                    console.log(channelIds);
+                }
+            }
+        },
         propsDescription: {
             selectButton: {
                 // These description will appear in `description` column in props table
                 lang: '（必填）目前語系，預設"en"',
+                selectChannels: `被選擇的頻道ID，預設"['a', 'b', 'c']"`,
                 countNum: '倒數開始數字，預設"3"',
                 channelBtn: `
                 width: '按鈕寬度，預設"200px"'，
@@ -253,16 +290,20 @@ stories.add(
             }
         },
         template: `
-        <selectButton :lang="lang" :countNum="countNum" :buttonText="buttonText" :channelBtn="channelBtn" />
+        <selectButton :lang="lang" :selectChannels="selectChannels" :countNum="countNum" :buttonText="buttonText" :channelBtn="channelBtn" @actionSubChannel="actionSubChannel" />
     `
-    }),
-    {
+    }), {
         notes: `
         [ 版本紀錄 ]
         1.0.0 版
 
         [ 事件方法 ]
-        無
+        actionSubChannel (channelIds)：
+        回傳參數：被選取的頻道 ID
+        ex:
+            getChoosenChannelIds (channelIds) {
+                // 在此執行 Action_Channel - subscribe by IDs API
+            }
 
         作者：Agnes Kao
     `,

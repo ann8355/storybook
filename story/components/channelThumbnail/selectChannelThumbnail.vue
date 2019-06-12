@@ -1,7 +1,7 @@
 <template>
     <section class="demo">
-        <channelThumbnail class="demoChannel" :channelList="channelList" :lang="lang" :inputType="inputType" :getMount="getMount" :channelThumb="channelThumb" :channelEle="channelEle" @getChoosenMount="getChoosenMount" />
-        <selectButton :lang="lang" :countNum="countNum" :buttonText="buttonText" :channelBtn="channelBtn" />
+        <channelThumbnail class="demoChannel" :channelList="channelList" :lang="lang" :inputType="inputType" :getMount="getMount" :channelThumb="channelThumb" :channelEle="channelEle" @getChoosenChannelIds="getChoosenChannelIds" />
+        <selectButton :lang="lang" :selectChannels="selectChannels" :countNum="countNum" :buttonText="buttonText" :channelBtn="channelBtn" @actionSubChannel="actionSubChannel" />
     </section>
 </template>
 <script>
@@ -55,7 +55,8 @@ export default {
     // props: ['channelList', 'lang', 'inputType', 'getMount', 'channelThumb', 'channelEle', 'channelBtn', 'buttonText'],
     data () {
         return {
-            countNum: this.getMount
+            selectChannels: [],
+            countNum: this.getMount,
         }
     },
     components: {
@@ -63,8 +64,12 @@ export default {
         selectButton
     },
     methods: {
-        getChoosenMount (mount) {
-            this.countNum = mount
+        getChoosenChannelIds (val) {
+            this.selectChannels = val;
+            console.log(val)
+        },
+        actionSubChannel (val) {
+            console.log(val)
         }
     }
 }

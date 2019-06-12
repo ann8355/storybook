@@ -56,7 +56,8 @@ export default {
     watch: {
         'selectChannel' (val) {
             this.selectLen = Math.max(0, this.getMount - val.length);
-            this.$emit('getChoosenMount', this.selectLen);
+            // this.$emit('getChoosenMount', this.selectLen);
+            this.$emit('getChoosenChannelIds', this.selectChannel);
         }
     },
     methods: {
