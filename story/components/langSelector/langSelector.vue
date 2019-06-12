@@ -20,11 +20,9 @@ export default {
             type: Array,
             required: true
         },
-        user: {
-            type: Object,
-            default: function() {
-                return null;
-            }
+        isAuth: {
+            type: Boolean,
+            required: true
         }
     },
     computed: {
@@ -35,28 +33,15 @@ export default {
     methods: {
         handleChangeLanguage(currentLang) {
             let lang = currentLang.code;
-
+            console.log('hihi');
             //  如果有登入, 跟父層調用 updateProfile api, 並傳遞當前所選語系
-            if (this.user) {
+            if (this.isAuth) {
                 this.$emit('updateProfile', lang);
             } else {
-                // 未登入狀態，直接將當前所選語系儲存到 cookies
+                // 未登入狀態，直接將當前所選語系儲存到 vuex、cookies
                 this.$emit('updateLanguage', lang);
-                this.setCookie('language_test', lang, 365);
-
-                // 原本 nuxt 設置 cookies 方法
-                // this.$cookies.set('language', lang, {
-                //     path: '/',
-                //     maxAge: 60 * 60 * 24 * 365
-                // });
+                this.$emit('setLangToCookie', lang);
             }
-        },
-        // 因 storybook 沒有安裝 nuxt cookies 插件，只能使用原生方法設置 cookies
-        setCookie(cname, cvalue, exdays) {
-            var d = new Date();
-            d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-            var expires = 'expires=' + d.toUTCString();
-            document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
         }
     }
 };
