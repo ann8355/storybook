@@ -1,10 +1,10 @@
 {
-    "name": "@beautybee/select-channel-thumbnail",
+    "name": "@beautybee/counter-button",
     "version": "1.0.0",
-    "description": "select channel thumbnail",
+    "description": "counter button",
     "author": "WEB TEAM - AgnesKao",
     "private": true,
     "scripts": {
-        "build-b": "vue-cli-service build --target lib --name select-channel-thumbnail ./selectChannelThumbnail.vue"
+        "build-b": "vue-cli-service build --target lib --name counter-button ./counterButton.vue"
     }
 }

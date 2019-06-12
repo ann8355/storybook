@@ -2,10 +2,10 @@
     <button :disabled="mount !== 0" :style="channelBtn" @click="actionSubChannel()">
         <template v-if="mount > 0">
             <template v-if="lang !== 'ko'">
-                {{ buttonText[lang][0] }} {{ mount }} {{ buttonText[lang][1] }}
+                {{ buttonText[0] }} {{ mount }} {{ buttonText[1] }}
             </template>
             <template v-else>
-                {{ mount }} {{ buttonText[lang][0] }}
+                {{ mount }} {{ buttonText[0] }}
             </template>
         </template>
         <template v-else>
@@ -37,7 +37,7 @@ export default {
         },
         // 按鈕文字
         buttonText: {
-            type: Object,
+            type: Array,
             default: function () {
                 return {}
             }
@@ -58,8 +58,8 @@ export default {
             return this.selectChannels;
         },
         finishedText: function () {
-            const len = this.buttonText[this.lang].length;
-            return this.buttonText[this.lang][len - 1];
+            const len = this.buttonText.length;
+            return this.buttonText[len - 1];
         }
     },
     methods: {
