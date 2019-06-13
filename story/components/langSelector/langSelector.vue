@@ -7,7 +7,7 @@
         {{ item.name }}
       </div>
     </div>
-    <div v-if="type === 'dropList'" class="dropDown">
+    <div v-if="type === 'dropList'" class="langSelector dropDown">
       <el-select class="navLang" v-model="currentLangDrop"
         @change="handleDropChange" :placeholder="selectedLang.name">
         <el-option v-for="item in language" :key="item.code"

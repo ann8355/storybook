@@ -98,7 +98,12 @@ stories.add(
                 document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
             }
         },
-        template: `<langSelector :type="type" :isAuth="isAuth" :language="language" :lang="currentLang" @updateProfile="updateProfile" @updateLanguage="updateLanguage" @setLangToCookie="setLangToCookie" />`
+        template: `
+          <div>
+            <langSelector :type="type" :isAuth="isAuth" :language="language" :lang="currentLang" @updateProfile="updateProfile" @updateLanguage="updateLanguage" @setLangToCookie="setLangToCookie" />
+            <br />
+            <langSelector :type="'dropList'" :isAuth="isAuth" :language="language" :lang="currentLang" @updateProfile="updateProfile" @updateLanguage="updateLanguage" @setLangToCookie="setLangToCookie" />
+          </div>`
     }),
     {
         notes: `
