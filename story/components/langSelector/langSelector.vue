@@ -77,8 +77,9 @@ export default {
 
 .langBtn {
     padding: 0;
-    font-size: 15px;
-    color: #4a4a4a;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
     flex: 0 0 auto;
     cursor: pointer;
     user-select: none;
@@ -86,15 +87,16 @@ export default {
 
 .langBtn + .langBtn {
     position: relative;
-    margin-left: 16px;
+    margin-left: 20px;
 }
 
 .langBtn + .langBtn::before {
     content: '.';
     position: absolute;
-    top: -25%;
+    top: -5px;
     left: -11px;
-    color: #4a4a4a;
+    color: inherit;
+    font-size: 18px;
 }
 
 .langBtn:hover,
