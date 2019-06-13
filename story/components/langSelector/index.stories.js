@@ -99,7 +99,7 @@ stories.add(
             }
         },
         template: `
-          <div>
+          <div class="box" style="color: #4a4a4a; font-size: 15px; line-height: 15px;">
             <langSelector :type="type" :isAuth="isAuth" :language="language" :lang="currentLang" @updateProfile="updateProfile" @updateLanguage="updateLanguage" @setLangToCookie="setLangToCookie" />
             <br />
             <langSelector :type="'dropList'" :isAuth="isAuth" :language="language" :lang="currentLang" @updateProfile="updateProfile" @updateLanguage="updateLanguage" @setLangToCookie="setLangToCookie" />
