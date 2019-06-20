@@ -3,8 +3,9 @@
         :href="`${host}${post.url}`" 
         :title="post.title" 
         class="small-article"
-        @mouseover="hover=true"
-        @mouseleave="hover=false"
+        @mouseover="mouseover()"
+        @mouseleave="mouseleave()"
+        @click="click()"
         >
         <img :src="post.image" :alt="post.title" :style="{width: `${imgWidth}px`}">
         <header :style="{maxWidth: `${headerWidth}px`}">
@@ -58,6 +59,17 @@ export default {
     methods: {
         moment (time) {
             return moment(time);
+        },
+        mouseover() {
+            this.hover = true;
+            this.$emit('smallArticleMouseOver', this.hover);
+        },
+        mouseleave() {
+            this.hover = false;
+            this.$emit('smallArticleMouseLeave', this.hover);
+        },
+        click() {
+            this.$emit('smallArticleClick', this.hover);
         }
     },
 }
