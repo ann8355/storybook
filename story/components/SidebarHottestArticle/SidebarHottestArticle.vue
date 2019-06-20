@@ -2,21 +2,20 @@
     <a 
         :href="`${host}${post.url}`" 
         :title="post.title" 
-        class="large-article"
+        class="sidebar-hottest"
         @mouseover="mouseover()"
         @mouseleave="mouseleave()"
         @click="click()"
         >
         <img :src="post.image" :alt="post.title" :style="{width: `${maxWidth}px`}">
         <header :style="{maxWidth: `${maxWidth}px`}">
-            <div v-for="(cat , i ) in post.cats" :key="i" class="large-cat">
-                <a :style="{color: color}" :href="`${host}/category/${cat.slug}`">{{cat.name}}</a>
+            <div class="entry-meta">
+                <div class="rank">{{ index + 1 }}</div>
+                <div class="time-now">
+                    {{ moment(post.post_date).format('DD MMM') }}
+                </div>
             </div>
             <h2 :style="{color:hover? color :'#282828', fontSize: `${titleSize}px` }">{{ post.title }}</h2>
-            <p>{{ post.description }}</p>
-            <div class="time-now">
-                {{ moment(post.post_date).fromNow() }}
-            </div>
         </header>
     </a>
 </template>
@@ -41,13 +40,16 @@ export default {
         },
         titleSize: {
             type: Number,
-            default: 21
+            default: 14
         },
         maxWidth: {
             type: Number,
-            default: 700
+            default: 300
         },
-        
+        index: {
+           type: Number,
+            default: 0
+        }
     },
     data () {
         return {
@@ -60,54 +62,62 @@ export default {
         },
         mouseover() {
             this.hover = true;
-            this.$emit('largeArticleMouseOver', this.hover);
+            this.$emit('sideBarHotTestMouseOver', this.hover);
         },
         mouseleave() {
             this.hover = false;
-            this.$emit('largeArticleMouseLeave', this.hover);
+            this.$emit('sideBarHotTestMouseLeave', this.hover);
         },
         click() {
-            this.$emit('largeArticleClick', this.hover);
+            this.$emit('sideBarHotTestClick', this.hover);
         }
     },
 }
 </script>
 <style scoped>
-.large-article img {
+.sidebar-hottest img {
     max-width: 100%;
 }
-.large-article header {
-    height: 230px;
+.sidebar-hottest header {
+    font-size: 0; 
+    color: #424242;
+    width: 300px;
+    padding: 20px 5px;
     box-sizing: border-box;
     text-align: center;
     border-bottom: 1px solid #f0f0f0;
 }
-.large-article header .large-cat{
-    padding: 15px 0;
-    font-size: 18px;
-}
-.large-article header h2 {
-    padding: 0 50px;
-    font-weight: initial;
-    margin-bottom: 15px;
-}
-.large-article header p {
-    font-size: 16px;
-    color: #9c9c9c;
-    line-height: 28px;
-    margin: 7px 130px;
-}
-.large-article header .time-now {
-    text-align: right;
-    font-size: 13px;
-    color: #adadad;
+.sidebar-hottest header .entry-meta {
+    display: inline-block;
+    width: 50px;
 }
 
-.large-article h2,
-.large-article p,
-.large-article{
+.sidebar-hottest header .rank {
+    text-align: center;
+    font-style: italic;
+    font-size: 27px;
+    font-weight: 700;
+}
+.sidebar-hottest header .time-now {
+    text-align: center;
+    font-size: 13px;
+}
+.sidebar-hottest header h2 {
+    display: inline-block;
+    height: 44px;
+    width: 240px;
+    font-weight: initial;
+    line-height: 22px;
+    padding-left: 10px;
+    box-sizing: border-box; 
+    overflow: hidden;
+}
+
+
+h2, p,a{
     margin: 0;
     text-decoration: none;
 }
 
 </style>
+s
