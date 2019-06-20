@@ -13,7 +13,7 @@ stories.add(
                 default: text('文字', 'Thank you for your report that we will process as soon as possible.')
             },
             iconImg: {
-                default: text('圖片路徑', './images/ic-prompt-report-success.svg')
+                default: text('圖片路徑', './images/ic-prompt-tick.svg')
             },
             width: {
                 default: number('寬度', 200)

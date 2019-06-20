@@ -15,6 +15,7 @@ export default {
         // icon 路徑
         iconImg: {
             type: [String, Number],
+            default: require('./images/ic-prompt-tick.svg')
         },
         // 背景顏色
         backColor: {
