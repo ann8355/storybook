@@ -23,7 +23,8 @@
 export default {
     data() {
         return {
-            currentLangDrop: ''
+            currentLangDrop: '',
+            currentLang: 'en',
         };
     },
     props: {
@@ -33,7 +34,7 @@ export default {
         },
         lang: {
             type: String,
-            required: true
+            default: 'en'
         },
         language: {
             type: Array,
@@ -46,7 +47,9 @@ export default {
     },
     computed: {
         selectedLang() {
-            return this.language.find(item => item.code === this.lang);
+            // 若外部傳遞的 lang 空值，將預設為 en
+            this.currentLang = this.lang ? this.lang : 'en';
+            return this.language.find(item => item.code ===  this.currentLang);
         }
     },
     methods: {
