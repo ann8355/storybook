@@ -1,9 +1,13 @@
 <template>
     <transition name="fade">
-        <div id="back-top" v-show="show" 
+        <div id="back-top" 
+            v-show="showIcon" 
+            :class="{'radius': circle , 'back-top-hover': active }"
+            @click="top()"
+            @mouseover="mouseover()"
+            @mouseleave="mouseleave()"
             :style="{background: backgroundColor, width: `${size}px`, height:`${size}px`, bottom:`${yscroll}%`, right:`${xscroll}%`}" 
-            :class="{'radius': circle}"
-            @click="top()">
+            >
             <i class="el-icon-arrow-up" :style="{fontSize: `${arrowSize}px`}"></i>
         </div>
     </transition>
@@ -50,11 +54,16 @@ export default {
         yscroll: {
             type: Number,
             default: 5
-        }
+        },
+        hover: {
+            type: Boolean,
+            default: false
+        },
     },
     data(){
         return {
-            show: false
+            showIcon: this.show,
+            active: this.hover
         }
     },
     mounted () {
@@ -66,14 +75,23 @@ export default {
     methods:{
         handleScroll (event) {
             if (window.scrollY > this.scroll) {
-              this.show = true
+                this.showIcon = true
             } else {
-              this.show = false
+                this.showIcon = false
             }
-          },
+        },
         top(){
             window.scrollTo({top: 0, behavior: 'smooth'});
-          }
+            this.$emit('backTop');
+        },
+        mouseover() {
+            this.active = true;
+            this.$emit('backToTopMouseOver', this.active);
+        },
+        mouseleave() {
+            this.active = false;
+            this.$emit('backToTopMouseLeave', this.active);
+        },
     }
 }
 </script>
@@ -83,9 +101,6 @@ export default {
         position: fixed;
         z-index: 99;
         cursor: pointer;
-    }
-    #back-top:hover {
-        opacity: .7;
     }
     #back-top i {
         position: absolute; 

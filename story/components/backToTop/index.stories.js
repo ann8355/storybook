@@ -33,6 +33,9 @@ stories.add(
             yscroll: {
                 default: number('yscroll', 5)
             },
+            hover: {
+                default: boolean('hover', false)
+            }
         },
         propsDescription: {
             myComponent: {
@@ -44,10 +47,11 @@ stories.add(
                 scroll: '捲軸滑動多少時顯示icon',
                 circle: '是否顯示圓角',
                 xscroll: 'icon X軸顯示位置',
-                yscroll: 'icon Y軸顯示位置'
+                yscroll: 'icon Y軸顯示位置',
+                hover: 'icon 是否 hover'
             }
         },
-        template: `<div style="height: 900px"><myComponent :backgroundColor="backgroundColor" :size="size" :arrowSize="arrowSize" :show="show" :scroll="scroll" :circle="circle" :xscroll="xscroll" :yscroll="yscroll"/></div>`
+        template: `<div style="height: 900px"><myComponent :backgroundColor="backgroundColor" :size="size" :arrowSize="arrowSize" :show="show" :scroll="scroll" :circle="circle" :xscroll="xscroll" :yscroll="yscroll" :hover="hover"/></div>`
     }),
     {
         notes: '回到最上層按鈕',
