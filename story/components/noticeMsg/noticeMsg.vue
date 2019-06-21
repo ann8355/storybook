@@ -1,10 +1,22 @@
 <template>
     <div class="copyNotice" :style="msgStyle">
-        <img v-if="propsStyleImg" :src="`${iconSrc}`" :style="propsStyleImg">
+        <img v-if="imgStyleProps" :src="`${iconSrc}`" :style="imgStyleProps">
         <p>{{txt}}</p>
     </div>
 </template>
 <script>
+const defaultStyle = {  // 外框default樣式
+    width: '150px',
+    height: '150px',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    borderRadius: '10px',
+    color: '#fff',
+    zIndex: 1000000,
+    padding: '15px',
+    lineHeight: '1.2em',
+    letterSpacing: '-0.4px',
+    textAlign: 'center'
+};
 export default {
     props: {
         // 提示文字
@@ -17,46 +29,18 @@ export default {
             type: String,
         },
         // 外框style
-        propsStyleMsg: {
+        msgStyleProps: {
             type: Object
         },
         // 圖片icon style
-        propsStyleImg: {
+        imgStyleProps: {
             type: Object
         }
     },
     computed: {
         msgStyle () {
-            let defaultStyle = {  // 外框default樣式
-                width: '150px',
-                height: '150px',
-                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                borderRadius: '10px',
-                color: '#fff',
-                zIndex: 1000000,
-                padding: '15px',
-                lineHeight: '1.2em',
-                letterSpacing: '-0.4px',
-                textAlign: 'center'
-            };
-            let propsStyle = {};
-            if (this.propsStyleMsg) {
-                propsStyle = this.propsStyleMsg
-            }
-            let style = Object.assign({}, defaultStyle, propsStyle)
-            return style
-        },
-        // imgStyle () {
-
-        //     let propsStyle = {};
-        //     if (this.propsStyleImg) {
-        //         propsStyle = this.propsStyleImg
-        //     }
-        //     let style = Object.assign({}, defaultStyle, propsStyle)
-        //     return style
-
-        // }
-
+            return Object.assign({}, defaultStyle, this.msgStyleProps || {})
+        }
     },
     data () {
         return {

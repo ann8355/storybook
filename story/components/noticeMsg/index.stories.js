@@ -15,13 +15,13 @@ stories.add(
             iconImg: {
                 default: text('圖片路徑', './images/ic-prompt-tick.svg')
             },
-            propsStyleMsg: {
+            msgStyleProps: {
                 default: object('外框style', {
                     width: '200px',
                     height: '200px'
                 })
             },
-            propsStyleImg: {
+            imgStyleProps: {
                 default: object('icon style', {
                     width: '80px'
                 })
@@ -47,13 +47,13 @@ stories.add(
                 // These description will appear in `description` column in props table
                 txt: '提示文字',
                 iconImg: 'icon 路徑',
-                propsStyleMsg: '外框樣式',
-                propsStyleImg: 'icon樣式'
+                msgStyleProps: '外框樣式',
+                imgStyleProps: 'icon樣式'
             }
         },
         template: `<div>
         <button @click="action">點按出現提示</button>
-        <myComponent v-if="isshow" :txt="txt" :iconImg="iconImg" :propsStyleMsg="propsStyleMsg" :propsStyleImg="propsStyleImg" /></div>`
+        <myComponent v-if="isshow" :txt="txt" :iconImg="iconImg" :msgStyleProps="msgStyleProps" :imgStyleProps="imgStyleProps" /></div>`
     }),
     {
         notes: `
