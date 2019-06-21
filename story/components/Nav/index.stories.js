@@ -22,7 +22,7 @@ const CATEGORIES = [
         name: '流行热话',
         slug: 'hottopics',
         id: 23,
-        subcategories: [] // 要做防呆喔
+        subcategories: []
     },
     {
         name: '美妆',
@@ -101,8 +101,6 @@ stories.add(
     }),
     {
         notes: `
-            // 切換雜誌打不同的 API
-            // 直接依據雜誌換不同的主色 ？
             [ 版本紀錄 ]
             1.0.0 版
 
