@@ -9,14 +9,14 @@
         @click="click()"
         >
         <img :src="post.image" :alt="post.title" :style="{width: `${maxWidth}px`}">
-        <div class="article-header">
+        <div class="article-header" :style="{color:hover? color :'#282828'}">
             <div class="entry-meta">
                 <div class="rank">{{ index + 1 }}</div>
                 <div class="time-now">
                     {{ moment(post.post_date).format('DD MMM') }}
                 </div>
             </div>
-            <span :style="{color:hover? color :'#282828', fontSize: `${titleSize}px` }">{{ post.title }}</span>
+            <span :style="{ fontSize: `${titleSize}px` }">{{ post.title }}</span>
         </div>
     </a>
 </template>
@@ -78,6 +78,8 @@ export default {
 <style scoped>
 .sidebar-hottest {
     display: inline-block;
+    margin-bottom: 25px;
+    font-family: noto sans, sans-serif;
 }
 .sidebar-hottest img {
     max-width: 100%;
@@ -107,6 +109,7 @@ export default {
 }
 .sidebar-hottest .article-header span {
     display: inline-block;
+    text-align: left;
     height: 44px;
     width: 240px;
     font-weight: initial;

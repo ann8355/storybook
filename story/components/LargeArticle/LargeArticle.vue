@@ -76,6 +76,7 @@ export default {
 <style scoped>
 .large-article {
     display: inline-block;
+    margin-top: 20px;
 }
 .large-article img {
     max-width: 100%;
@@ -91,6 +92,7 @@ export default {
     font-size: 18px;
 }
 .large-article .article-header span {
+    display: inline-block;
     padding: 0 50px;
     font-weight: initial;
     margin-bottom: 15px;

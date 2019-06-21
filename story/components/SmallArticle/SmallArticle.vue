@@ -77,6 +77,7 @@ export default {
 <style scoped>
 .small-article {
     display: inline-block;
+    margin-bottom: 20px;
 }
 .small-article img {
     display: inline-block;
