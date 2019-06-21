@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { withKnobs, text, number } from '@storybook/addon-knobs';
+import { withKnobs, text, number, object } from '@storybook/addon-knobs';
 import myComponent from './noticeMsg.vue';
 
 const stories = storiesOf('Beautybee|noticeMsg', module);
@@ -15,8 +15,16 @@ stories.add(
             iconImg: {
                 default: text('圖片路徑', './images/ic-prompt-tick.svg')
             },
-            width: {
-                default: number('寬度', 200)
+            propsStyleMsg: {
+                default: object('外框style', {
+                    width: '200px',
+                    height: '200px'
+                })
+            },
+            propsStyleImg: {
+                default: object('icon style', {
+                    width: '80px'
+                })
             }
         },
         data() {
@@ -39,16 +47,13 @@ stories.add(
                 // These description will appear in `description` column in props table
                 txt: '提示文字',
                 iconImg: 'icon 路徑',
-                backColor: '背景顏色',
-                width: '提示框寬度',
-                height: '提示框高度',
-                imgW: 'icon寬度',
-                imgH: 'icon高度'
+                propsStyleMsg: '外框樣式',
+                propsStyleImg: 'icon樣式'
             }
         },
-        template: `<div style="color:#fff;font-size:15px">
+        template: `<div>
         <button @click="action">點按出現提示</button>
-        <myComponent style="border-radius:10px;" v-if="isshow" :txt="txt" :iconImg="iconImg" :width="width"  /></div>`
+        <myComponent v-if="isshow" :txt="txt" :iconImg="iconImg" :propsStyleMsg="propsStyleMsg" :propsStyleImg="propsStyleImg" /></div>`
     }),
     {
         notes: `
