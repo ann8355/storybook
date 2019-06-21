@@ -1,0 +1,10 @@
+{
+    "name": "@presslogic/NavMenu",
+    "version": "1.0.0",
+    "description": "Presslogic NavMenu",
+    "author": "Tim",
+    "private": true,
+    "scripts": {
+        "build-b": "vue-cli-service build --target lib --name NavMenu ./index.vue"
+    }
+}
