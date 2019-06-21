@@ -172,7 +172,7 @@ export default {
                 this.posts = category.posts
             } else {
                 this.isSubmenuLoading = true
-                let result = await axios.get(`https://release-webapi.girlstyle.com/my/api/presslogic/${"830932787095569"}/term/${category.id}?limit=4&offset=0&bloggers=${category.slug == 'bloggers'}`)
+                let result = await axios.get(`https://release-webapi.girlstyle.com/my/api/presslogic/${"830932787095569"}/term/${category.id}?limit=4&offset=0&bloggers=${category.slug === 'bloggers'}`)
                 this.posts = result.data.data
                 category.posts = this.posts
                 this.isSubmenuLoading = false

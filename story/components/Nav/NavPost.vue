@@ -28,9 +28,9 @@
                 <a
                     :href="`${post.url}`"
                     :title="post.title"
-                    @mouseover.native="toggleHover" 
-                    @mouseleave.native="toggleHover"
-                    @click.native="setPost(post)"
+                    @mouseover="toggleHover" 
+                    @mouseleave="toggleHover"
+                    @click="setPost(post)"
                 >
                     <div class="meta-image">
                         <img

@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/vue';
 import { withKnobs, color, number, boolean, text, object, select } from '@storybook/addon-knobs';
-import Index from './index'
+import Index from './Nav'
 import NavPost from './NavPost';
 
-const stories = storiesOf('Presslogic | Menu', module);
+const stories = storiesOf('Presslogic | Nav', module);
 stories.addDecorator(withKnobs);
 
 const OPTIONS = {
@@ -89,14 +89,13 @@ stories.add(
             }
         },
         propsDescription: {
-            NavPost: {
+            Index: {
                 // These description will appear in `description` column in props table
             }
         },
         template: `<Index
             :mainColor="mainColor"
             :categories="categories"
-            :posts="posts"
             :regionPath="regionPath"
         />`,
     }),
