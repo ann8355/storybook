@@ -1,22 +1,23 @@
 <template>
     <a 
         :href="`${host}${post.url}`" 
-        :title="post.title" 
+        :title="post.title"
+        :style="{maxWidth: `${maxWidth}px`}"
         class="sidebar-hottest"
         @mouseover="mouseover()"
         @mouseleave="mouseleave()"
         @click="click()"
         >
         <img :src="post.image" :alt="post.title" :style="{width: `${maxWidth}px`}">
-        <header :style="{maxWidth: `${maxWidth}px`}">
+        <div class="article-header">
             <div class="entry-meta">
                 <div class="rank">{{ index + 1 }}</div>
                 <div class="time-now">
                     {{ moment(post.post_date).format('DD MMM') }}
                 </div>
             </div>
-            <h2 :style="{color:hover? color :'#282828', fontSize: `${titleSize}px` }">{{ post.title }}</h2>
-        </header>
+            <span :style="{color:hover? color :'#282828', fontSize: `${titleSize}px` }">{{ post.title }}</span>
+        </div>
     </a>
 </template>
 <script>
@@ -28,7 +29,7 @@ export default {
         },
         host:{
             type: String,
-            default: 'https://girlstyle.com/tw'
+            default: ''
         },
         active: {
             type: Boolean,
@@ -75,34 +76,36 @@ export default {
 }
 </script>
 <style scoped>
+.sidebar-hottest {
+    display: inline-block;
+}
 .sidebar-hottest img {
     max-width: 100%;
 }
-.sidebar-hottest header {
+.sidebar-hottest .article-header {
     font-size: 0; 
     color: #424242;
-    width: 300px;
     padding: 20px 5px;
     box-sizing: border-box;
     text-align: center;
     border-bottom: 1px solid #f0f0f0;
 }
-.sidebar-hottest header .entry-meta {
+.sidebar-hottest .article-header .entry-meta {
     display: inline-block;
     width: 50px;
 }
 
-.sidebar-hottest header .rank {
+.sidebar-hottest .article-header .rank {
     text-align: center;
     font-style: italic;
     font-size: 27px;
     font-weight: 700;
 }
-.sidebar-hottest header .time-now {
+.sidebar-hottest .article-header .time-now {
     text-align: center;
     font-size: 13px;
 }
-.sidebar-hottest header h2 {
+.sidebar-hottest .article-header span {
     display: inline-block;
     height: 44px;
     width: 240px;
@@ -114,7 +117,7 @@ export default {
 }
 
 
-h2, p,a{
+span, p,a{
     margin: 0;
     text-decoration: none;
 }

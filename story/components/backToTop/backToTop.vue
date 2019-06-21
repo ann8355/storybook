@@ -1,6 +1,6 @@
 <template>
     <transition name="fade">
-        <div id="back-top" 
+        <div class="back-top" 
             v-show="showIcon" 
             :class="{'radius': circle , 'back-top-hover': active }"
             @click="top()"
@@ -97,12 +97,12 @@ export default {
 </script>
 
 <style scoped>
-    #back-top {
+    .back-top {
         position: fixed;
         z-index: 99;
         cursor: pointer;
     }
-    #back-top i {
+    .back-top i {
         position: absolute; 
         top: 50%;
         left: 50%;

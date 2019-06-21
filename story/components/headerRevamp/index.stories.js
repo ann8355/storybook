@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { withKnobs, text, color, number, boolean } from '@storybook/addon-knobs';
 import headerRevamp from './headerRevamp.vue';
 
-const stories = storiesOf('Presslogic|headerRevamp', module);
+const stories = storiesOf('Presslogic|Revamp BeautyBee/headerRevamp', module);
 stories.addDecorator(withKnobs);
 stories.add(
     'headerRevamp',
@@ -10,7 +10,7 @@ stories.add(
         components: { headerRevamp },
         props: {
             show: {
-                default: boolean('show', false)
+                default: boolean('show', true)
             },
             barHeight: {
                 default: number('barHeight', 54)

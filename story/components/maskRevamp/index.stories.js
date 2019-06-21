@@ -4,7 +4,7 @@ import maskRevamp from './maskRevamp.vue';
 import goBeautyButton from './goBeautyButton.vue';
 import linkDownload from './linkDownload.vue';
 
-const stories = storiesOf('Presslogic|MaskRevamp', module);
+const stories = storiesOf('Presslogic|Revamp BeautyBee/maskRevamp', module);
 stories.addDecorator(withKnobs);
 stories.add(
     'Mask-Revamp',
@@ -18,7 +18,7 @@ stories.add(
                 default: color('background', 'rgba(0,0,0,.7)')
             },
             device: {
-                default: text('device', 'mobile')
+                default: text('device', 'desktop')
             },
             url: {
                 default: text('url', 'https://beautybee.com/')

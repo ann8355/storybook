@@ -8,8 +8,8 @@
         @click="click()"
         >
         <img :src="post.image" :alt="post.title" :style="{width: `${imgWidth}px`}">
-        <header :style="{maxWidth: `${headerWidth}px`}">
-            <h2 :style="{color:hover? color :'#282828'}">{{ post.title }}</h2>
+        <div class="article-header" :style="{maxWidth: `${headerWidth}px`}">
+            <span :style="{color:hover? color :'#282828'}">{{ post.title }}</span>
             <p>{{ post.description }}</p>
             <div class="small-bottom">
                 <div v-for="(cat , i ) in post.cats" :key="i" class="small-cat">
@@ -19,7 +19,7 @@
                     {{ moment(post.post_date).fromNow() }}
                 </div>
             </div>
-        </header>
+        </div>
     </a>
 </template>
 <script>
@@ -31,7 +31,7 @@ export default {
         },
         host:{
             type: String,
-            default: 'https://girlstyle.com/tw'
+            default: ''
         },
         active: {
             type: Boolean,
@@ -75,13 +75,16 @@ export default {
 }
 </script>
 <style scoped>
+.small-article {
+    display: inline-block;
+}
 .small-article img {
     display: inline-block;
     margin-right: 20px;
     max-width: 100%;
     vertical-align: middle;
 }
-.small-article header {
+.small-article .article-header {
     display: inline-block;
     position: relative;
     box-sizing: border-box;
@@ -90,12 +93,12 @@ export default {
     height: 195px;
     vertical-align: middle;
 }
-.small-article header h2 {
+.small-article .article-header span {
     font-weight: initial;
     font-size: 18px;
     line-height: 29px;
 }
-.small-article header p {
+.small-article .article-header p {
     font-size: 13px;
     color: #9c9c9c;
     line-height: 21px;
@@ -104,20 +107,20 @@ export default {
     margin: 7px 0;
 }
 
-.small-article header .small-bottom{
+.small-article .article-header .small-bottom{
     position: absolute;
     bottom: 20px;
     width: 100%;
     font-size: 0;
 }
 
-.small-article header .small-cat{
+.small-article .article-header .small-cat{
     display: inline-block;
     text-align: left;
     width: 50%;
     font-size: 14px;
 }
-.small-article header .time-now {
+.small-article .article-header .time-now {
     display: inline-block;
     width: 50%;
     text-align: right;
@@ -125,7 +128,7 @@ export default {
     color: #adadad;
 }
 
-h2, p,a{
+span, p,a{
     margin: 0;
     text-decoration: none;
 }

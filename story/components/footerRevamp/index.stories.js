@@ -3,7 +3,7 @@ import { withKnobs, text, color, number, boolean } from '@storybook/addon-knobs'
 import footerRevamp from './footerRevamp.vue';
 import goBeautyButton from './goBeautyButton.vue';
 
-const stories = storiesOf('Presslogic|footerRevamp', module);
+const stories = storiesOf('Presslogic|Revamp BeautyBee/footerRevamp', module);
 stories.addDecorator(withKnobs);
 stories.add(
     'footerRevamp',
@@ -23,7 +23,7 @@ stories.add(
                 default: color('txtColor', '#4a4a4a')
             },
             show: {
-                default: boolean('show', false)
+                default: boolean('show', true)
             },
             iconScrollX: {
                 default: number('iconScrollX', 15)

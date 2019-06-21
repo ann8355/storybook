@@ -11,9 +11,12 @@ const post = {
     "image":"https://images.girlsdaily.com/wp-content/uploads/2019/03/奶蜜.jpg",
     "url":"/article/87717/一秒變身浪漫花神-唯美春季大勢色-奶蜜裸棕-冷粹咖啡-輕柔光線穿透感自帶仙氣",
     "terms":[5,80,7470,7471,7472],
-    "cats":[{"name":"髮型","slug":"%e9%ab%ae%e5%9e%8b","id":5}]}
+    "cats":[
+        {"name":"髮型","slug":"%e9%ab%ae%e5%9e%8b","id":5}
+    ]
+}
 
-const stories = storiesOf('Presslogic|LargeArticle', module);
+const stories = storiesOf('Presslogic|Article/LargeArticle', module);
 stories.addDecorator(withKnobs);
 stories.add(
     'LargeArticle',
@@ -41,8 +44,21 @@ stories.add(
         },
         propsDescription: {
             LargeArticle: {
-                post: '文章 object',
-                host: ' host url',
+                post: `文章 object, ex:
+                {
+                    "id":87717,
+                    "post_date":"2019-06-20T00:15:43Z",
+                    "description":"最近天氣已經慢慢的步入春天啦！涼爽舒適的溫度讓人心情都莫名跟著好起來～而換季除了衣服跟妝容要改變之外...",
+                    "title":"一秒變身浪漫花神！唯美春季大勢色「奶蜜裸棕、冷粹咖啡」～輕柔光線穿透感自帶仙氣♡",
+                    "guid":"http://girlstyle.com/tw/?p=87717",
+                    "image":"https://images.girlsdaily.com/wp-content/uploads/2019/03/奶蜜.jpg",
+                    "url":"/article/87717/一秒變身浪漫花神-唯美春季大勢色-奶蜜裸棕-冷粹咖啡-輕柔光線穿透感自帶仙氣",
+                    "terms":[5,80,7470,7471,7472],
+                    "cats":[
+                        {"name":"髮型","slug":"%e9%ab%ae%e5%9e%8b","id":5}
+                    ]
+                }`,
+                host: ' host url, ex: https://girlstyle.com/tw',
                 active: ' 滑鼠是否 hover',
                 color: '網站主要色系',
                 maxWidth: 'article 最大寬度',
