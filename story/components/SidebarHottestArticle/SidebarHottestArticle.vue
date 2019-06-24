@@ -79,7 +79,6 @@ export default {
 .sidebar-hottest {
     display: inline-block;
     margin-bottom: 25px;
-    font-family: noto sans, sans-serif;
 }
 .sidebar-hottest img {
     max-width: 100%;
@@ -102,10 +101,12 @@ export default {
     font-style: italic;
     font-size: 27px;
     font-weight: 700;
+    font-family: noto sans, sans-serif;
 }
 .sidebar-hottest .article-header .time-now {
     text-align: center;
-    font-size: 13px;
+    font-size: 12px;
+    font-family: noto sans, sans-serif;
 }
 .sidebar-hottest .article-header span {
     display: inline-block;
@@ -117,6 +118,7 @@ export default {
     padding-left: 10px;
     box-sizing: border-box; 
     overflow: hidden;
+    margin: 3px 0;
 }
 
 

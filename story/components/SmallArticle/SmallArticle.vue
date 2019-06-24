@@ -3,19 +3,22 @@
         :href="`${host}${post.url}`" 
         :title="post.title" 
         class="small-article"
+        :class="[device == 'desktop'? '' :'mobile']"
         @mouseover="mouseover()"
         @mouseleave="mouseleave()"
         @click="click()"
         >
-        <img :src="post.image" :alt="post.title" :style="{width: `${imgWidth}px`}">
-        <div class="article-header" :style="{maxWidth: `${headerWidth}px`}">
-            <span :style="{color:hover? color :'#282828'}">{{ post.title }}</span>
-            <p>{{ post.description }}</p>
+        <div class="img-box">
+            <img :src="post.image" :alt="post.title" :style="{width: device == 'desktop'? `${imgWidth}px`: '152px'}">
+        </div>
+        <div class="article-header" :style="{maxWidth: device == 'desktop'? `${headerWidth}px`: 'calc(100% - 110px)'}">
+            <span :style="{color:hover? color :'#282828'}">{{ post.title | truncate(40) }}</span>
+            <p v-if="device == 'desktop'">{{ post.description }}</p>
             <div class="small-bottom">
-                <div v-for="(cat , i ) in post.cats" :key="i" class="small-cat">
-                    <a :style="{color: color}" v-if=" i <= 1" :href="`${host}/category/${cat.slug}`">{{cat.name}}</a>
+                <div class="small-cat">
+                    <a :style="{color: color}" v-if="post.cats[0]" :href="`${host}/category/${post.cats[0].slug}`">{{post.cats[0].name}}</a>
                 </div>
-                <div class="time-now">
+                <div class="time-now">  
                     {{ moment(post.post_date).fromNow() }}
                 </div>
             </div>
@@ -28,6 +31,10 @@ export default {
     props: {
         post: {
             type: Object
+        },
+        device: {
+            type: String,
+            default: 'desktop'
         },
         host:{
             type: String,
@@ -78,12 +85,13 @@ export default {
 .small-article {
     display: inline-block;
     margin-bottom: 20px;
+    font-size: 0;
 }
-.small-article img {
+
+.small-article .img-box {
     display: inline-block;
-    margin-right: 20px;
-    max-width: 100%;
     vertical-align: middle;
+    margin-right: 20px;
 }
 .small-article .article-header {
     display: inline-block;
@@ -127,6 +135,33 @@ export default {
     text-align: right;
     font-size: 13px;
     color: #adadad;
+}
+
+.small-article.mobile .img-box {
+    overflow: hidden;
+    width: 100px;
+    margin-right: 10px;
+}
+
+.small-article.mobile .img-box img {
+    max-width: initial;
+    margin-left: -26px;
+}
+
+.small-article.mobile .article-header {
+    height: 80px;
+}
+
+.small-article.mobile .article-header span{
+    display: inline-block;
+    height: 54px;
+    overflow: hidden;
+    font-size: 15px;
+    line-height: 25px;
+}
+
+.small-article.mobile .article-header .small-bottom{
+    bottom: 5px;
 }
 
 span, p,a{
