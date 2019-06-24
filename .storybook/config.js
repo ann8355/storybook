@@ -5,8 +5,15 @@ import elementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import PopupMessage from '../story/components/popupMessage/popupMessage';
 import '../story/components/popupMessage/popupMessage.css';
+import truncate from 'html-truncate'
 Vue.use(elementUI);
 Vue.use(PopupMessage);
+Vue.filter('truncate', function (text, length) {
+    text = text || '';
+    length = length || 30;
+
+    return truncate(text,length)
+});
 addDecorator(withInfo);
 
 function loadStories() {
