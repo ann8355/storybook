@@ -8,7 +8,11 @@
         @mouseleave="mouseleave()"
         @click="click()"
         >
-        <img :src="post.image" :alt="post.title" :style="{width: `${maxWidth}px`}">
+        <img 
+            :src="`${static_host}/images/loading.png`" 
+            v-lazy="`${post.image}?w=400&auto=format`"
+            :alt="post.title" 
+            :style="{width: `${maxWidth}px`}">
         <div class="article-header" :style="{color:hover? color :'#282828'}">
             <div class="entry-meta">
                 <div class="rank">{{ index + 1 }}</div>
@@ -28,6 +32,10 @@ export default {
             type: Object
         },
         host:{
+            type: String,
+            default: ''
+        },
+        static_host:{
             type: String,
             default: ''
         },
