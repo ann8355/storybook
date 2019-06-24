@@ -3,18 +3,6 @@
         class="post"
         itemtype="https://schema.org/Article"
     >
-        <meta
-            itemprop="mainEntityOfPage"
-            content="https://pretty.presslogic.com/"
-        >
-        <meta
-            itemprop="author"
-            content="Girls 女生日常"
-        >
-        <meta
-            itemprop="publisher"
-            content="Girls 女生日常"
-        >
         <template v-if="isPostShowing">
             <meta
                 itemprop="datePublished"

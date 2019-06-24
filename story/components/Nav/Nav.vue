@@ -31,7 +31,7 @@
                                     :href="`${regionPath}/category/${category.slug}`"
                                     :style="{ color: subactive.slug===category.slug ? mainColor :'#c5c5c5'}"
                                     @mouseover="subhover(category)"
-                                >All 全部</a>
+                                >{{ categoryIsEnglish ? 'All' : 'All 全部' }}</a>
                             </li>
                             <li v-for="subcategory in category.subcategories"
                                 :key="subcategory.slug"
@@ -92,6 +92,10 @@ export default {
         },
         getNavPostsAjax: {
             type: Function
+        },
+        categoryIsEnglish: {
+            type: Boolean,
+            default: false
         }
     },
     data() {

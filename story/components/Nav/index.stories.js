@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { withKnobs, color, object, select } from '@storybook/addon-knobs';
+import { withKnobs, color, object, select, boolean } from '@storybook/addon-knobs';
 import Index from './Nav'
 import NavPost from './NavPost';
 
@@ -86,6 +86,9 @@ stories.add(
             },
             regionPath: {
                 default: select('GirlStyle 區域路徑', OPTIONS, DEFAULT_REGION)
+            },
+            categoryIsEnglish: {
+                default: boolean('類別只顯示英文', false)
             }
         },
         propsDescription: {
@@ -94,12 +97,14 @@ stories.add(
                 mainColor: '識別色',
                 categories: '文章類別',
                 regionPath: 'GirlStyle 系列區域路徑',
+                categoryIsEnglish: '類別只顯示英文'
             }
         },
         template: `<Index
             :mainColor="mainColor"
             :categories="categories"
             :regionPath="regionPath"
+            :categoryIsEnglish="categoryIsEnglish"
         />`,
     }),
     {
