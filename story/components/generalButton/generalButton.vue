@@ -1,100 +1,82 @@
 <template>
-    <div>
-        <button v-if="!disableBtn" @click="clickAction" :style="{width: `${width}px`, height:`${height}px`, backgroundColor:`${backColor}`, borderRadius:`${radius}px`,border:border,boxShadow:boxShadow }">
-            <img :src="iconSrc" :style="{marginRight:`${imgMargin}px`}" />
-            {{text}}
-        </button>
-        <button v-else disabled :style="{width: `${width}px`, height:`${height}px`, backgroundColor:`${backColorDis}`, borderRadius:`${radius}px`,border:border,boxShadow:boxShadowDis}">
-            <img :src="iconSrcDis" :style="{marginRight:`${imgMargin}px`}" />
-            {{textDis}}
-        </button>
-    </div>
+    <button :disabled="disableBtn" :style="btnStyle" @click="clickAction">
+        <img v-if="imgSrc||disImgSrc" :src="`${iconSrc}`" :style="imgStyle">
+        {{disableBtn?disText:text}}
+    </button>
 
 </template>
 <script>
+const defaultBtnStyle = {
+    width: '130px',
+    height: '30px',
+    backgroundColor: '#ff5a5a',
+    borderRadius: '15px',
+    color: '#fff',
+    border: 'none',
+    cursor: 'pointer'
+};
 export default {
     props: {
+        // 按鈕是否diabled
+        disableBtn: {
+            type: Boolean,
+            default: false
+        },
         // 文字
         text: {
             type: String,
         },
-        // 按鈕寬
-        width: {
-            type: [Number, String],
-            default: 200
-        },
-        // 按鈕高
-        height: {
-            type: [Number, String],
-            default: 44
-        },
-        // 背景色
-        backColor: {
+        // diabled 時的文字
+        disText: {
             type: String,
-            default: '#ff5a5a'
-        },
-        // 按鈕圓角大小
-        radius: {
-            type: [Number, String],
-            default: '100'
-        },
-        // 邊框樣式
-        border: {
-            type: String,
-            default: 'none'
-        },
-        // 按鈕陰影
-        boxShadow: {
-            type: String,
-            default: 'none'
         },
         // 按鈕icon路徑
         imgSrc: {
             type: String,
-            default: ''
         },
-        // 按鈕icon 大小
-        imgSize: {
-            type: [Number, String],
-            default: 24
-        },
-        // icon 與文字間距
-        imgMargin: {
-            type: [Number, String],
-            default: 10
-        },
-        // 按鈕是否diabled
-        disableBtn: {
-            type: Boolean,
-            required: true
-        },
-        // diabled 時的文字
-        textDis: {
+        // 按鈕diabled 時的icon
+        disImgSrc: {
             type: String,
         },
-        // diabled 時的背景色
-        backColorDis: {
-            type: String,
-            default: '#9b9b9b',
-
+        //按鈕樣式
+        btnStyleProps: {
+            type: Object
         },
-        // diabled 時的陰影
-        boxShadowDis: {
-            type: String,
-            default: 'none'
+        // disabled按鈕樣式
+        disBtnStyleProps: {
+            type: Object
         },
-        // diabled 時的icon
-        imgSrcDis: {
-            type: String,
-            default: ''
+        // img style
+        imgStyleProps: {
+            type: Object
         },
-
+        // 按鈕diabled 時 img style
+        disImgStyleProps: {
+            type: Object
+        }
     },
-    data () {
-        return {
-            iconSrc: this.imgSrc === '' ? '' : require(`${this.imgSrc}`),
-            iconSrcDis: this.imgSrcDis === '' ? '' : require(`${this.imgSrcDisg}`)
-        };
+    computed: {
+        btnStyle () {
+            return this.disableBtn ? { ...defaultBtnStyle, ...this.btnStyleProps, ...this.disBtnStyleProps } : { ...defaultBtnStyle, ...this.btnStyleProps }
+        },
+        imgStyle () {
+            return this.disableBtn ? { ...this.imgStyleProps, ...this.disImgStyleProps } : { ...this.imgStyleProps }
+        },
+        iconSrc () {
+            if (this.disableBtn) {
+                if (this.disImgSrc) {
+                    return require(`${this.disImgSrc}`)
+                } else {
+                    if (this.imgSrc && this.disImgSrc !== '') {
+                        return require(`${this.imgSrc}`)
+                    } else {
+                        return ''
+                    }
+                }
+            } else {
+                return !this.imgSrc ? '' : require(`${this.imgSrc}`)
+            }
+        },
     },
     methods: {
         clickAction () {
