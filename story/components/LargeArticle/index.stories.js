@@ -31,6 +31,9 @@ stories.add(
             host: {
                 default: text('host', 'https://girlstyle.com/tw')
             },
+            static_host: {
+                default: text('static_host', 'https://girlstyle.com/')
+            },
             active: {
                 default: boolean('active', false)
             },
@@ -62,12 +65,13 @@ stories.add(
                 }`,
                 device: '使用裝置 （只能 desktop 或 mobile )',
                 host: ' host url, ex: https://girlstyle.com/tw',
+                static_host: 'static_host 參數',
                 active: ' 滑鼠是否 hover',
                 color: '網站主要色系',
                 maxWidth: 'article 最大寬度',
             }
         },
-        template: `<LargeArticle :post="post" :device="device" :host="host" :active="active" :color="color" :maxWidth="maxWidth" />`
+        template: `<LargeArticle :post="post" :device="device" :host="host" :static_host="static_host" :active="active" :color="color" :maxWidth="maxWidth" />`
     }),
     {
         notes: `
@@ -76,7 +80,7 @@ stories.add(
 
         [ 注意事項 ]
 
-        1. 安裝此元件前須確認該專案已有‘vue-moment’套件
+        1. 安裝此元件前須確認該專案已有‘vue-moment’,'html-truncate',‘vue-lazyload’套件
         `,
         info: {
             summary: 'LargeArticle for Presslogic'

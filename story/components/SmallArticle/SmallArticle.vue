@@ -9,7 +9,11 @@
         @click="click()"
         >
         <div class="img-box">
-            <img :src="post.image" :alt="post.title" :style="{width: device == 'desktop'? `${imgWidth}px`: '152px'}">
+            <img 
+                :src="`${static_host}/images/loading.png`" 
+                v-lazy="`${post.image}?w=400&auto=format`" 
+                :alt="post.title" 
+                :style="{width: device == 'desktop'? `${imgWidth}px`: '152px'}">
         </div>
         <div class="article-header" :style="{maxWidth: device == 'desktop'? `${headerWidth}px`: 'calc(100% - 110px)'}">
             <span :style="{color:hover? color :'#282828'}">{{ post.title | truncate(40) }}</span>
@@ -37,6 +41,10 @@ export default {
             default: 'desktop'
         },
         host:{
+            type: String,
+            default: ''
+        },
+        static_host:{
             type: String,
             default: ''
         },

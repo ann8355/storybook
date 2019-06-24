@@ -26,6 +26,9 @@ stories.add(
             host: {
                 default: text('host', 'https://girlstyle.com/tw')
             },
+            static_host: {
+                default: text('static_host', 'https://girlstyle.com/')
+            },
             active: {
                 default: boolean('active', false)
             },
@@ -61,12 +64,13 @@ stories.add(
                 host: ' host url , ex:https://girlstyle.com/tw',
                 active: ' 滑鼠是否 hover',
                 color: '網站主要色系',
+                static_host: 'static_host 參數',
                 maxWidth: 'article 最大寬度',
                 titleSize: '標題文字大小',
                 index: 'article 序號'
             }
         },
-        template: `<SidebarHottestArticle :post="post" :host="host" :active="active" :color="color" :maxWidth="maxWidth" :titleSize="titleSize" :index="index"/>`
+        template: `<SidebarHottestArticle :post="post" :host="host" :static_host="static_host" :active="active" :color="color" :maxWidth="maxWidth" :titleSize="titleSize" :index="index"/>`
     }),
     {
         notes: `
@@ -75,7 +79,7 @@ stories.add(
 
         [ 注意事項 ]
 
-        1. 安裝此元件前須確認該專案已有‘vue-moment’套件
+        1. 安裝此元件前須確認該專案已有‘vue-moment’ ‘vue-lazyload’套件
         `,
         info: {
             summary: 'Sidebar Hottest Article for Presslogic'

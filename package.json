@@ -21,6 +21,7 @@
         "html-truncate": "^1.2.2",
         "nuxt": "2.3.4",
         "moment": "2.22.2",
+        "vue-lazyload": "1.2.6",
         "vue-image-crop-upload": "2.5.0",
         "storybook-addon-vue-info": "^1.1.1"
     },

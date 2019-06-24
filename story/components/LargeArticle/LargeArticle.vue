@@ -9,7 +9,11 @@
         @mouseleave="mouseleave()"
         @click="click()"
         >
-        <img :src="post.image" :alt="post.title" :style="{width: device == 'desktop'? `${maxWidth}px`: ''}">
+        <img 
+            :src="`${static_host}/images/loading.png`" 
+            v-lazy="`${post.image}?w=400&auto=format`"
+            :alt="post.title" 
+            :style="{width: device == 'desktop'? `${maxWidth}px`: ''}">
         <div class="article-header">
             <div class="large-cat">
                 <a v-if="post.cats[0]" :style="{color: color}" :href="`${host}/category/${post.cats.slug}`">{{post.cats[0].name}}</a>
@@ -34,6 +38,10 @@ export default {
             default: 'desktop'
         },
         host:{
+            type: String,
+            default: ''
+        },
+        static_host:{
             type: String,
             default: ''
         },
