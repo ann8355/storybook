@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { withKnobs, color, number, boolean, text, object, select } from '@storybook/addon-knobs';
+import { withKnobs, color, object, select } from '@storybook/addon-knobs';
 import Index from './Nav'
 import NavPost from './NavPost';
 
@@ -82,15 +82,18 @@ stories.add(
                 default: color('識別色', '#ffafa0')
             },
             categories: {
-                default: object('文章類別', CATEGORIES)
+                default: object('文章類別資料', CATEGORIES)
             },
             regionPath: {
-                default: select('區域路徑', OPTIONS, DEFAULT_REGION)
+                default: select('GirlStyle 區域路徑', OPTIONS, DEFAULT_REGION)
             }
         },
         propsDescription: {
             Index: {
                 // These description will appear in `description` column in props table
+                mainColor: '識別色',
+                categories: '文章類別',
+                regionPath: 'GirlStyle 系列區域路徑',
             }
         },
         template: `<Index
@@ -115,7 +118,7 @@ stories.add(
             作者：Tim
         `,
         info: {
-            summary: 'NavPost'
+            summary: 'Nav'
         }
     }
 );
@@ -144,7 +147,8 @@ stories.add(
             NavPost: {
                 // These description will appear in `description` column in props table
                 post: "文章內容",
-                color: "文章標題顏色"
+                mainColor: "文章標題顏色",
+                regionPath: 'GirlStyle 系列區域路徑'
             }
         },
         template: `<NavPost

@@ -84,66 +84,11 @@ export default {
             default: '#ffafa0'
         },
         regionPath: {
-            type: String,
-            default: ''
+            type: String
         },
         categories: {
             type: Array,
-            default: [
-                {
-                    name: '流行热话',
-                    slug: 'hottopics',
-                    id: 23,
-                    subcategories: [] // 要做防呆喔
-                },
-                {
-                    name: '美妆',
-                    slug: 'beauty',
-                    id: 4,
-                    subcategories: [
-                        { name: '化妆', slug: 'makeup', id: 10 },
-                        { name: '发型', slug: 'hair', id: 9 },
-                        { name: '护肤', slug: 'skincare', id: 12 },
-                        { name: '美甲', slug: 'nails', id: 11 }
-                    ]
-                },
-                {
-                    name: '时尚',
-                    slug: 'fashion',
-                    id: 5,
-                    subcategories: [
-                        { name: '穿搭', slug: 'mixandmatch', id: 15 },
-                        { name: '鞋履', slug: 'footwear', id: 14 },
-                        { name: '配件', slug: 'accessories', id: 13 },
-                        { name: '刺青', slug: 'tattoo', id: 16 }
-                    ]
-                },
-                {
-                    name: '生活',
-                    slug: 'lifestyle',
-                    id: 6,
-                    subcategories: [
-                        { name: '旅游', slug: 'travel', id: 18 },
-                        { name: '家居', slug: 'living', id: 17 },
-                        { name: '吃货', slug: 'food', id: 19 },
-                        { name: '女生物。语', slug: 'items', id: 20 },
-                        { name: '摄影', slug: 'photography', id: 21 },
-                        { name: '闺蜜', slug: 'bff', id: 22 }
-                    ]
-                },
-                {
-                    name: '瘦身',
-                    slug: 'fitness',
-                    id: 7,
-                    subcategories: []
-                },
-                {
-                    name: '恋爱',
-                    slug: 'love',
-                    id: 8,
-                    subcategories: []
-                }
-            ]
+            default: []
         },
         getNavPostsAjax: {
             type: Function
