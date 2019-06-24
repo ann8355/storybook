@@ -37,6 +37,7 @@ export default {
         disImgStyleProps: {
             type: Object
         },
+        // 按鈕hover 時 img style
         hoverImgStyle: {
             type: Object
         }
