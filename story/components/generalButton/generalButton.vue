@@ -1,20 +1,11 @@
 <template>
-    <button :disabled="disableBtn" :style="btnStyle" @click="clickAction">
-        <img v-if="imgSrc||disImgSrc" :src="`${iconSrc}`" :style="imgStyle">
-        {{disableBtn?disText:text}}
+    <button :disabled="disableBtn" @mouseover="isHover=true" @mouseleave="isHover=false" @click="clickAction">
+        <img v-if="imgSrc||disImgSrc" :src="`${iconSrc}`" :style="[imgStyle,isHover?hoverImgStyle:'']">
+        {{disableBtn&&disText?disText:text}}
     </button>
 
 </template>
 <script>
-const defaultBtnStyle = {
-    width: '130px',
-    height: '30px',
-    backgroundColor: '#ff5a5a',
-    borderRadius: '15px',
-    color: '#fff',
-    border: 'none',
-    cursor: 'pointer'
-};
 export default {
     props: {
         // 按鈕是否diabled
@@ -38,14 +29,6 @@ export default {
         disImgSrc: {
             type: String,
         },
-        //按鈕樣式
-        btnStyleProps: {
-            type: Object
-        },
-        // disabled按鈕樣式
-        disBtnStyleProps: {
-            type: Object
-        },
         // img style
         imgStyleProps: {
             type: Object
@@ -53,14 +36,23 @@ export default {
         // 按鈕diabled 時 img style
         disImgStyleProps: {
             type: Object
+        },
+        hoverImgStyle: {
+            type: Object
+        }
+    },
+    data () {
+        return {
+            isHover: false
         }
     },
     computed: {
-        btnStyle () {
-            return this.disableBtn ? { ...defaultBtnStyle, ...this.btnStyleProps, ...this.disBtnStyleProps } : { ...defaultBtnStyle, ...this.btnStyleProps }
-        },
         imgStyle () {
-            return this.disableBtn ? { ...this.imgStyleProps, ...this.disImgStyleProps } : { ...this.imgStyleProps }
+            if (this.disableBtn) {
+                return { ...this.imgStyleProps, ...this.disImgStyleProps }
+            } else {
+                return { ...this.imgStyleProps }
+            }
         },
         iconSrc () {
             if (this.disableBtn) {
@@ -87,11 +79,17 @@ export default {
 </script>
 <style scoped>
 button {
-    color: inherit;
     font-size: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
     outline: none;
+    width: 130px;
+    height: 44px;
+    background-color: #ff5a5a;
+    border-radius: 22px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
 }
 </style>
