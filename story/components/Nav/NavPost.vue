@@ -26,11 +26,11 @@
             >
             <div class="post-layer">
                 <a
-                    :href="`${post.url}`"
+                    :href="`${regionPath}${post.url}`"
                     :title="post.title"
                     @mouseover="toggleHover" 
                     @mouseleave="toggleHover"
-                    @click="setPost(post)"
+                    @click.native="$emit('setPost', post)"
                 >
                     <div class="meta-image">
                         <img
@@ -62,15 +62,13 @@ export default {
             type: Object,
             default: {}
         },
+        regionPath: {
+            type: String,
+            dafault: ''
+        },
         mainColor:{
             type: String,
             defualt: '#ffafa0'
-        },
-        setPost: {
-            type: Function,
-            default: async post => {
-                console.log('NavPost:SetPost()')
-            }
         }
     },
     data () {

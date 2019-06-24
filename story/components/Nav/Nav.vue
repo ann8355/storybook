@@ -1,12 +1,18 @@
 <template>
-    <div id="site-navigation" class="container" @mouseleave="active = ''">
+    <div 
+        id="site-navigation"
+        class="container"
+        @mouseleave="active = ''"
+    >
         <ul>
-            <li v-for="category in categories" :key="category.slug">
+            <li 
+                v-for="category in categories"
+                :key="category.slug"
+            >
                 <a 
                     :href="`${regionPath}/category/${category.slug}`"
                     @mouseover="hover(category)"
                     :style="{ color: active === category.slug ? mainColor :'#000'}"
-                    
                 >
                     {{ category.name }}
                 </a>
@@ -15,7 +21,10 @@
                     enter-active-class="animated fadeIn faster"
                     leave-active-class="animated fadeOut faster"
                 >
-                    <div class="sub-menu" v-show="active === category.slug">
+                    <div 
+                        v-show="active === category.slug"
+                        class="sub-menu"
+                    >
                         <ul>
                             <li>
                                 <a
@@ -24,7 +33,9 @@
                                     @mouseover="subhover(category)"
                                 >All 全部</a>
                             </li>
-                            <li v-for="subcategory in category.subcategories" :key="subcategory.slug">
+                            <li v-for="subcategory in category.subcategories"
+                                :key="subcategory.slug"
+                            >
                                 <a
                                     :href="`${regionPath}/category/${subcategory.slug}`"
                                     :style="{ color: subactive.slug===subcategory.slug ? mainColor :'#c5c5c5'}"
@@ -41,11 +52,14 @@
                             ></i>
                         </div>
                         <div class="sub-category-posts">
-                            <div v-for="post in posts" :key="post.image"> 
+                            <div v-for="post in posts" 
+                                :key="post.image"
+                            > 
                                 <NavPost 
                                     :post="post"
                                     :mainColor="mainColor"
-                                    :setPost="setPost"
+                                    :regionPath="regionPath"
+                                    @setPost="$emit('setPost', post)"
                                 />
                             </div>
                         </div>
@@ -131,11 +145,8 @@ export default {
                 }
             ]
         },
-        setPost: {
-            type: Function,
-            default: async post => {
-                await this.$store.dispatch('updatePost', { post })
-            }
+        getNavPostsAjax: {
+            type: Function
         }
     },
     data() {
@@ -172,8 +183,7 @@ export default {
                 this.posts = category.posts
             } else {
                 this.isSubmenuLoading = true
-                let result = await axios.get(`https://release-webapi.girlstyle.com/my/api/presslogic/${"830932787095569"}/term/${category.id}?limit=4&offset=0&bloggers=${category.slug === 'bloggers'}`)
-                this.posts = result.data.data
+                this.posts = await this.getNavPostsAjax(category)
                 category.posts = this.posts
                 this.isSubmenuLoading = false
             }
