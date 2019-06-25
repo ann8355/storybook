@@ -102,6 +102,7 @@ export default {
 .sidebar-hottest .article-header .entry-meta {
     display: inline-block;
     width: 50px;
+    vertical-align: middle;
 }
 
 .sidebar-hottest .article-header .rank {
@@ -127,6 +128,7 @@ export default {
     box-sizing: border-box; 
     overflow: hidden;
     margin: 3px 0;
+    vertical-align: middle;
 }
 
 
