@@ -46,13 +46,15 @@
                             </li>
                         </ul>
                         <div>
-                            <i  v-show="isSubmenuLoading"
+                            <i  
+                                v-show="isSubmenuLoading"
                                 class="el-icon-loading" 
                                 style="font-size:25px"
                             ></i>
                         </div>
                         <div class="sub-category-posts">
-                            <div v-for="post in posts" 
+                            <div 
+                                v-for="post in posts"
                                 :key="post.image"
                             > 
                                 <NavPost 
@@ -72,7 +74,6 @@
 
 <script>
 import NavPost from './NavPost';
-import axios from 'axios';
 
 export default {
     components: {

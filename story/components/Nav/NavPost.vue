@@ -18,7 +18,7 @@
                     :title="post.title"
                     @mouseover="toggleHover" 
                     @mouseleave="toggleHover"
-                    @click.native="$emit('setPost', post)"
+                    @click="$emit('setPost', post)"
                 >
                     <div class="meta-image">
                         <img
