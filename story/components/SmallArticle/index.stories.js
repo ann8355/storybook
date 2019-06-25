@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { withKnobs, text, color, number, boolean, object } from '@storybook/addon-knobs';
+import { withKnobs, text, color, number, boolean, object, select } from '@storybook/addon-knobs';
 import SmallArticle from './SmallArticle.vue';
 
 const post = {
@@ -13,6 +13,8 @@ const post = {
     "terms":[5,80,7470,7471,7472],
     "cats":[{"name":"髮型","slug":"%e9%ab%ae%e5%9e%8b","id":5}]}
 
+const deviceType = ['desktop','mobile']
+
 const stories = storiesOf('Presslogic|Article/SmallArticle', module);
 stories.addDecorator(withKnobs);
 stories.add(
@@ -20,11 +22,14 @@ stories.add(
     () => ({
         components: { SmallArticle },
         props: {
-            post: {
-                default: object('post', post)
+            device: {
+                default: select('device', deviceType)
             },
             host: {
                 default: text('host', 'https://girlstyle.com/tw')
+            },
+            static_host: {
+                default: text('static_host', 'https://girlstyle.com/')
             },
             active: {
                 default: boolean('active', false)
@@ -37,6 +42,9 @@ stories.add(
             },
             headerWidth: {
                 default: number('headerWidth',  300) 
+            },
+            post: {
+                default: object('post', post)
             }
         },
         propsDescription: {
@@ -55,14 +63,16 @@ stories.add(
                         {"name":"髮型","slug":"%e9%ab%ae%e5%9e%8b","id":5}
                     ]
                 }`,
+                device: '使用裝置 （只能 desktop 或 mobile )',
                 host: ' host url , ex:https://girlstyle.com/tw',
                 active: ' 滑鼠是否 hover',
                 color: '網站主要色系',
+                static_host: 'static_host 參數',
                 imgWidth: '圖片寬度',
                 headerWidth: 'header 寬度'
             }
         },
-        template: `<SmallArticle :post="post" :host="host" :active="active" :color="color" :imgWidth="imgWidth" :headerWidth="headerWidth"  />`
+        template: `<SmallArticle :post="post" :device="device" :host="host" :static_host="static_host" :active="active" :color="color" :imgWidth="imgWidth" :headerWidth="headerWidth"  />`
     }),
     {
         notes: `
@@ -71,7 +81,7 @@ stories.add(
 
         [ 注意事項 ]
 
-        1. 安裝此元件前須確認該專案已有‘vue-moment’套件
+        1. 安裝此元件前須確認該專案已有‘vue-moment’,'html-truncate',‘vue-lazyload’套件
         `,
         info: {
             summary: 'SmallArticle for Presslogic'

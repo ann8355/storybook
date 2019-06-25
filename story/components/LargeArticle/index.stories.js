@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { withKnobs, text, color, number, boolean, object } from '@storybook/addon-knobs';
+import { withKnobs, text, color, number, boolean, object, select } from '@storybook/addon-knobs';
 import LargeArticle from './LargeArticle.vue';
 
 const post = {
@@ -16,6 +16,8 @@ const post = {
     ]
 }
 
+const deviceType = ['desktop','mobile']
+
 const stories = storiesOf('Presslogic|Article/LargeArticle', module);
 stories.addDecorator(withKnobs);
 stories.add(
@@ -23,11 +25,14 @@ stories.add(
     () => ({
         components: { LargeArticle },
         props: {
-            post: {
-                default: object('post', post)
+            device: {
+                default: select('device', deviceType)
             },
             host: {
                 default: text('host', 'https://girlstyle.com/tw')
+            },
+            static_host: {
+                default: text('static_host', 'https://girlstyle.com/')
             },
             active: {
                 default: boolean('active', false)
@@ -38,8 +43,8 @@ stories.add(
             maxWidth: {
                 default: number('imgWidth',  700) 
             },
-            titleSize: {
-                default: number('titleSize',  21) 
+            post: {
+                default: object('post', post)
             }
         },
         propsDescription: {
@@ -58,14 +63,15 @@ stories.add(
                         {"name":"髮型","slug":"%e9%ab%ae%e5%9e%8b","id":5}
                     ]
                 }`,
+                device: '使用裝置 （只能 desktop 或 mobile )',
                 host: ' host url, ex: https://girlstyle.com/tw',
+                static_host: 'static_host 參數',
                 active: ' 滑鼠是否 hover',
                 color: '網站主要色系',
                 maxWidth: 'article 最大寬度',
-                titleSize: '標題文字大小'
             }
         },
-        template: `<LargeArticle :post="post" :host="host" :active="active" :color="color" :maxWidth="maxWidth" :titleSize="titleSize" />`
+        template: `<LargeArticle :post="post" :device="device" :host="host" :static_host="static_host" :active="active" :color="color" :maxWidth="maxWidth" />`
     }),
     {
         notes: `
@@ -74,7 +80,7 @@ stories.add(
 
         [ 注意事項 ]
 
-        1. 安裝此元件前須確認該專案已有‘vue-moment’套件
+        1. 安裝此元件前須確認該專案已有‘vue-moment’,'html-truncate',‘vue-lazyload’套件
         `,
         info: {
             summary: 'LargeArticle for Presslogic'

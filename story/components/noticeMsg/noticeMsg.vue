@@ -1,11 +1,19 @@
 <template>
-    <div class="copyNotice" :style="msgStyle">
-        <img v-if="imgStyleProps" :src="`${iconSrc}`" :style="imgStyleProps">
-        <p>{{txt}}</p>
-    </div>
+  <div
+    class="copyNotice"
+    :style="msgStyle"
+  >
+    <img
+      v-if="imgStyleProps"
+      :src="`${iconSrc}`"
+      :style="imgStyleProps"
+    >
+    <p>{{txt}}</p>
+  </div>
 </template>
 <script>
-const defaultStyle = {  // 外框default樣式
+const defaultStyle = {
+    // 外框default樣式
     width: '150px',
     height: '150px',
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -26,7 +34,7 @@ export default {
         },
         // icon 路徑
         iconImg: {
-            type: String,
+            type: String
         },
         // 外框style
         msgStyleProps: {
@@ -38,17 +46,16 @@ export default {
         }
     },
     computed: {
-        msgStyle () {
-            return Object.assign({}, defaultStyle, this.msgStyleProps || {})
+        msgStyle() {
+            return Object.assign({}, defaultStyle, this.msgStyleProps || {});
         }
     },
-    data () {
+    data() {
         return {
             iconSrc: !this.iconImg ? '' : require(`${this.iconImg}`)
-        }
+        };
     }
-}
-
+};
 </script>
 <style scoped>
 * {

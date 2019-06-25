@@ -8,23 +8,29 @@
         }"
     >
         <Logo
-            :logoHeight="logoHeight"
-            :spacingBetweenLogoAndDividingline="spacingBetweenLogoAndDividingline"
-            :companyLogoReference="companyLogoReference"
-            :companyLink="companyLink"
-            :magazineLogoReference="magazineLogoReference"
-            :magazineLink="magazineLink"
+            v-bind="{ 
+                logoHeight,
+                spacingBetweenLogoAndDividingline, 
+                companyLogoReference,
+                companyLink,
+                magazineLogoReference,
+                magazineLink
+            }"
         />
         <Nav
-            :navLinkList="navLinkList"
-            :navLinkColor="navLinkColor"
-            :spacingBetweenLogoAndNavlink="spacingBetweenLogoAndNavlink"
-            :spacingBetweenNavlinkAndCopyright="spacingBetweenNavlinkAndCopyright"
-            :spacingBetweenNavlinks="spacingBetweenNavlinks"
+            v-bind="{
+                navLinkList,
+                navLinkColor,
+                spacingBetweenLogoAndNavlink,
+                spacingBetweenNavlinkAndCopyright,
+                spacingBetweenNavlinks
+            }"
         />
         <Copyright
-            :magazineName="magazineName"
-            :copyrightColor="copyrightColor"
+            v-bind="{
+                magazineName,
+                copyrightColor
+            }"
         />
     </footer>
 </template>
