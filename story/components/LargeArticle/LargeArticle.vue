@@ -19,7 +19,7 @@
                 <a v-if="post.cats[0]" :style="{color: color}" :href="`${host}/category/${post.cats.slug}`">{{post.cats[0].name}}</a>
             </div>
             <span :style="{color:hover? color :'#282828'}">{{ post.title }}</span>
-            <p v-if="device == 'desktop'">{{ post.description | truncate(45) }}</p>
+            <p v-if="device == 'desktop'">{{ truncate( post.description , 45) }}</p>
             <div class="time-now">
                 {{ moment(post.post_date).fromNow() }}
             </div>
@@ -28,6 +28,7 @@
 </template>
 <script>
 import moment from 'moment';
+import truncate from 'html-truncate';
 export default {
     props: {
         post: {
@@ -66,6 +67,9 @@ export default {
     methods: {
         moment (time) {
             return moment(time);
+        },
+        truncate(string, length){
+            return truncate(string, length)
         },
         mouseover() {
             this.hover = true;

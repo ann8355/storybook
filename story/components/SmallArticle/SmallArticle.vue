@@ -16,7 +16,7 @@
                 :style="{width: device == 'desktop'? `${imgWidth}px`: '152px'}">
         </div>
         <div class="article-header" :style="{maxWidth: device == 'desktop'? `${headerWidth}px`: 'calc(100% - 110px)'}">
-            <span :style="{color:hover? color :'#282828'}">{{ post.title | truncate(40) }}</span>
+            <span :style="{color:hover? color :'#282828'}">{{truncate( post.title, 40) }}</span>
             <p v-if="device == 'desktop'">{{ post.description }}</p>
             <div class="small-bottom">
                 <div class="small-cat">
@@ -31,6 +31,7 @@
 </template>
 <script>
 import moment from 'moment';
+import truncate from 'html-truncate';
 export default {
     props: {
         post: {
@@ -74,6 +75,9 @@ export default {
     methods: {
         moment (time) {
             return moment(time);
+        },
+        truncate(string, length){
+            return truncate(string, length)
         },
         mouseover() {
             this.hover = true;
