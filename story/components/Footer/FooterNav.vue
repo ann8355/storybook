@@ -23,7 +23,8 @@
 export default {
     props:{
         navLinkList: {
-            type: Array
+            type: Array,
+            default: []
         },
         navLinkColor: {
             type: String,

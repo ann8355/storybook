@@ -89,7 +89,7 @@ export default {
         },
         spacingBetweenLogoAndDividingline: {
             type: Number,
-            default: 20
+            default: 30
         },
         navLinkList: {
             type: Array,
@@ -97,7 +97,7 @@ export default {
         },
         navLinkColor: {
             type: String,
-            default: 'black'
+            default: 'white'
         },
         spacingBetweenLogoAndNavlink: {
             type: Number,
@@ -117,7 +117,7 @@ export default {
         },
         copyrightColor: {
             type: String,
-            default: 'black'
+            default: 'white'
         }
     },
     watch: {},

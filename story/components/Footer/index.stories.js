@@ -1,9 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import { withKnobs, color, number, boolean, text, object } from '@storybook/addon-knobs';
 import Index from './Footer';
-// import FooterLogo from './FooterLogo';
-// import FooterNav from './FooterNav';
-// import FooterCopyright from './FooterCopyright';
 
 const stories = storiesOf('Presslogic | Footer', module);
 stories.addDecorator(withKnobs);

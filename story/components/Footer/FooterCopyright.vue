@@ -4,7 +4,7 @@
         :style="{ 
             color: copyrightColor
         }"
-    >Copyright &copy; {{ new Date().getFullYear() }} {{ magazineName }}. All right reserved</div>
+    >Copyright &copy; {{ new Date().getFullYear() }} {{ magazineName }}. All rights reserved.</div>
 </template>
 
 <script>
