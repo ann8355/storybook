@@ -19,10 +19,10 @@
             <span :style="{color:hover? color :'#282828'}">{{truncate( post.title, 40) }}</span>
             <p v-if="device == 'desktop'">{{ post.description }}</p>
             <div class="small-bottom">
-                <div class="small-cat">
+                <div class="small-cat" v-if="catShow">
                     <a :style="{color: color}" v-if="post.cats[0]" :href="`${host}/category/${post.cats[0].slug}`">{{post.cats[0].name}}</a>
                 </div>
-                <div class="time-now">  
+                <div class="time-now" :style="{width: catShow ? '': '100%'}">  
                     {{ moment(post.post_date).fromNow() }}
                 </div>
             </div>
@@ -65,7 +65,10 @@ export default {
             type: Number,
             default: 300
         },
-        
+        catShow: {
+            type: Boolean,
+            default: true
+        }
     },
     data () {
         return {

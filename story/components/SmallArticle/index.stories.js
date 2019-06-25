@@ -45,6 +45,9 @@ stories.add(
             },
             post: {
                 default: object('post', post)
+            },
+            catShow: {
+                default: boolean('catShow', true)
             }
         },
         propsDescription: {
@@ -72,7 +75,7 @@ stories.add(
                 headerWidth: 'header 寬度'
             }
         },
-        template: `<SmallArticle :post="post" :device="device" :host="host" :static_host="static_host" :active="active" :color="color" :imgWidth="imgWidth" :headerWidth="headerWidth"  />`
+        template: `<SmallArticle :post="post" :device="device" :host="host" :static_host="static_host" :active="active" :color="color" :imgWidth="imgWidth" :headerWidth="headerWidth" :catShow="catShow" />`
     }),
     {
         notes: `
