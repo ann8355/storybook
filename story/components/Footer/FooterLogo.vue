@@ -8,7 +8,8 @@
             }"
         >
             <img
-                :src="companyLogoReference"
+                :src="`${staticHost}/images/loading.png`"
+                v-lazy="`${staticHost}${companyLogoReference}`"
                 :style="{ height: `${logoHeight}px` }"
             >
         </a>
@@ -19,8 +20,9 @@
                 height: `${logoHeight}px`
             }"
         >
-            <img 
-                :src="magazineLogoReference"
+            <img
+                :src="`${staticHost}/images/loading.png`"
+                v-lazy="`${staticHost}${magazineLogoReference}`"
                 :style="{ height: `${logoHeight}px` }"
             >
         </a>
@@ -30,21 +32,23 @@
 <script>
 export default {
     props:{
+        staticHost: {
+            type: String,
+            default: 'https://assets.presslogic.com/presslogic-hk-hd'
+        },
         companyLogoReference: {
             type: String,
-            default: 'https://assets.presslogic.com/presslogic-hk-hd/images/presslogic_logo_PL_white.png'
+            default: '/images/presslogic_logo_PL_white.png'
         },
         companyLink: {
             type: String,
             default: 'https://www.presslogic.com/'
         },
         magazineLogoReference: {
-            type: String,
-            default: 'https://assets.presslogic.com/girlstyle-hk/images/girls/logo_HK.png'
+            type: String
         },
         magazineLink: {
-            type: String,
-            default: 'https://pretty.presslogic.com/'
+            type: String
         },
         logoHeight: {
             type: Number,

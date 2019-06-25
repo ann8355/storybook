@@ -10,7 +10,8 @@
         <Logo
             v-bind="{ 
                 logoHeight,
-                spacingBetweenLogoAndDividingline, 
+                spacingBetweenLogoAndDividingline,
+                staticHost,
                 companyLogoReference,
                 companyLink,
                 magazineLogoReference,
@@ -63,17 +64,20 @@ export default {
             type: Boolean,
             default: true
         },
+        staticHost: {
+            type: String,
+            default: 'https://assets.presslogic.com/presslogic-hk-hd'
+        },
         companyLogoReference: {
             type: String,
-            default: 'https://assets.presslogic.com/presslogic-hk-hd/images/presslogic_logo_PL_white.png'
+            default: '/images/presslogic_logo_PL_white.png'
         },
         companyLink: {
             type: String,
             default: 'https://www.presslogic.com/'
         },
         magazineLogoReference: {
-            type: String,
-            default: 'https://assets.presslogic.com/girlstyle-hk/images/girls/logo_HK.png'
+            type: String
         },
         magazineLink: {
             type: String,
