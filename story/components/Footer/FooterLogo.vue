@@ -56,7 +56,7 @@ export default {
         },
         spacingBetweenLogoAndDividingline: {
             type: Number,
-            default: 20
+            default: 30
         }
     },
     watch: {},

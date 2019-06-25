@@ -11,6 +11,7 @@
                         marginRight: (i < navLinkList.length-1) ? `${spacingBetweenNavlinks}px` : '0'
                     }"
                     :href="link.reference"
+                    :rel="link.isExternalLink && 'noopener noreferrer'"
                     :target="link.isExternalLink ? '_blank': '_self'"
                 >{{ link.name }}</a>
             </li>
@@ -22,24 +23,21 @@
 export default {
     props:{
         navLinkList: {
-            type: Array,
-            default: []
+            type: Array
         },
         navLinkColor: {
             type: String,
-            default: 'black'
+            default: 'white'
         },
         spacingBetweenNavlinks: {
             type: Number,
             default: 20
         },
         spacingBetweenLogoAndNavlink: {
-            type: Number,
-            default: 0
+            type: Number
         },
         spacingBetweenNavlinkAndCopyright: {
-            type: Number,
-            default: 0
+            type: Number
         },
     },
     watch: {},

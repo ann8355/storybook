@@ -4,7 +4,7 @@
         :style="{ 
             color: copyrightColor
         }"
-    >Copyright &copy; {{ new Date().getFullYear() }} PressLogic {{ magazineName }}. All right reserved</div>
+    >Copyright &copy; {{ new Date().getFullYear() }} {{ magazineName }}. All right reserved</div>
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
     props:{
         copyrightColor: {
             type: String,
-            default: 'black'
+            default: 'white'
         },
         magazineName: {
             type: String,
