@@ -1,16 +1,14 @@
 <template>
-    <a :href="href" :target="target">
-        <div class="postcell-box" :style="{width: `${width}px`}" @mouseover="hover=true" @mouseleave="hover=false" :title="hoverTitle">
-            <img :src="src" />
-            <div class="article-info">
-                <div class="article-title" :style="{color: titleColor, fontSize: titleFontSize}">{{title}}</div>
-                <div>
-                    <div class="article-category" :style="{color: mainColor, fontSize: categoryFontSize}">{{category}}</div>
-                    <div class="article-post-date" :style="{fontSize: postDateFontSize}">{{postDate}}</div>
-                </div>
+    <div class="postcell-box" :style="{width: `${width}px`}" :title="title" @mouseover="mouseover" @mouseleave="mouseleave" @click="click">
+        <img :src="src" />
+        <div class="article-info">
+            <div class="article-title" :style="procTitleStyle">{{title}}</div>
+            <div>
+                <div class="article-category" :style="procCategoryStyle">{{category}}</div>
+                <div class="article-post-date" :style="procPostDateStyle">{{postDate}}</div>
             </div>
         </div>
-    </a>
+    </div>
 </template>
 
 <script>
@@ -31,14 +29,9 @@ export default {
             required: true,
             default: ''
         },
-        href: {
-            type: String,
-            required: true,
-            default: ''
-        },
         width: {
             type: Number,
-            default: 300
+            default: 240
         },
         category: {
             type: String,
@@ -48,25 +41,17 @@ export default {
             type: String,
             default: ''
         },
-        titleSize: {
-            type: [Number, String],
-            default: 14
+        titleStyle: {
+            type: Object,
+            default: {}
         },
-        categorySize: {
-            type: [Number, String],
-            default: 12
+        categoryStyle: {
+            type: Object,
+            default: {}
         },
-        postDateSize: {
-            type: [Number, String],
-            default: 12
-        },
-        target: {
-            type: String,
-            default: '_blank'
-        },
-        hoverTitle: {
-            type: String,
-            default: ''
+        postDateStyle: {
+            type: Object,
+            default: {}
         },
     },
     data () {
@@ -76,16 +61,31 @@ export default {
     },
     computed: {
         titleColor () {
-            return (this.hover? this.mainColor: '');
+            let c = this.titleStyle.color || '';
+
+            return (this.hover? this.mainColor: c);
         },
-        titleFontSize() {
-            return (this.titleSize || 14) + 'px';
+        procTitleStyle () {
+            return Object.assign({}, this.titleStyle, {color: this.titleColor});
         },
-        categoryFontSize () {
-            return (this.categorySize || 12) + 'px';
+        procCategoryStyle () {
+            return Object.assign({}, this.categoryStyle, {color: this.mainColor});
         },
-        postDateFontSize () {
-            return (this.postDateSize || 12) + 'px';
+        procPostDateStyle () {
+            return Object.assign({}, this.postDateStyle);
+        }
+    },
+    methods: {
+        mouseover () {
+            this.hover = true;
+            this.$emit('postCellMouseOver');
+        },
+        mouseleave () {
+            this.hover = false;
+            this.$emit('postCellMouseLeave');
+        },
+        click (e) {
+            this.$emit('postCellClick');
         },
     },
 }
@@ -98,12 +98,8 @@ a {
 .postcell-box {
     display: inline-block;
     color: #282828;
-    min-width: 240px;
-
-    /* tmp */
-    padding: 10px;
-    box-shadow: 1px 1px 5px #a0a0a0;
-    margin: 0px;
+    min-width: 200px;
+    cursor: pointer;
 }
 
 .postcell-box img {
