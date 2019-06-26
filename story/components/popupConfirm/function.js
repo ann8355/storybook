@@ -15,7 +15,7 @@ const popup = options => {
     // 插件 init
     function init() {
         // 解構外部所有自訂參數
-        const { ...rest } = options;
+        const { ...rest } = options || {}; ;
 
         popupInstance = new PopupConfirmConstructor({
             // 外部自訂參數帶入
