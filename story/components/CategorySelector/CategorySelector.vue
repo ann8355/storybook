@@ -1,29 +1,44 @@
 <template>
-    <div class="category-selector" :style="{ 'margin-left':device=='desktop' ? '-10px' : '0px' }">
+    <div
+        v-if="hasCategories"
+        :style="deviceIsDesktop && 'margin-left: -10px'"
+        class="category-selector"
+    >
         <el-row>
-        <span
-            @click="changeCategory({ slug: 'page', id: 0 })"
-            :class="{ active: active === 'page' }"
-            :style="{ color: active === 'page' ? color : '#aaa' }"
+            <span
+                @click="changeCategory({ slug: 'page', id: 0 })"
+                :class="{ active: active === 'page' }"
+            >
+                {{ latestArticles }}
+            </span>
+            <div>
+                <span 
+                    v-for="category in categoryOutOfLayer"
+                    :key="category.slug"
+                    @click="changeCategory(category)"
+                    :class="{ active: active === category.slug }"
+                >
+                    {{ category.name }}
+                </span>
+            </div>
+            <el-button 
+                class="down"
+                icon="el-icon-arrow-down"
+                @click="isLayerShowing=!isLayerShowing"
+            ></el-button>
+        </el-row>
+        <el-row 
+            v-show="isLayerShowing"
+            class="layer"
         >
-        {{ latestArticles }}
-        </span>
-        <div>
-            <span v-for="category in cats1"
+            <span 
+                v-for="category in categoryInLayer"
                 :key="category.slug"
                 @click="changeCategory(category)"
                 :class="{ active: active === category.slug }"
-                :style="{ color: active === category.slug ? color : '#aaa' }">{{ category.name }}</span>
-        </div>
-        <el-button class="down" icon="el-icon-arrow-down"  @click="show=!show">
-        </el-button>
-        </el-row>
-        <el-row class="layer" v-show="show">
-        <span v-for="category in cats2"
-            :key="category.slug"
-            @click="changeCategory(category)"
-            :class="{ active: active === category.slug }"
-            :style="{ color: active === category.slug ? color : '#aaa' }">{{ category.name }}</span>
+            >
+                {{ category.name }}
+            </span>
         </el-row>
     </div>
 </template>
@@ -48,15 +63,20 @@ export default {
     },
     data(){
         return {
-            // 變數命名要調整
-            show: false,
             active: 'page',
-            cats1 : [],
-            cats2 : []
+            isLayerShowing: false,
+            categoryOutOfLayer : [],
+            categoryInLayer : []
         }
     },
     watch: {},
     computed: {
+        hasCategories() {
+            return Boolean(this.categories.length)
+        },
+        deviceIsDesktop() {
+            return this.device==='desktop'
+        },
         latestArticles() {
             if (this.categorySelectorIsEnglish) {
                 return 'Latest Articles'
@@ -69,20 +89,20 @@ export default {
     },
     created() {
         for(var i in this.categories){
-            var j = this.device === 'desktop' ? 2 : 1
+            var j = this.deviceIsDesktop ? 2 : 1
             if (i < j) {
-                this.cats1.push(this.categories[i])
+                this.categoryOutOfLayer.push(this.categories[i])
             } else {
-                this.cats2.push(this.categories[i])
+                this.categoryInLayer.push(this.categories[i])
             }
         }
     },
     mounted () {},
     destroyed () {},
     methods: {
-        changeCategory(val) {
-            this.active = val.slug
-            this.$emit('changeCat', val.id)
+        changeCategory(category) {
+            this.active = category.slug
+            this.$emit('changeCategory', category.id)
         },
     }
 }
