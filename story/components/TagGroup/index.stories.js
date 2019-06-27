@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { withKnobs, color, boolean, object, select } from '@storybook/addon-knobs';
+import { withKnobs, color, boolean, object, select, number } from '@storybook/addon-knobs';
 import Index from './TagGroup';
 import Tag from './Tag';
 
@@ -53,11 +53,17 @@ stories.add(
                     }
                 ])
             },
-            mainColor: {
-                default: color('Tag 背景色', '#ffafa0')
-            },
             labelIsEnglish: {
                 default: boolean('標籤是英文', false)
+            },
+            spacingBetweenTags: {
+                default: number('Tag 之間的間距', 10)
+            },
+            tagStyleProps: {
+                default: object('自定義 Tag 樣式', {
+                    "borderRadius": "5px",
+                    "background": "blue"
+                })
             }
         },
         propsDescription: {
@@ -66,16 +72,18 @@ stories.add(
                 device: '選擇裝置',
                 countryPath: 'GirlStyle 區域路徑',
                 tags: 'Tags 內容',
-                mainColor: 'Tag 背景色',
-                labelIsEnglish: '語言是英文'
+                labelIsEnglish: '語言是英文',
+                spacingBetweenTags: 'Tag 之間的間距',
+                tagStyleProps: '自定義 Tag 樣式'
             }
         },
         template: `<Index
             :device="device"
             :countryPath="countryPath"
             :tags="tags"
-            :mainColor="mainColor"
             :labelIsEnglish="labelIsEnglish"
+            :spacingBetweenTags="spacingBetweenTags"
+            :tagStyleProps="tagStyleProps"
         />`,
     }),
     {
@@ -109,22 +117,25 @@ stories.add(
                     slug: 'tagSlug'
                 })
             },
-            mainColor: {
-                default: color('Tag 背景色', '#ffafa0')
-            },
+            tagStyleProps: {
+                default: object('自定義 Tag 樣式', {
+                    "borderRadius": "5px",
+                    "background": "blue"
+                })
+            }
         },
         propsDescription: {
             Tag: {
                 countryPath: 'GirlStyle 區域路徑',
                 tags: 'Tags 內容',
-                mainColor: 'Tag 背景色',
+                tagStyleProps: '自定義 Tag 樣式'
             }
         },
         template: `<div style="padding: 10px;">
             <Tag
                 :countryPath="countryPath"
-                :mainColor="mainColor"
                 :tag="tag"
+                :tagStyleProps="tagStyleProps"
             />
         </div>`,
     }),

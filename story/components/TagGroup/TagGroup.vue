@@ -9,10 +9,11 @@
             <Tag
                 v-for="tag in tags"
                 :key="tag.name"
+                :style="`margin-right: ${spacingBetweenTags}px`"
                 v-bind="{
                     tag,
-                    mainColor,
                     countryPath,
+                    tagStyleProps
                 }"
             />
         </p>
@@ -39,12 +40,15 @@ export default {
             type: String,
             default: ''
         },
-        mainColor: {
-            type: String,
-            default: '#ffafa0'
-        },
         tags: {
             type: Array,
+        },
+        spacingBetweenTags:{
+            type: Number,
+            default: 10
+        },
+        tagStyleProps: {
+            type: Object
         },
     },
     watch: {},

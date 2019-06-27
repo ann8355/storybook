@@ -1,7 +1,7 @@
 <template>
     <a
         :href="`${countryPath}/tag/${encodeURIComponent(tag.slug)}`"
-        :style="{ background: mainColor }"
+        :style="tagStyle"
         target="_blank"
         rel="noopener noreferrer"
     >
@@ -16,9 +16,8 @@ export default {
             type: String,
             default: ''
         },
-        mainColor: {
-            type: String,
-            default: '#ffafa0'
+        tagStyleProps: {
+            type: Object
         },
         tag: {
             type: Object,
@@ -28,7 +27,11 @@ export default {
         },
     },
     watch: {},
-    computed: {},
+    computed: {
+        tagStyle () {
+            return Object.assign({}, this.tagStyleProps);
+        }
+    },
     data() {
         return {}
     },
@@ -43,9 +46,10 @@ a {
     display: inline-block;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
+    background: #ffafa0;
     border-radius: 5px;
     margin: 0 10px 7px 0;
-    padding: 7px 15px 10px;
+    padding: 7px 15px;
     line-height: 16px;
     letter-spacing: 2px;
     font-size: 16px;
