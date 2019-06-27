@@ -1,0 +1,10 @@
+{
+    "name": "@presslogic/carousel",
+    "version": "1.0.0",
+    "description": "Presslogic Carousel",
+    "author": "Tim",
+    "private": true,
+    "scripts": {
+        "build-b": "vue-cli-service build --target lib --name Carousel ./Carousel.vue"
+    }
+}

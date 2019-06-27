@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import PopupMessage from '../story/components/popupMessage/popupMessage';
 import '../story/components/popupMessage/popupMessage.css';
 import truncate from 'html-truncate'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueLazyLoad from 'vue-lazyload'
 Vue.use(VueLazyLoad,{
   error:'/images/loading.png',
@@ -14,6 +15,7 @@ Vue.use(VueLazyLoad,{
 
 Vue.use(elementUI);
 Vue.use(PopupMessage);
+Vue.use(VueAwesomeSwiper)
 Vue.filter('truncate', function (text, length) {
     text = text || '';
     length = length || 30;
