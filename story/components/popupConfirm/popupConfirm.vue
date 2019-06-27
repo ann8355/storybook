@@ -24,11 +24,11 @@ export default {
         },
         title: {
             type: String,
-            default: '這是標題...'
+            default: ''
         },
         desc: {
             type: String,
-            default: '這是內文...',
+            default: '',
         },
         confirmBtnText: {
             type: String,
