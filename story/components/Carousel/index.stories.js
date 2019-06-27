@@ -1,4 +1,3 @@
-// TODO: 在專案中使用顯示正常，但在 StoryBook 環境中顯示異常
 import { storiesOf } from '@storybook/vue';
 import { withKnobs, color, object, select } from '@storybook/addon-knobs';
 import Index from './Carousel';
@@ -89,7 +88,9 @@ stories.add(
 
             [ 事件方法 ]
             無
-
+            [ TODO ]
+            - 在專案中使用顯示正常，但在 StoryBook 環境中顯示異常
+            
             作者：Tim
         `,
         info: {

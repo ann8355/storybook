@@ -1,6 +1,5 @@
 <template>
     <div style="height:440px; margin-bottom:20px; overflow:hidden">
-        <div v-show="!hasPosts">No Posts</div>
         <div 
             v-show="hasPosts"
             v-swiper:mySwiper="swiperOption"
