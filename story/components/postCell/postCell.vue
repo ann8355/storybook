@@ -100,6 +100,9 @@ a {
     color: #282828;
     min-width: 200px;
     cursor: pointer;
+    padding: 5px 5px 10px 5px;
+    margin: 5px 5px 10px 5px;
+    border-bottom: 1px solid #e6e6e6;
 }
 
 .postcell-box img {
