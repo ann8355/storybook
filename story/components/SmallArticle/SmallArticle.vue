@@ -12,6 +12,7 @@
             <img 
                 :src="`${static_host}/images/loading.png`" 
                 v-lazy="`${post.image}?w=400&auto=format`" 
+                :key="`${post.image}?w=400&auto=format`"
                 :alt="post.title" 
                 :style="{width: device == 'desktop'? `${imgWidth}px`: '152px'}">
         </div>
