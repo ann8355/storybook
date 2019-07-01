@@ -8,13 +8,16 @@ import '../story/components/popupMessage/popupMessage.css';
 import truncate from 'html-truncate';
 import animate from 'animate.css';
 import 'animate.css/animate.min.css';
-import VueAwesomeSwiper from 'vue-awesome-swiper';
 import VueLazyLoad from 'vue-lazyload';
+import VueAwesomeSwiper from 'vue-awesome-swiper/dist/ssr';
+import 'swiper/dist/css/swiper.css';
+
 Vue.use(VueLazyLoad, {
     error: '/images/loading.png',
     loading: '/images/loading.png'
 });
 Vue.use(animate);
+
 Vue.use(elementUI);
 Vue.use(PopupMessage);
 Vue.use(VueAwesomeSwiper);
