@@ -1,27 +1,29 @@
 import { configure, addDecorator } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import Vue from 'vue';
-import elementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-import PopupMessage from '../story/components/popupMessage/popupMessage';
-import '../story/components/popupMessage/popupMessage.css';
-import truncate from 'html-truncate';
-import animate from 'animate.css';
-import 'animate.css/animate.min.css';
-import VueLazyLoad from 'vue-lazyload';
-import VueAwesomeSwiper from 'vue-awesome-swiper/dist/ssr';
-import 'swiper/dist/css/swiper.css';
 
-Vue.use(VueLazyLoad, {
-    error: '/images/loading.png',
-    loading: '/images/loading.png'
-});
-Vue.use(animate);
+import elementUI from 'element-ui';
+import PopupMessage from '../story/components/popupMessage/popupMessage';
+import truncate from 'html-truncate';
+import VueAwesomeSwiper from 'vue-awesome-swiper/dist/ssr';
+import VueLazyLoad from 'vue-lazyload';
+
+import 'swiper/dist/css/swiper.css';
+import 'video.js/dist/video-js.css';
+import 'video.js/dist/video-js.min.css';
+import 'videojs-youtube';
+import '../story/components/popupMessage/popupMessage.css';
+import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(elementUI);
 Vue.use(PopupMessage);
 Vue.use(VueAwesomeSwiper);
-Vue.filter('truncate', function(text, length) {
+Vue.use(VueLazyLoad,{
+  error:'/images/loading.png',
+  loading: '/images/loading.png'
+});
+
+Vue.filter('truncate', function (text, length) {
     text = text || '';
     length = length || 30;
 
