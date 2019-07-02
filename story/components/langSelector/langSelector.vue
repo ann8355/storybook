@@ -49,7 +49,13 @@ export default {
         selectedLang() {
             // 若外部傳遞的 lang 空值，將預設為 en
             this.currentLang = this.lang ? this.lang : 'en';
-            return this.language.find(item => item.code ===  this.currentLang);
+
+            let temp = this.language.find(item => item.code === this.currentLang);
+
+            // 若未找到符合資料，將預設回傳陣列第一筆語系資料
+            if (!temp) return this.language[0];
+
+            return temp;
         }
     },
     methods: {
