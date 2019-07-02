@@ -109,6 +109,10 @@ export default {
     vertical-align: middle;
     margin-right: 20px;
 }
+
+.small-article .img-box img{
+    height: 195px;
+}
 .small-article .article-header {
     display: inline-block;
     position: relative;
@@ -162,6 +166,7 @@ export default {
 .small-article.mobile .img-box img {
     max-width: initial;
     margin-left: -26px;
+    height: 80px;
 }
 
 .small-article.mobile .article-header {
