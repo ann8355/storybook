@@ -21,7 +21,7 @@
             <p v-if="device == 'desktop'">{{ post.description }}</p>
             <div class="small-bottom">
                 <div class="small-cat" v-if="catShow">
-                    <a :style="{color: color}" v-if="post.cats[0]" :href="`${host}/category/${post.cats[0].slug}`">{{post.cats[0].name}}</a>
+                    <a :style="{color: color}" v-if="cat" :href="`${host}/category/${cat.slug}`">{{cat.name}}</a>
                 </div>
                 <div class="time-now" :style="{width: catShow ? '': '100%'}">  
                     {{ moment(post.post_date).fromNow() }}
@@ -73,7 +73,8 @@ export default {
     },
     data () {
         return {
-            hover: this.active
+            hover: this.active,
+            cat: []
         }
     },
     methods: {
@@ -93,8 +94,16 @@ export default {
         },
         click() {
             this.$emit('smallArticleClick', this.hover);
+        },
+        getCat(post){
+            if(post.cats[0] !== undefined) {
+                this.cat = post.cats[0]
+            }
         }
     },
+    mounted() {
+        this.getCat(this.post)
+    }
 }
 </script>
 <style scoped>

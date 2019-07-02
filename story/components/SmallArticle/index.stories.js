@@ -11,7 +11,11 @@ const post = {
     "image":"https://images.girlsdaily.com/wp-content/uploads/2019/03/奶蜜.jpg",
     "url":"/article/87717/一秒變身浪漫花神-唯美春季大勢色-奶蜜裸棕-冷粹咖啡-輕柔光線穿透感自帶仙氣",
     "terms":[5,80,7470,7471,7472],
-    "cats":[{"name":"髮型","slug":"%e9%ab%ae%e5%9e%8b","id":5}]}
+    "cats":[
+        {"name":"髮型","slug":"%e9%ab%ae%e5%9e%8b","id":5},
+        {"name":"帥哥","slug":"帥哥","id":4}
+    ]
+}
 
 const deviceType = ['desktop','mobile']
 

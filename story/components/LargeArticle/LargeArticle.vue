@@ -17,7 +17,7 @@
             :style="{width: device == 'desktop'? `${maxWidth}px`: ''}">
         <div class="article-header">
             <div class="large-cat">
-                <a v-if="post.cats[0]" :style="{color: color}" :href="`${host}/category/${post.cats[0].slug}`">{{post.cats[0].name}}</a>
+                <a v-if="cat" :style="{color: color}" :href="`${host}/category/${cat.slug}`">{{cat.name}}</a>
             </div>
             <span :style="{color:hover? color :'#282828'}">{{ post.title }}</span>
             <p v-if="device == 'desktop'">{{ truncate( post.description , 45) }}</p>
@@ -62,7 +62,8 @@ export default {
     },
     data () {
         return {
-            hover: this.active
+            hover: this.active,
+            cat: []
         }
     },
     methods: {
@@ -82,8 +83,16 @@ export default {
         },
         click() {
             this.$emit('largeArticleClick', this.hover);
+        },
+        getCat(post){
+            if(post.cats[0] !== undefined) {
+                this.cat = post.cats[0]
+            }
         }
     },
+    mounted() {
+        this.getCat(this.post)
+    }
 }
 </script>
 <style scoped>
@@ -102,7 +111,8 @@ export default {
     border-bottom: 1px solid #f0f0f0;
 }
 .large-article .article-header .large-cat{
-    padding: 15px 0;
+    height: 55px;
+    line-height: 55px;
     font-size: 18px;
 }
 .large-article .article-header span {
@@ -148,6 +158,8 @@ export default {
     left: 3px;
     bottom: 8px;
     padding: 0;
+    height: initial;
+    line-height: initial;
 }
 
 .large-article.mobile .article-header .time-now {
