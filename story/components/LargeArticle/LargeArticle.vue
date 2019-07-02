@@ -17,7 +17,7 @@
             :style="{width: device == 'desktop'? `${maxWidth}px`: ''}">
         <div class="article-header">
             <div class="large-cat">
-                <a v-if="post.cats[0]" :style="{color: color}" :href="`${host}/category/${post.cats.slug}`">{{post.cats[0].name}}</a>
+                <a v-if="post.cats[0]" :style="{color: color}" :href="`${host}/category/${post.cats[0].slug}`">{{post.cats[0].name}}</a>
             </div>
             <span :style="{color:hover? color :'#282828'}">{{ post.title }}</span>
             <p v-if="device == 'desktop'">{{ truncate( post.description , 45) }}</p>
