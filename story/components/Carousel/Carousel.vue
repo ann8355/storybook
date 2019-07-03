@@ -14,7 +14,6 @@
                     v-for="(post, index) in posts"
                     :key="post.id"
                 >  
-                    <!-- 要改版本號 -->
                     <component
                         :is="currentComponent"
                         v-bind="{
