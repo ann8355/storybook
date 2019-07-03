@@ -2,12 +2,11 @@ import { storiesOf } from '@storybook/vue';
 import { withKnobs, text, color, number, boolean, object, select } from '@storybook/addon-knobs';
 import VideoPlayer from './VideoPlayer.vue';
 
-const stories = storiesOf('Presslogic|element/VideoPlayer', module);
+const stories = storiesOf('Presslogic|video/VideoPlayer', module);
 const youtubeOptions = {
     autoplay: true,
     controls: true,
-    width: '600',
-    height: '400',
+    width: '700',
     poster: 'https://images.girlsdaily.com/wp-content/uploads/2019/03/奶蜜.jpg?w=400&auto=format',
     techOrder: ['youtube'],
     sources: [
@@ -20,8 +19,7 @@ const youtubeOptions = {
 const MP4Options = {
     autoplay: true,
     controls: true,
-    width: '600',
-    height: '400',
+    width: '700',
     poster: 'https://images.girlsdaily.com/wp-content/uploads/2019/03/奶蜜.jpg?w=400&auto=format',
     sources: [
         {

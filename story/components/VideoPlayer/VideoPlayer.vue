@@ -1,13 +1,11 @@
 <template>
-    <div>
-        <video
-            id="player"
-            class="video-js"
-            @play="onPlayerPlay($event)"
-            @pause="onPlayerPause($event)"
-            @ended="onPlayerEnded($event)"
-        ></video>
-    </div>
+    <video
+        id="player"
+        class="video-js"
+        @play="onPlayerPlay($event)"
+        @pause="onPlayerPause($event)"
+        @ended="onPlayerEnded($event)"
+    ></video>
 </template>
 <script>
 import videojs from 'video.js'
@@ -15,6 +13,9 @@ export default {
     props: {
         options: {
             type: Object
+        },
+        url: {
+            type: String,
         }
     },
     data () {
@@ -23,7 +24,7 @@ export default {
         }
     },
     methods: {
-        videott() {
+        videoOptions() {
             this.player = videojs('player', this.options)
         },
         onPlayerPlay(player) {
@@ -34,10 +35,10 @@ export default {
         },
         onPlayerEnded(player) {
             console.log('player Ended!', player)
-        },
+        }
     },
     mounted () {
-        this.videott();
+        this.videoOptions();
     },
     beforeDestroy() {
         if (this.player) {
