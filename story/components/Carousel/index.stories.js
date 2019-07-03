@@ -145,7 +145,7 @@ stories.add(
             slides: {
                 default: select('顯示幾個 slide ？', COLUMN_OPTIONS, DEFAULT_COLUMN_OPTINS)
             },
-            method: {
+            slideContentType: {
                 default: select('輪播內容', SLIDE_OPTIONS, DEFAULT_SlIDE_OPTINS)
             },
 
@@ -176,7 +176,6 @@ stories.add(
             speedWhenSwitchView: {
                 default: number('分頁切換速度延遲（ms）', 1000)
             }
-            
         },
         propsDescription: {
             Index: {
@@ -184,7 +183,7 @@ stories.add(
                 regionPath: 'GirlStyle 區域路徑',
                 posts: '文章內容',
                 slides: '顯示幾個 slide ？',
-                method: '',
+                slideContentType: 'Slide 的內容（1: 首頁輪播 0: 404 頁文章輪播）',
                 mainColor: '識別色',
                 spaceBetweenSlide: 'Slide 的間距（px）',
                 isNavShowing: '顯示導覽按鈕',
@@ -195,11 +194,12 @@ stories.add(
                 speedWhenSwitchView: '分頁切換速度延遲（ms）'
             }
         },
+        // 如果要傳 function 要怎麼做？
         template: `<Index 
             :regionPath="regionPath"
             :posts="posts"
             :slides="slides"
-            :method="method"
+            :slideContentType="slideContentType"
             :mainColor="mainColor"
             :spaceBetweenSlide="spaceBetweenSlide"
             :isNavShowing="isNavShowing"

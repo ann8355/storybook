@@ -2,6 +2,7 @@
     <div style="display: flex; margin-bottom:20px; overflow:hidden; align-items: center;">
         <IconButton
             v-if="isNavShowing"
+            class="prev-element"
             direction="el-icon-arrow-left"
             :customStyle="{ background: mainColor }"
         />
@@ -29,7 +30,8 @@
             <div v-if="isSwiperPaginationShowing" class="swiper-pagination"></div>
         </div>
         <IconButton 
-            v-if="isNavShowing" 
+            v-if="isNavShowing"
+            class="next-element"
             direction="el-icon-arrow-right"
             :customStyle="{ background: mainColor }"
         />
@@ -53,15 +55,16 @@ export default {
         // Data
         regionPath: {
             type: String,
+            default: ''
         },
         posts: {
             type: Array
         },
         slides: {
             type: Number,
-            default: 3
+            default: 1
         },
-        method: {
+        slideContentType: {
             type: Number,
             default: 1
         },
@@ -69,6 +72,7 @@ export default {
         // Style
         mainColor: {
             type: String,
+            default: 'ffafa0'
         },
         spaceBetweenSlide: {
             type: Number,
@@ -76,6 +80,7 @@ export default {
         },
         isNavShowing: {
             type: Boolean,
+            default: false
         },
         isSwiperPaginationShowing: {
             type: Boolean,
@@ -108,15 +113,15 @@ export default {
     },
     data() {
         return {
-            currentComponent: this.method ? 'PinnedPost' : 'Hottest',
-            loading: true, // ???
+            currentComponent: this.slideContentType ? 'PinnedPost' : 'Hottest',
+            loading: true,
             swiperOption: {
                 lazy: true,
-                navigation: { prevEl: '.el-icon-arrow-left', nextEl: '.el-icon-arrow-right' },
+                navigation: { prevEl: '.prev-element', nextEl: '.next-element' },
                 pagination: {
                     el: '.swiper-pagination',
-                    bulletActiveClass: 'my-bullet-active', // ???
-                    clickable: true // ???
+                    bulletActiveClass: 'my-bullet-active',
+                    clickable: true
                 },
                 loop: this.isInfiniteLoop,
                 autoplay: this.isAutoplay && { delay: this.autoplayDelay, disableOnInteraction: false },
