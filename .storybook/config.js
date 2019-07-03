@@ -6,8 +6,10 @@ import 'element-ui/lib/theme-chalk/index.css';
 import PopupMessage from '../story/components/popupMessage/popupMessage';
 import '../story/components/popupMessage/popupMessage.css';
 import truncate from 'html-truncate'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
+import VueAwesomeSwiper from 'vue-awesome-swiper/dist/ssr'
+import 'swiper/dist/css/swiper.css'
 import VueLazyLoad from 'vue-lazyload'
+
 Vue.use(VueLazyLoad,{
   error:'/images/loading.png',
   loading: '/images/loading.png'

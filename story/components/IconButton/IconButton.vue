@@ -1,11 +1,12 @@
 <template>
-        <div class="icon-btn" 
+        <div 
+            class="icon-btn" 
             :class="{'icon-btn-hover': active }"
             @click="click()"
             @mouseover="mouseover()"
             @mouseleave="mouseleave()"
             :style="btnStyle" 
-            >
+        >
             <i :class="direction"></i>
         </div>
 </template>
