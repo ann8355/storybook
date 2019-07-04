@@ -3,6 +3,8 @@ import { withKnobs, text, color, number, boolean, object, select } from '@storyb
 import VideoPlayer from './VideoPlayer.vue';
 
 const stories = storiesOf('Presslogic|video/VideoPlayer', module);
+
+// 使用 video-youtube 時 
 const youtubeOptions = {
     autoplay: true,
     controls: true,
@@ -11,22 +13,19 @@ const youtubeOptions = {
     techOrder: ['youtube'],
     sources: [
         {
-            src:'https://www.youtube.com/watch?v=uNjny3_HaxA',
+            src:'https://www.youtube.com/watch?v=Qbp7_IPbugI',
             type: 'video/youtube'
         }
     ]
 };
+
+// -----------------------------------
+
 const MP4Options = {
     autoplay: true,
     controls: true,
     width: '700',
-    poster: 'https://images.girlsdaily.com/wp-content/uploads/2019/03/奶蜜.jpg?w=400&auto=format',
-    sources: [
-        {
-            type: 'video/mp4',
-            src:'//vjs.zencdn.net/v/oceans.mp4'
-        }
-    ]
+    someOption: true,
 };
 
 stories.addDecorator(withKnobs);
@@ -38,13 +37,25 @@ stories.add(
             options: {
                 default: object('post', MP4Options)
             },
+            url: {
+                default: text('url', '//vjs.zencdn.net/v/oceans.mp4')
+            },
+            image: {
+                default: text('image', 'https://images.girlsdaily.com/wp-content/uploads/2019/03/奶蜜.jpg?w=400&auto=format') 
+            },
+            type: {
+                default: text('type', 'mp4') 
+            }
         },
         propsDescription: {
             VideoPlayer: {
-
+                options: 'video 設定參數',
+                url: 'video url',
+                image: 'video 封面圖片',
+                type: '影片類型'
             }
         },
-        template: `<VideoPlayer :options="options" />`
+        template: `<VideoPlayer :options="options" :url="url" :image="image" :type="type" />`
     }),
     {
         notes: `
@@ -53,10 +64,10 @@ stories.add(
 
         [ 注意事項 ]
 
-        1. 安裝此元件前須確認該專案已有‘video.js’,'videojs-youtube',套件
+        1. 安裝此元件前須確認該專案已有‘video.js’,套件
         `,
         info: {
-            summary: 'LargeArticle for Presslogic'
+            summary: 'VideoPlayer for Presslogic'
         }
     }
 );

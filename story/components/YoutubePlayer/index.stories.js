@@ -5,7 +5,7 @@ import YoutubePlayer from './YoutubePlayer.vue';
 const stories = storiesOf('Presslogic|video/YoutubePlayer', module);
 const playertype = {
     autoplay: 1,
-    controls: 0
+    controls: 1
 }
 
 stories.addDecorator(withKnobs);
@@ -15,19 +15,19 @@ stories.add(
         components: { YoutubePlayer },
         props: {
             url: {
-                default: text('url', 'https://www.youtube.com/watch?v=uNjny3_HaxA')
+                default: text('url', 'https://www.youtube.com/watch?v=Qbp7_IPbugI')
             },
-            playerVars: {
-                default: object('playerVars', playertype)
+            options: {
+                default: object('options', playertype)
             }
         },
         propsDescription: {
             YoutubePlayer: {
-                url: '',
-                playerVars: ''
+                options: 'Youtube 設定參數',
+                url: 'Youtube url',
             }
         },
-        template: `<YoutubePlayer :url="url" :playerVars="playerVars" />`
+        template: `<YoutubePlayer :url="url" :options="options" />`
     }),
     {
         notes: `
@@ -39,7 +39,7 @@ stories.add(
         1. 安裝此元件前須確認該專案已有‘vue-youtube’,'get-youtube-id',套件
         `,
         info: {
-            summary: 'LargeArticle for Presslogic'
+            summary: 'YoutubePlayer for Presslogic'
         }
     }
 );

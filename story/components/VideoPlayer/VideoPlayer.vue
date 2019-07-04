@@ -1,11 +1,16 @@
 <template>
-    <video
+    <div>
+        <video
         id="player"
         class="video-js"
+        :poster="image"
         @play="onPlayerPlay($event)"
         @pause="onPlayerPause($event)"
         @ended="onPlayerEnded($event)"
-    ></video>
+    >
+        <source :src="url" :type="`video/${type}`" />
+    </video>
+    </div>
 </template>
 <script>
 import videojs from 'video.js'
@@ -16,6 +21,15 @@ export default {
         },
         url: {
             type: String,
+            default: ''
+        },
+        image: {
+           type: String,
+            default: '' 
+        },
+        type: {
+            type: String,
+            default: ''
         }
     },
     data () {
@@ -28,13 +42,13 @@ export default {
             this.player = videojs('player', this.options)
         },
         onPlayerPlay(player) {
-            console.log('player play!', player)
+            this.$emit('onPlayerPlay', player);
         },
         onPlayerPause(player) {
-            console.log('player Pause!', player)
+            this.$emit('onPlayerPause', player);
         },
         onPlayerEnded(player) {
-            console.log('player Ended!', player)
+            this.$emit('onPlayerEnded', player);
         }
     },
     mounted () {

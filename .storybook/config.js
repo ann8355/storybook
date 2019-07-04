@@ -11,7 +11,6 @@ import truncate from 'html-truncate';
 import VueAwesomeSwiper from 'vue-awesome-swiper/dist/ssr';
 import 'swiper/dist/css/swiper.css';
 import 'video.js/dist/video-js.css';
-import 'videojs-youtube';
 import VueYoutube from 'vue-youtube';
 import getYouTubeID from 'get-youtube-id';
  

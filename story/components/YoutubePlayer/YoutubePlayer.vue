@@ -1,5 +1,14 @@
 <template>
-    <youtube :video-id="videoId" :player-vars="playerVars"></youtube>
+    <div>
+        <youtube
+        width="700" 
+        :video-id="videoId" 
+        :player-vars="options"
+        @playing="playing($event)"
+        @ended="ended($event)"
+        @paused="paused($event)"
+        ></youtube>
+    </div>
 </template>
 <script>
 import getYouTubeID from 'get-youtube-id';
@@ -9,7 +18,7 @@ export default {
             type: String,
             default: ''
         },
-        playerVars: {
+        options: {
             type: Object
         }
     },
@@ -21,7 +30,16 @@ export default {
   methods: {
     getId(url){
         this.videoId = getYouTubeID(url);
-    }
+    },
+    playing(player) {
+            this.$emit('onPlayerPlay', player);
+    },
+    ended(player) {
+            this.$emit('onPlayerEnded', player);
+    },
+    paused(player) {
+            this.$emit('onPlayerPause', player);
+    },
   },
       mounted() {
         this.getId(this.url)
