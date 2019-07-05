@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import { withKnobs, color, object, select, boolean, number } from '@storybook/addon-knobs';
-import Index from './Carousel';
+import PinnedPostCarousel from './PinnedPostCarousel/PinnedPostCarousel';
+import ArticleCarousel from './ArticleCarousel/ArticleCarousel';
 
 const stories = storiesOf('Presslogic | Carousel', module);
 stories.addDecorator(withKnobs);
@@ -118,22 +119,92 @@ const POSTS = [
     },
 ]
 
-const COLUMN_OPTIONS = {
-    '1 (default)': 1,
-    '3': 3
-};
-const DEFAULT_COLUMN_OPTINS = 1;
+stories.add(
+    'PinnedPostCarousel',
+    () => ({
+        components: { PinnedPostCarousel },
+        props: {
+            // Data
+            device: {
+                default: select('選擇裝置', {'桌機': 'desktop', '手機': 'mobile'}, 'desktop')
+            },
+            regionPath: {
+                default: select('GirlStyle 區域路徑', OPTIONS, DEFAULT_REGION)
+            },
+            posts: {
+                default: object('文章內容', POSTS)
+            },
 
-const SLIDE_OPTIONS = {
-    '首頁  (default)': 1,
-    '404 頁面': 0
-};
-const DEFAULT_SlIDE_OPTINS = 1;
+            // Style
+            mainColor: {
+                default: color('識別色', '#ffafa0')
+            },
+            isSwiperPaginationShowing: {
+                default: boolean('顯示頁籤', true)
+            },
+
+            // Animate
+            isInfiniteLoop: {
+                default: boolean('無窮循環', true)
+            },
+            isAutoplay: {
+                default: boolean('自動播放', true)
+            },
+            autoplayDelay: {
+                default: number('自動播放延遲（ms）', 5000)
+            },
+            speedWhenSwitchView: {
+                default: number('分頁切換速度延遲（ms）', 1000)
+            }
+        },
+        propsDescription: {
+            PinnedPostCarousel: {
+                // These description will appear in `description` column in props table
+                device: '裝置',
+                regionPath: 'GirlStyle 區域路徑',
+                posts: '文章內容',
+                mainColor: '識別色',
+                isSwiperPaginationShowing: '顯示頁籤',
+                isInfiniteLoop: '無窮循環',
+                isAutoplay: '自動播放',
+                autoplayDelay: '自動播放延遲（ms）',
+                speedWhenSwitchView: '分頁切換速度延遲（ms）'
+            }
+        },
+        // 如果要傳 function 要怎麼做？
+        template:
+            `<PinnedPostCarousel
+                :device="device"
+                :regionPath="regionPath"
+                :posts="posts"
+                :mainColor="mainColor"
+                :isSwiperPaginationShowing="isSwiperPaginationShowing"
+                :isInfiniteLoop="isInfiniteLoop"
+                :isAutoplay="isAutoplay"
+                :autoplayDelay="autoplayDelay"
+                :speedWhenSwitchView="speedWhenSwitchView"
+            />`,
+    }),
+    {
+        notes: `
+            [ 版本紀錄 ]
+            1.0.0 版
+
+            [ 事件方法 ]
+            無
+            
+            作者：Tim
+        `,
+        info: {
+            summary: '我只是個單純的 Carousel'
+        }
+    }
+);
 
 stories.add(
-    'Index',
+    'ArticleCarousel',
     () => ({
-        components: { Index },
+        components: { ArticleCarousel },
         props: {
             // Data
             regionPath: {
@@ -143,10 +214,10 @@ stories.add(
                 default: object('文章內容', POSTS)
             },
             slides: {
-                default: select('顯示幾個 slide ？', COLUMN_OPTIONS, DEFAULT_COLUMN_OPTINS)
+                default: select('顯示幾個 slide ？', { '桌機 （default)': 3, '手機': 1 }, 3)
             },
-            slideContentType: {
-                default: select('輪播內容', SLIDE_OPTIONS, DEFAULT_SlIDE_OPTINS)
+            isNavShowing: {
+                default: boolean('顯示導覽按鈕', true)
             },
 
             // Style
@@ -156,13 +227,9 @@ stories.add(
             spaceBetweenSlide: {
                 default: number('Slide 的間距（px）', 20)
             },
-            isNavShowing: {
-                default: boolean('顯示導覽按鈕', false)
+            articleMaxWidth: {
+                default: number('Article 寬度（px）', 270)
             },
-            isSwiperPaginationShowing: {
-                default: boolean('顯示頁籤', false)
-            },
-
             // Animate
             isInfiniteLoop: {
                 default: boolean('無窮循環', false)
@@ -178,16 +245,15 @@ stories.add(
             }
         },
         propsDescription: {
-            Index: {
+            ArticleCarousel: {
                 // These description will appear in `description` column in props table
                 regionPath: 'GirlStyle 區域路徑',
                 posts: '文章內容',
                 slides: '顯示幾個 slide ？',
-                slideContentType: 'Slide 的內容（1: 首頁輪播 0: 404 頁文章輪播）',
+                isNavShowing: '顯示導覽按鈕',
                 mainColor: '識別色',
                 spaceBetweenSlide: 'Slide 的間距（px）',
-                isNavShowing: '顯示導覽按鈕',
-                isSwiperPaginationShowing: '顯示頁籤',
+                maxWidth: 'Article 寬度',
                 isInfiniteLoop: '無窮循環',
                 isAutoplay: '自動播放',
                 autoplayDelay: '自動播放延遲（ms）',
@@ -195,25 +261,25 @@ stories.add(
             }
         },
         // 如果要傳 function 要怎麼做？
-        template: `<Index 
-            :regionPath="regionPath"
-            :posts="posts"
-            :slides="slides"
-            :slideContentType="slideContentType"
-            :mainColor="mainColor"
-            :spaceBetweenSlide="spaceBetweenSlide"
-            :isNavShowing="isNavShowing"
-            :isSwiperPaginationShowing="isSwiperPaginationShowing"
-            :isInfiniteLoop="isInfiniteLoop"
-            :isAutoplay="isAutoplay"
-            :autoplayDelay="autoplayDelay"
-            :speedWhenSwitchView="speedWhenSwitchView"
-        />`,
+        template: 
+            `<ArticleCarousel 
+                :regionPath="regionPath"
+                :posts="posts"
+                :slides="slides"
+                :isNavShowing="isNavShowing"
+                :mainColor="mainColor"
+                :spaceBetweenSlide="spaceBetweenSlide"
+                :maxWidth="articleMaxWidth"
+                :isInfiniteLoop="isInfiniteLoop"
+                :isAutoplay="isAutoplay"
+                :autoplayDelay="autoplayDelay"
+                :speedWhenSwitchView="speedWhenSwitchView"
+            />`,
     }),
     {
         notes: `
             [ 版本紀錄 ]
-            2.0.0 版
+            1.0.0 版
 
             [ 事件方法 ]
             無

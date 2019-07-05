@@ -12,6 +12,7 @@
             <img 
                 class="image swiper-lazy"
                 :data-src="`${post.image}?auto=format&w=830`"
+                :alt="post.title"
             >
             <div class="swiper-lazy-preloader-white"></div>
             <div class="block">
