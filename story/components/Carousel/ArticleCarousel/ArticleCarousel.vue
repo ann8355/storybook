@@ -11,19 +11,24 @@
         />
         <div
             v-swiper:mySwiper="swiperOption"
+            :style="`width: ${ swiperWidth }px `"
         >
-            <div class="swiper-wrapper">                
+            <div 
+                class="swiper-wrapper"
+                :style="`width: ${ swiperWidth }px`"
+            >
                 <Slide
                     v-for="(post, index) in posts"
                     :key="post.id"
+                    :maxWidth="maxWidth"
                 >  
                     <Hottest
                         v-bind="{
                             post,
                             index,
                             regionPath,
-                            mainColor,
-                            maxWidth
+                            maxWidth,
+                            color: mainColor,
                         }"
                         @setPost="$emit('setPost', post)"
                     />
@@ -46,16 +51,13 @@ import Hottest from '../../SidebarHottestArticle/SidebarHottestArticle'
 
 export default {
     extends: Carousel,
+    name: 'ArticleCarousel',
     components: { 
         IconButton,
         Hottest
     },
     props: {
         // Data
-        slides: {
-            type: Number,
-            default: 3
-        },
         isNavShowing: {
             type: Boolean,
             default: true
@@ -64,9 +66,9 @@ export default {
         // Style
         spaceBetweenSlide: {
             type: Number,
-            default: 20
+            default: 0
         },
-        maxWidth: {
+        maxWidth: { 
             type: Number,
             default: 270
         },
@@ -82,7 +84,11 @@ export default {
         }
     },
     watch: {},
-    computed: {},
+    computed: {
+        swiperWidth() {
+            return this.maxWidth * this.swiperOption.slidesPerView + 2 * this.spaceBetweenSlide
+        }
+    },
     data() {
         return {
             swiperOption: {
@@ -91,7 +97,7 @@ export default {
                     nextEl: '.next-element'
                 },
                 spaceBetween: this.spaceBetweenSlide,
-                slidesPerView: this.slides,
+                slidesPerView: this.device==='desktop' ? 3 : 1,
             },
         };
     },
@@ -103,10 +109,6 @@ export default {
 </script>
 
 <style>
-.swiper-slide .sidebar-hottest .article-header {
-    display: flex;
-}
-
 .swiper-slide a.sidebar-hottest .article-header {
     border-bottom: 0px;
 }

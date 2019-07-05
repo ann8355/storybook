@@ -207,14 +207,14 @@ stories.add(
         components: { ArticleCarousel },
         props: {
             // Data
+            device: {
+                default: select('選擇裝置', {'桌機': 'desktop', '手機': 'mobile'}, 'desktop')
+            },
             regionPath: {
                 default: select('GirlStyle 區域路徑', OPTIONS, DEFAULT_REGION)
             },
             posts: {
                 default: object('文章內容', POSTS)
-            },
-            slides: {
-                default: select('顯示幾個 slide ？', { '桌機 （default)': 3, '手機': 1 }, 3)
             },
             isNavShowing: {
                 default: boolean('顯示導覽按鈕', true)
@@ -230,6 +230,7 @@ stories.add(
             articleMaxWidth: {
                 default: number('Article 寬度（px）', 270)
             },
+            
             // Animate
             isInfiniteLoop: {
                 default: boolean('無窮循環', false)
@@ -247,9 +248,9 @@ stories.add(
         propsDescription: {
             ArticleCarousel: {
                 // These description will appear in `description` column in props table
+                device: '裝置',
                 regionPath: 'GirlStyle 區域路徑',
                 posts: '文章內容',
-                slides: '顯示幾個 slide ？',
                 isNavShowing: '顯示導覽按鈕',
                 mainColor: '識別色',
                 spaceBetweenSlide: 'Slide 的間距（px）',
@@ -262,7 +263,8 @@ stories.add(
         },
         // 如果要傳 function 要怎麼做？
         template: 
-            `<ArticleCarousel 
+            `<ArticleCarousel
+                :device="device"
                 :regionPath="regionPath"
                 :posts="posts"
                 :slides="slides"

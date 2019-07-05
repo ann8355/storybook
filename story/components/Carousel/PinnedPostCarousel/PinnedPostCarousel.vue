@@ -58,6 +58,7 @@ import PinnedPost from './PinnedPost'
 
 export default {
     extends: Carousel,
+    name: 'PinnedPostCarousel',
     components: { PinnedPost },
     props: {
         // Style        

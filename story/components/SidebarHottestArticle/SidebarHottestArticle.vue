@@ -87,10 +87,9 @@ export default {
     display: inline-block;
     margin-bottom: 25px;
 }
-.sidebar-hottest img {
-    max-width: 100%;
-}
+
 .sidebar-hottest .article-header {
+    display: flex;
     font-size: 0; 
     color: #424242;
     padding: 20px 5px;
@@ -98,6 +97,7 @@ export default {
     text-align: center;
     border-bottom: 1px solid #f0f0f0;
 }
+
 .sidebar-hottest .article-header .entry-meta {
     display: inline-block;
     width: 50px;
@@ -111,11 +111,13 @@ export default {
     font-weight: 700;
     font-family: noto sans, sans-serif;
 }
+
 .sidebar-hottest .article-header .time-now {
     text-align: center;
     font-size: 12px;
     font-family: noto sans, sans-serif;
 }
+
 .sidebar-hottest .article-header span {
     display: inline-block;
     text-align: left;
@@ -130,11 +132,9 @@ export default {
     vertical-align: middle;
 }
 
-
 span, p,a{
     margin: 0;
     text-decoration: none;
 }
 
 </style>
-s
