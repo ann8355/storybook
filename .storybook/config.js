@@ -11,11 +11,8 @@ import truncate from 'html-truncate';
 import VueAwesomeSwiper from 'vue-awesome-swiper/dist/ssr';
 import 'swiper/dist/css/swiper.css';
 import 'video.js/dist/video-js.css';
-import VueYoutube from 'vue-youtube';
-import getYouTubeID from 'get-youtube-id';
- 
-Vue.use(getYouTubeID)
-Vue.use(VueYoutube)
+import 'videojs-youtube';
+
 Vue.use(elementUI);
 Vue.use(PopupMessage);
 Vue.use(VueAwesomeSwiper);

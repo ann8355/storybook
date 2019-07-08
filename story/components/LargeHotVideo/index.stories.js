@@ -65,6 +65,9 @@ stories.add(
             },
             headerShow: {
                 default: boolean('headerShow', true)
+            },
+            index: {
+                default: text('index', '1')
             }
         },
         propsDescription: {
@@ -96,7 +99,7 @@ stories.add(
                 }`,
             }
         },
-        template: `<LargeHotVideo :device="device" :post="post" :youtubeProps="youtubeProps" :videoProps="videoProps" :active="active" :color="color" :maxWidth="maxWidth" :host="host" :headerShow="headerShow" />`
+        template: `<LargeHotVideo :device="device" :post="post" :youtubeProps="youtubeProps" :videoProps="videoProps" :active="active" :color="color" :maxWidth="maxWidth" :host="host" :headerShow="headerShow" :index="index" />`
     }),
     {
         notes: `

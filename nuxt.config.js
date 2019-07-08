@@ -25,7 +25,9 @@ export default {
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: [{ src: '~/plugins/popupMessage.js', ssr: false }],
+    plugins: [
+        { src: '~/plugins/popupMessage.js', ssr: false }
+    ],
 
     /*
      ** Nuxt.js modules

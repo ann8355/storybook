@@ -9,14 +9,6 @@ const youtubeOptions = {
     autoplay: true,
     controls: true,
     width: '700',
-    poster: 'https://images.girlsdaily.com/wp-content/uploads/2019/03/奶蜜.jpg?w=400&auto=format',
-    techOrder: ['youtube'],
-    sources: [
-        {
-            src:'https://www.youtube.com/watch?v=Qbp7_IPbugI',
-            type: 'video/youtube'
-        }
-    ]
 };
 
 // -----------------------------------
@@ -35,16 +27,19 @@ stories.add(
         components: { VideoPlayer },
         props: {
             options: {
-                default: object('post', MP4Options)
+                default: object('post', youtubeOptions)
             },
             url: {
-                default: text('url', '//vjs.zencdn.net/v/oceans.mp4')
+                default: text('url', 'https://www.youtube.com/watch?v=Qbp7_IPbugI')
             },
             image: {
                 default: text('image', 'https://images.girlsdaily.com/wp-content/uploads/2019/03/奶蜜.jpg?w=400&auto=format') 
             },
             type: {
-                default: text('type', 'mp4') 
+                default: text('type', 'youtube') 
+            },
+            index: {
+                default: text('index', '1') 
             }
         },
         propsDescription: {
@@ -55,7 +50,7 @@ stories.add(
                 type: '影片類型'
             }
         },
-        template: `<VideoPlayer :options="options" :url="url" :image="image" :type="type" />`
+        template: `<VideoPlayer :options="options" :url="url" :image="image" :type="type" :index="index" />`
     }),
     {
         notes: `

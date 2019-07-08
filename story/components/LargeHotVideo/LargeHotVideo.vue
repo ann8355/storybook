@@ -6,21 +6,13 @@
         @mouseover="mouseover()"
         @mouseleave="mouseleave()"
     >
-        <div v-if="post.video_type == 'youtube'">
-            <YoutubePlayer 
-            :url="post.video_link" 
-            :options="youtubeProps"
-            @onPlayerPlay="playerPlay($event)"
-            @onPlayerPause="playerPause($event)"
-            @onPlayerEnded="playerEnded($event)"
-        />
-        </div>
-        <div v-else>
+        <div>
             <VideoPlayer 
             :url="post.video_link" 
             :image="post.image" 
             :type="post.video_type" 
             :options="videoProps"
+            :index="index"
             @onPlayerPlay="playerPlay($event)"
             @onPlayerPause="playerPause($event)"
             @onPlayerEnded="playerEnded($event)"
@@ -36,7 +28,6 @@
     </div>
 </template>
 <script>
-import YoutubePlayer from '../YoutubePlayer/YoutubePlayer.vue';
 import VideoPlayer from '../VideoPlayer/VideoPlayer.vue';
 import moment from 'moment';
 import truncate from 'html-truncate';
@@ -74,10 +65,13 @@ export default {
         headerShow: {
             type: Boolean,
             default: true
+        },
+        index: {
+            type: String,
+            default: ''
         }
     },
     components: {
-        YoutubePlayer,
         VideoPlayer
     },
     data () {

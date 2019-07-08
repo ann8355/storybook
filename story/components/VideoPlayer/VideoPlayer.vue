@@ -1,13 +1,26 @@
 <template>
     <div>
         <video
-        id="player"
+        v-if="type == 'youtube'"
+        :id="`video-player-${index}`"
+        class="video-js"
+        :poster="image"
+        data-setup='{ "techOrder": ["youtube"]}'
+        @play="onPlayerPlay($event)"
+        @pause="onPlayerPause($event)"
+        @ended="onPlayerEnded($event)"
+    > 
+     <source :src="url" type="video/youtube" >
+    </video>
+        <video
+        v-else
+        :id="`video-player-${index}`"
         class="video-js"
         :poster="image"
         @play="onPlayerPlay($event)"
         @pause="onPlayerPause($event)"
         @ended="onPlayerEnded($event)"
-    >
+    > 
         <source :src="url" :type="`video/${type}`" />
     </video>
     </div>
@@ -30,6 +43,10 @@ export default {
         type: {
             type: String,
             default: ''
+        },
+        index: {
+            type: String,
+            default: ''
         }
     },
     data () {
@@ -39,7 +56,7 @@ export default {
     },
     methods: {
         videoOptions() {
-            this.player = videojs('player', this.options)
+            this.player = videojs(`video-player-${this.index}`, this.options)
         },
         onPlayerPlay(player) {
             this.$emit('onPlayerPlay', player);
