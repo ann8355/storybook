@@ -267,7 +267,6 @@ stories.add(
                 :device="device"
                 :regionPath="regionPath"
                 :posts="posts"
-                :slides="slides"
                 :isNavShowing="isNavShowing"
                 :mainColor="mainColor"
                 :spaceBetweenSlide="spaceBetweenSlide"
