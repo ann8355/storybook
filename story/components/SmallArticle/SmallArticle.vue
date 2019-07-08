@@ -23,7 +23,6 @@
                 <div class="small-cat" v-if="catShow">
                     <a :style="{color: color}"  v-for="(cat, index) in categorys" :key="index"  :href="`${host}/category/${cat.slug}`">
                         <div>{{cat.name}}</div>
-                        <div v-if="index === 0">．</div>
                     </a>
                 </div>
                 <div class="time-now" :style="{width: catShow ? '': '100%'}">  
@@ -100,12 +99,12 @@ export default {
         },
         getCat(post){
             if(this.post.hasOwnProperty('cats') && this.post.cats.length !== 0) {
-                if( post.cats.length > 1 ){
+                if( this.post.cats.length >= 2 ){
                     for(let i = 0; i < 2; i ++) {
                         this.categorys.push(this.post.cats[i]);
                     }
                 } else {
-                    this.categorys = this.post.cats[0]
+                    this.categorys = this.post.cats
                 }
             } else {
                 this.catShow == false;
@@ -168,6 +167,15 @@ export default {
     left: 0;
 }
 
+.small-article .article-header .small-cat a::after {
+    display: inline-block;
+    font-size: 12px;
+    content: '．';
+}
+
+.small-article .article-header .small-cat a:last-child::after  {
+    content: '';
+}
 .small-article .article-header .small-cat a div {
     display: inline-block;
     font-size: 14px;
