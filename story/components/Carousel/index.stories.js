@@ -171,7 +171,6 @@ stories.add(
                 speedWhenSwitchView: '分頁切換速度延遲（ms）'
             }
         },
-        // 如果要傳 function 要怎麼做？
         template:
             `<PinnedPostCarousel
                 :device="device"
@@ -190,8 +189,12 @@ stories.add(
             [ 版本紀錄 ]
             1.0.0 版
 
+            [ 注意事項 ]
+            要安裝哪些套件 ？
+
+
             [ 事件方法 ]
-            無
+            自定義事件怎麼寫 ？
             
             作者：Tim
         `,
@@ -261,7 +264,6 @@ stories.add(
                 speedWhenSwitchView: '分頁切換速度延遲（ms）'
             }
         },
-        // 如果要傳 function 要怎麼做？
         template: 
             `<ArticleCarousel
                 :device="device"
@@ -282,6 +284,8 @@ stories.add(
         notes: `
             [ 版本紀錄 ]
             1.0.0 版
+
+            [ 注意事項 ]
 
             [ 事件方法 ]
             無

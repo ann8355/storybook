@@ -23,7 +23,7 @@ export default {
             default: 'desktop'
         },
         regionPath: {
-            type: String,
+            type: String
         },
         posts: {
             type: Array
@@ -37,12 +37,10 @@ export default {
 
         // Animate
         isInfiniteLoop: {
-            type: Boolean,
-            default: false
+            type: Boolean
         },
         isAutoplay: {
-            type: Boolean,
-            default: false
+            type: Boolean
         },
         autoplayDelay: {
             type: Number,

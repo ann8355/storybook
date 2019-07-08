@@ -30,9 +30,8 @@
                         <img
                             class="swiper-lazy"
                             :data-src="`${post.image}?auto=format&w=600`"
-                            :alt="post.title"
                         >
-                        <div class="swiper-lazy-preloader-white"></div>
+                        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                         <div
                             v-if="regionPath === '/tw'"
                             class="swiper-post-title"
