@@ -190,16 +190,14 @@ stories.add(
             1.0.0 版
 
             [ 注意事項 ]
-            要安裝哪些套件 ？
-
+            1. 安裝此元件前須確認該專案已有 'vue-awesome-swiper' 並從 vue-awesome-swiper/dist/ssr import VueAwesomeSwiper
 
             [ 事件方法 ]
-            自定義事件怎麼寫 ？
             
             作者：Tim
         `,
         info: {
-            summary: '我只是個單純的 Carousel'
+            summary: 'PinnedPostCarousel for index'
         }
     }
 );
@@ -286,6 +284,7 @@ stories.add(
             1.0.0 版
 
             [ 注意事項 ]
+            1. 安裝此元件前須確認該專案已有 'vue-awesome-swiper' 並從 vue-awesome-swiper/dist/ssr import VueAwesomeSwiper
 
             [ 事件方法 ]
             無
@@ -293,7 +292,7 @@ stories.add(
             作者：Tim
         `,
         info: {
-            summary: '我只是個單純的 Carousel'
+            summary: 'ArticleCarousel for 404 page'
         }
     }
 );
