@@ -6,8 +6,7 @@
         @mouseover="mouseover()"
         @mouseleave="mouseleave()"
     >
-        <div>
-            <VideoPlayer 
+        <VideoPlayer 
             :url="post.video_link" 
             :image="post.image" 
             :type="post.video_type" 
@@ -17,7 +16,6 @@
             @onPlayerPause="playerPause($event)"
             @onPlayerEnded="playerEnded($event)"
         />
-        </div>
         <a v-if="headerShow" class="video-header" :href="`${host}${post.url}`" >
             <span :style="{color:hover? color :'#282828'}">{{ post.title }}</span>
             <p>{{ truncate( post.description , 45) }}</p>

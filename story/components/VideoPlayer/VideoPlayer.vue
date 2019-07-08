@@ -10,9 +10,10 @@
         @pause="onPlayerPause($event)"
         @ended="onPlayerEnded($event)"
     > 
-     <source :src="url" type="video/youtube" >
+        <source :src="url" type="video/youtube" >
     </video>
-        <video
+
+    <video
         v-else
         :id="`video-player-${index}`"
         class="video-js"
