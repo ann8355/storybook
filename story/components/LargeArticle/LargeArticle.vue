@@ -19,7 +19,6 @@
             <div class="large-cat"  v-if="catShow">
                 <a :style="{color: color}" v-for="(cat, index) in categorys" :key="index" :href="`${host}/category/${cat.slug}`">
                     <div>{{cat.name}}</div>
-                    <div v-if="index != post.cats.length-1">．</div>
                 </a>
             </div>
             <span :style="{color:hover? color :'#282828',marginTop: !catShow ? `55px`: '00' }">{{ post.title }}</span>
@@ -93,9 +92,7 @@ export default {
         },
         getCat(post){
             if(this.post.hasOwnProperty('cats') && this.post.cats.length !== 0) {
-                if( post.cats.length > 1 ){
                     this.categorys = this.post.cats
-                }
             }
         }
     },
@@ -123,6 +120,15 @@ export default {
     height: 55px;
     line-height: 55px;
     font-size: 18px;
+}
+.large-article .article-header .large-cat a::after {
+    display: inline-block;
+    font-size: 12px;
+    content: '．';
+}
+
+.large-article .article-header .large-cat a:last-child::after  {
+    content: '';
 }
 
 .large-article .article-header .large-cat a div{ 
