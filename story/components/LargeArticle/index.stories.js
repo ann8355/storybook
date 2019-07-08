@@ -13,7 +13,9 @@ const post = {
     "terms":[5,80,7470,7471,7472],
     "cats":[
         {"name":"髮型","slug":"%e9%ab%ae%e5%9e%8b","id":5},
-        {"name":"帥哥","slug":"帥哥","id":4}
+        {"name":"帥哥","slug":"帥哥","id":4},
+        {"name":"哥","slug":"哥","id":3},
+        {"name":"帥","slug":"帥","id":2}
     ]
 }
 
@@ -46,6 +48,9 @@ stories.add(
             },
             post: {
                 default: object('post', post)
+            },
+            catShow: {
+                default: boolean('catShow', true)
             }
         },
         propsDescription: {
@@ -70,9 +75,10 @@ stories.add(
                 active: ' 滑鼠是否 hover',
                 color: '網站主要色系',
                 maxWidth: 'article 最大寬度',
+                catShow: 'cat是否顯示'
             }
         },
-        template: `<LargeArticle :post="post" :device="device" :host="host" :static_host="static_host" :active="active" :color="color" :maxWidth="maxWidth" />`
+        template: `<LargeArticle :post="post" :device="device" :host="host" :static_host="static_host" :active="active" :color="color" :maxWidth="maxWidth" :catShow="catShow"/>`
     }),
     {
         notes: `

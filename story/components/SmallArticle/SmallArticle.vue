@@ -21,7 +21,10 @@
             <p v-if="device == 'desktop'">{{ post.description }}</p>
             <div class="small-bottom">
                 <div class="small-cat" v-if="catShow">
-                    <a :style="{color: color}" v-if="cat" :href="`${host}/category/${cat.slug}`">{{cat.name}}</a>
+                    <a :style="{color: color}"  v-for="(cat, index) in categorys" :key="index"  :href="`${host}/category/${cat.slug}`">
+                        <div>{{cat.name}}</div>
+                        <div v-if="index === 0">．</div>
+                    </a>
                 </div>
                 <div class="time-now" :style="{width: catShow ? '': '100%'}">  
                     {{ moment(post.post_date).fromNow() }}
@@ -74,7 +77,7 @@ export default {
     data () {
         return {
             hover: this.active,
-            cat: []
+            categorys: []
         }
     },
     methods: {
@@ -96,8 +99,16 @@ export default {
             this.$emit('smallArticleClick', this.hover);
         },
         getCat(post){
-            if(post.cats[0] !== undefined) {
-                this.cat = post.cats[0]
+            if(this.post.hasOwnProperty('cats') && this.post.cats.length !== 0) {
+                if( post.cats.length > 1 ){
+                    for(let i = 0; i < 2; i ++) {
+                        this.categorys.push(this.post.cats[i]);
+                    }
+                } else {
+                    this.categorys = this.post.cats[0]
+                }
+            } else {
+                this.catShow == false;
             }
         }
     },
@@ -147,20 +158,24 @@ export default {
 
 .small-article .article-header .small-bottom{
     position: absolute;
-    bottom: 20px;
+    bottom: 35px;
     width: 100%;
     font-size: 0;
 }
 
 .small-article .article-header .small-cat{
+    position: absolute;
+    left: 0;
+}
+
+.small-article .article-header .small-cat a div {
     display: inline-block;
-    text-align: left;
-    width: 50%;
     font-size: 14px;
 }
+
 .small-article .article-header .time-now {
-    display: inline-block;
-    width: 50%;
+    position: absolute;
+    right: 0;
     text-align: right;
     font-size: 13px;
     color: #adadad;

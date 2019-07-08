@@ -13,7 +13,9 @@ const post = {
     "terms":[5,80,7470,7471,7472],
     "cats":[
         {"name":"髮型","slug":"%e9%ab%ae%e5%9e%8b","id":5},
-        {"name":"帥哥","slug":"帥哥","id":4}
+        {"name":"帥哥","slug":"帥哥","id":4},
+        {"name":"哥","slug":"哥","id":3},
+        {"name":"帥","slug":"帥","id":2}
     ]
 }
 
@@ -76,7 +78,8 @@ stories.add(
                 color: '網站主要色系',
                 static_host: 'static_host 參數',
                 imgWidth: '圖片寬度',
-                headerWidth: 'header 寬度'
+                headerWidth: 'header 寬度',
+                catShow: 'cat是否顯示'
             }
         },
         template: `<SmallArticle :post="post" :device="device" :host="host" :static_host="static_host" :active="active" :color="color" :imgWidth="imgWidth" :headerWidth="headerWidth" :catShow="catShow" />`
