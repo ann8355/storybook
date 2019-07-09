@@ -1,7 +1,7 @@
 <template>
-    <div :style="{padding:device=='desktop'?'0px':'0px 10px 0px', width: `700px`}">
+    <div :style="{padding:device=='desktop'?'0px':'0px 10px 0px'}">
         <component 
-            v-for="(post,index) in posts.articles" 
+            v-for="(post,index) in hotPosts.articles" 
             :device="device"  
             :key="index" 
             :post="post" 
@@ -9,7 +9,7 @@
         />
         
         <LargeHotVideo
-            v-for="(post,index) in posts.videos"
+            v-for="(post,index) in hotPosts.videos"
             :key="post.title"
             :post="post"
             :headerShow="false"
@@ -25,7 +25,7 @@ import LargeHotVideo from "../LargeHotVideo/LargeHotVideo.vue";
 
 export default {
     props: {
-        posts: {
+        hotPosts: {
             type: Object
         },
         device: {
@@ -54,14 +54,6 @@ export default {
         }
     },
     methods: {
-        async getPostsVideos() {
-            try {
-                this.PostsVideos = await this.$axios.$get(`/api/presslogic/606485276170272/hotVideo`).then(result => result.data)
-                console.log(this.PostsVideos);
-            } catch (e) {
-                console.log(e)
-            }
-        },
         Article(index){
             return index % 4 == 0 ? LargeArticle : SmallArticle;
         }

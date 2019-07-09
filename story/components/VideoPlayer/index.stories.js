@@ -30,7 +30,7 @@ stories.add(
                 default: object('post', youtubeOptions)
             },
             url: {
-                default: text('url', 'https://www.youtube.com/watch?v=Qbp7_IPbugI')
+                default: text('url', 'https://www.youtube.com/embed/_aNpLsGksWU')
             },
             image: {
                 default: text('image', 'https://images.girlsdaily.com/wp-content/uploads/2019/03/奶蜜.jpg?w=400&auto=format') 

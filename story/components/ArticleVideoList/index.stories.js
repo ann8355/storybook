@@ -115,7 +115,7 @@ const data = {
             "id": 291164,
             "post_date": "2019-07-02T07:45:04Z",
             "description": "rrrererererer",
-            "video_link": "https://www.youtube.com/watch?v=_aNpLsGksWU",
+            "video_link": "//vjs.zencdn.net/v/oceans.mp4",
             "title": "video test1",
             "guid": "https://pretty.presslogic.com/?p=291164",
             "image": "https://pretty.imgix.net/wp-content/uploads/2019/05/1557734034780420170124-011817_U3927_M241955_5f6e.png",
@@ -124,7 +124,7 @@ const data = {
                 22,
                 3151
             ],
-            "video_type": "youtube"
+            "video_type": "mp4"
         },
         {
             "id": 291144,
@@ -161,6 +161,13 @@ const data = {
     ]
 }
 
+const devices = ['desktop','mobile'];
+
+const videoOption = {
+                        autoplay: false,
+                        controls: true,
+                        width: '700',
+                    }
 
 const stories = storiesOf('PL-Theme|Index/ArticleVideoList', module);
 stories.addDecorator(withKnobs);
@@ -169,15 +176,21 @@ stories.add(
     () => ({
         components: { ArticleVideoList },
         props: {
-            posts:{
-                default: object('posts', data)
+            hotPosts:{
+                default: object('hotPosts', data)
+            },
+            device: {
+                default: select('device', devices)
+            },
+            videoOption: {
+                default: object('videoOptions', videoOption)
             }
         },
         propsDescription: {
             ArticleVideoList: {
             }
         },
-        template: `<div style="max-width: 700px;"><ArticleVideoList :posts="posts"/></div>`
+        template: `<div style="max-width: 700px;"><ArticleVideoList :hotPosts="hotPosts" :device="device" :videoOption="videoOption"  /></div>`
     }),
     {
         notes: `

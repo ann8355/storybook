@@ -215,6 +215,7 @@ export default {
 
 .small-article.mobile .article-header .small-bottom{
     bottom: 5px;
+    height: 20px;
 }
 
 span, p,a{

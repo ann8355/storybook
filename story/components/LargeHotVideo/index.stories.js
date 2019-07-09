@@ -108,7 +108,7 @@ stories.add(
 
         [ 注意事項 ]
 
-        1. 安裝此元件前須確認該專案已有‘video.js’,‘vue-youtube’,'get-youtube-id','moment','truncate',套件
+        1. 安裝此元件前須確認該專案已有‘video.js’,‘videojs-youtube’,‘moment’,'html-truncate',套件
         `,
         info: {
             summary: 'LargeHotVideo for Presslogic'

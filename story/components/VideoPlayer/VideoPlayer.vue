@@ -2,21 +2,20 @@
     <div>
         <video
         v-if="type == 'youtube'"
-        :id="`video-player-${index}`"
-        class="video-js"
+        class="video-js vjs-default-skin"
+        ref="videoPlayer"
         :poster="image"
-        data-setup='{ "techOrder": ["youtube"]}'
+        :data-setup='`{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "${url}"}] }`'
         @play="onPlayerPlay($event)"
         @pause="onPlayerPause($event)"
         @ended="onPlayerEnded($event)"
-    > 
-        <source :src="url" type="video/youtube" >
+    >
     </video>
 
     <video
         v-else
-        :id="`video-player-${index}`"
-        class="video-js"
+        class="video-js vjs-default-skin"
+        ref="videoPlayer"
         :poster="image"
         @play="onPlayerPlay($event)"
         @pause="onPlayerPause($event)"
@@ -57,7 +56,7 @@ export default {
     },
     methods: {
         videoOptions() {
-            this.player = videojs(`video-player-${this.index}`, this.options)
+            this.player = videojs(this.$refs.videoPlayer, this.options)
         },
         onPlayerPlay(player) {
             this.$emit('onPlayerPlay', player);
