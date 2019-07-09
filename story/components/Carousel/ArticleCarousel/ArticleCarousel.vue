@@ -26,8 +26,8 @@
                         v-bind="{
                             post,
                             index,
-                            regionPath,
                             maxWidth,
+                            host: regionPath,
                             color: mainColor,
                         }"
                         @setPost="$emit('setPost', post)"
