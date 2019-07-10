@@ -27,6 +27,7 @@
 </template>
 <script>
 import videojs from 'video.js'
+import 'videojs-youtube'
 export default {
     props: {
         options: {
