@@ -180,6 +180,7 @@ const videoOption = {
                         autoplay: false,
                         controls: true,
                         width: '700',
+                        rel: 0
                     }
 
 const stories = storiesOf('PL-Theme|Index/ArticleVideoList', module);

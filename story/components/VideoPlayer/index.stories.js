@@ -6,9 +6,8 @@ const stories = storiesOf('Presslogic|video/VideoPlayer', module);
 
 // 使用 video-youtube 時 
 const youtubeOptions = {
-    autoplay: true,
+    autoplay: false,
     controls: true,
-    width: '700',
 };
 
 // -----------------------------------
@@ -40,7 +39,10 @@ stories.add(
             },
             index: {
                 default: text('index', '1') 
-            }
+            },
+            active: {
+                default: boolean('active', false)
+            },
         },
         propsDescription: {
             VideoPlayer: {
@@ -50,7 +52,7 @@ stories.add(
                 type: '影片類型'
             }
         },
-        template: `<VideoPlayer :options="options" :url="url" :image="image" :type="type" :index="index" />`
+        template: `<VideoPlayer :options="options" :url="url" :image="image" :type="type" :index="index" :active="active" />`
     }),
     {
         notes: `

@@ -26,7 +26,7 @@ const youtubetype = {
 }
 
 const videotype = {
-    autoplay: true,
+    autoplay: false,
     controls: true,
     width: '700',
 };

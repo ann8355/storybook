@@ -1,6 +1,6 @@
 <template>
     <div :style="{padding:device=='desktop'?'0px':'0px 10px 0px'}">
-        <div v-for="(post,index) in articlePosts" :key="index" >
+        <div v-for="(post,index) in hotPosts.articles" :key="index" >
             <component
                 v-if="index < 8 "
                 :device="device"
@@ -40,6 +40,7 @@ export default {
                     autoplay: false,
                     controls: true,
                     width: '700',
+                    rel: 0
                     }
             }
         }

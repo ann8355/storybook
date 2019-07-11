@@ -2,9 +2,10 @@
     <div>
         <video
         v-if="type == 'youtube'"
-        class="video-js vjs-default-skin"
+        class="video-js vjs-styles"
         ref="videoPlayer"
         :poster="image"
+        :width="`540`"
         :data-setup='`{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "${url}"}] }`'
         @play="onPlayerPlay($event)"
         @pause="onPlayerPause($event)"
@@ -53,11 +54,26 @@ export default {
     data () {
         return {
             player: null,
+            hover: this.active
         }
     },
     methods: {
         videoOptions() {
-            this.player = videojs(this.$refs.videoPlayer, this.options)
+            this.player = videojs(this.$refs.videoPlayer, this.options, function onPlayerReady() {
+                this.on('mouseenter', function() {
+                    this.currentTime(0);
+                    this.muted(true);
+                    this.play();
+                    console.log('on')
+                } )
+                this.on('mouseleave', function() {
+                    this.muted(false);
+                    this.pause();
+                    this.currentTime(0);
+                    console.log('off')
+                    } )
+            console.log('onPlayerReady', this);
+        })
         },
         onPlayerPlay(player) {
             this.$emit('onPlayerPlay', player);
@@ -80,5 +96,19 @@ export default {
 }
 </script>
 <style scoped>
+.video-js >>> .vjs-big-play-button {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    background-color: red;
+}
 
+.video-js:hover >>> .vjs-big-play-button {
+    background-color: #ff7676;
+}
 </style>
