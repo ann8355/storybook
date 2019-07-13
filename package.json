@@ -5,7 +5,7 @@
     "author": "WEB TEAM",
     "private": true,
     "scripts": {
-        "start": "start-storybook -s ./public,./static -p 53257 --ci",
+        "start": "start-storybook -s ./public,./static -p 3000 --ci",
         "build": "build-storybook -s ./public,./static -o ./build",
         "storybook": "start-storybook -s ./static -p 9001"
     },
